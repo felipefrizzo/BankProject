@@ -10,19 +10,19 @@ public abstract class AbstractPerson implements Person {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id")
-    private final Long id;
+    private Long id;
     @Column(name = "name")
-    private final String name;
+    private String name;
     @Column(name = "age")
-    private final Integer age;
+    private Integer age;
     @Column(name = "cpf")
-    private final String cpf;
+    private String cpf;
     @Column(name = "type_person")
-    private final TypePerson typePerson;
+    private TypePerson typePerson;
     @Column(name = "access_password")
-    private final String accessPassword;
+    private String accessPassword;
     @Column(name = "operation_password")
-    private final String operationPassword;
+    private String operationPassword;
 
     protected AbstractPerson(final String name, final Integer age, final String cpf,
                              TypePerson typePerson, final String accessPassword, final String operationPassword) {
@@ -68,5 +68,33 @@ public abstract class AbstractPerson implements Person {
     @Override
     public String getOperationPassword() {
         return this.operationPassword;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setAge(Integer age) {
+        this.age = age;
+    }
+
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
+    }
+
+    public void setTypePerson(TypePerson typePerson) {
+        this.typePerson = typePerson;
+    }
+
+    public void setAccessPassword(String accessPassword) {
+        this.accessPassword = accessPassword;
+    }
+
+    public void setOperationPassword(String operationPassword) {
+        this.operationPassword = operationPassword;
     }
 }
