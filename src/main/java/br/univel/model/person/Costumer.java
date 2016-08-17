@@ -9,8 +9,8 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "Person")
 public class Costumer extends AbstractPerson {
-    protected Costumer(Long id, String name, Integer age, String cpf, TypePerson typePerson,
+    protected Costumer(String name, Integer age, String cpf, TypePerson typePerson,
                        String accessPassword, String operationPassword) {
-        super(id, name, age, cpf, typePerson, accessPassword, operationPassword);
+        super(name, age, cpf, typePerson, accessPassword, operationPassword);
     }
 }

@@ -5,7 +5,8 @@ import javax.persistence.*;
 /**
  * Created by felipefrizzo on 8/16/16.
  */
-public abstract class AbstractPerson implements Person{
+@MappedSuperclass
+public abstract class AbstractPerson implements Person {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id")
@@ -23,9 +24,9 @@ public abstract class AbstractPerson implements Person{
     @Column(name = "operation_password")
     private final String operationPassword;
 
-    protected AbstractPerson(final Long id, final String name, final Integer age, final String cpf,
+    protected AbstractPerson(final String name, final Integer age, final String cpf,
                              TypePerson typePerson, final String accessPassword, final String operationPassword) {
-        this.id = id;
+        this.id = null;
         this.name = name;
         this.age = age;
         this.cpf = cpf;
