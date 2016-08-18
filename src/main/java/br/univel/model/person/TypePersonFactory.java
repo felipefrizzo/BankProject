@@ -10,8 +10,8 @@ public class TypePersonFactory implements PersonFactory {
     public Person create(TypePerson typePerson, String name, Integer age, String cpf, String accessPassword, String operationPassword) {
         Objects.requireNonNull(typePerson, "Type Person cannot be null.");
         switch (typePerson) {
-            case COSTUMER:
-                return new Costumer(name, age, cpf, typePerson, accessPassword, operationPassword);
+            case CUSTOMER:
+                return new Customer(name, age, cpf, typePerson, accessPassword, operationPassword);
             case BANKING:
                 return new Banking(name, age, cpf, typePerson, accessPassword, operationPassword);
             default:
