@@ -10,14 +10,6 @@ import java.util.List;
  */
 public interface DaoInterface<T, I> {
 
-    public void closeSession();
-
-    public void closeSessionWithTransaction();
-
-    public Session getSession();
-
-    public Transaction getTrasation();
-
     public void save(T entity);
 
     public void update(T entity);

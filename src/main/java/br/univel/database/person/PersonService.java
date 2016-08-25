@@ -1,5 +1,6 @@
 package br.univel.database.person;
 
+import br.univel.database.SessionFactory;
 import br.univel.database.DaoService;
 import br.univel.model.person.Person;
 
@@ -10,45 +11,47 @@ import java.util.List;
  */
 public class PersonService implements DaoService<Person, Long> {
     private static PersonDao personDao;
+    private static SessionFactory sessionFactory;
 
     public PersonService() {
         personDao = new PersonDao();
+        sessionFactory = SessionFactory.getInstance();
     }
 
     @Override
     public void save(Person entity) {
-        personDao.openSessionWithTransaction();
+        sessionFactory.openSessionWithTransaction();
         personDao.save(entity);
-        personDao.closeSessionWithTransaction();
+        sessionFactory.closeSessionWithTransaction();
     }
 
     @Override
     public void update(Person entity) {
-        personDao.openSessionWithTransaction();
+        sessionFactory.openSessionWithTransaction();
         personDao.update(entity);
-        personDao.closeSessionWithTransaction();
+        sessionFactory.closeSessionWithTransaction();
     }
 
     @Override
     public void delete(Person entity) {
-        personDao.openSessionWithTransaction();
+        sessionFactory.openSessionWithTransaction();
         personDao.delete(entity);
-        personDao.closeSessionWithTransaction();
+        sessionFactory.closeSessionWithTransaction();
     }
 
     @Override
     public Person getById(Long id, Object object) {
-        personDao.openSessionWithTransaction();
+        sessionFactory.openSessionWithTransaction();
         Person person = personDao.getById(id, object);
-        personDao.closeSessionWithTransaction();
+        sessionFactory.closeSessionWithTransaction();
         return person;
     }
 
     @Override
     public List<Person> getAll(String from) {
-        personDao.openSessionWithTransaction();
+        sessionFactory.openSessionWithTransaction();
         List<Person> persons = personDao.getAll(from);
-        personDao.closeSessionWithTransaction();
+        sessionFactory.closeSessionWithTransaction();
         return persons;
     }
 }
