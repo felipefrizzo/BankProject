@@ -13,6 +13,8 @@ public abstract class AbstractPerson implements Person {
     private Long id;
     @Column(name = "name")
     private String name;
+    @Column(name = "username")
+    private String username;
     @Column(name = "age")
     private Integer age;
     @Column(name = "cpf")
@@ -24,10 +26,11 @@ public abstract class AbstractPerson implements Person {
     @Column(name = "operation_password")
     private String operationPassword;
 
-    protected AbstractPerson(final String name, final Integer age, final String cpf,
+    protected AbstractPerson(final String name, final String username, final Integer age, final String cpf,
                              TypePerson typePerson, final String accessPassword, final String operationPassword) {
         this.id = null;
         this.name = name;
+        this.username = username;
         this.age = age;
         this.cpf = cpf;
         this.typePerson = typePerson;
@@ -43,6 +46,11 @@ public abstract class AbstractPerson implements Person {
     @Override
     public String getName() {
         return this.name;
+    }
+
+    @Override
+    public String getUsername() {
+        return this.username;
     }
 
     @Override

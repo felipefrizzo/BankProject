@@ -9,6 +9,8 @@ public interface Person {
 
     public String getName();
 
+    public String getUsername();
+
     public Integer getAge();
 
     public String getCpf();
