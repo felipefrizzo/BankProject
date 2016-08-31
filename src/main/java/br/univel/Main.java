@@ -1,6 +1,4 @@
-package br.univel;/**
- * Created by felipefrizzo on 8/30/16.
- */
+package br.univel;
 
 import br.univel.view.RootLayoutController;
 import javafx.application.Application;
@@ -12,6 +10,9 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
+/**
+ * Created by felipefrizzo on 8/30/16.
+ */
 public class Main extends Application {
     private Stage primaryStage;
     private BorderPane rootLayout;
