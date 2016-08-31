@@ -43,8 +43,8 @@ public class Main extends Application {
             Scene scene = new Scene(rootLayout);
             primaryStage.setScene(scene);
 
-//            RootLayoutController controller = loader.getController();
-//            controller.setMain(this);
+            RootLayoutController controller = loader.getController();
+            controller.setMain(this);
 
             primaryStage.show();
         } catch (IOException e) {
