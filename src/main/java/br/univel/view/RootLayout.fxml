@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane fx:id="RootLayout" prefHeight="550.0" prefWidth="700.0" style="-fx-background-color: #E0E0E0;"
+            xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="br.univel.view.RootLayoutController">
+    <top>
+        <Pane prefHeight="140.0" prefWidth="700.0" style="-fx-background-color: #f7f7f7;" BorderPane.alignment="CENTER">
+            <children>
+                <ImageView fitHeight="48.0" fitWidth="48.0" layoutX="18.0" layoutY="36.0" pickOnBounds="true"
+                           preserveRatio="true">
+                    <image>
+                        <Image url="@../../../../resources/images/Currency.png"/>
+                    </image>
+                </ImageView>
+                <Label layoutX="80.0" layoutY="29.0" prefHeight="45.0" prefWidth="207.0" text="Bank Project">
+                    <font>
+                        <Font name="Arial Black" size="22.0"/>
+                    </font>
+                </Label>
+                <Label layoutX="80.0" layoutY="66.0" text="Work of Object-oriented programming">
+                    <font>
+                        <Font name="Arial Italic" size="12.0"/>
+                    </font>
+                </Label>
+                <Label fx:id="Date" layoutX="530.0" layoutY="14.0" prefHeight="17.0" prefWidth="100.0"
+                       text="22/08/2016"/>
+                <Label layoutX="530.0" layoutY="35.0" prefHeight="17.0" prefWidth="62.0" text="Agência:"/>
+                <Label layoutX="530.0" layoutY="60.0" text="Conta:"/>
+                <Label layoutX="530.0" layoutY="83.0" text="Tipo Conta:"/>
+                <Label layoutX="530.0" layoutY="105.0" text="Saldo:"/>
+
+                <Label fx:id="BranchCode" layoutX="620.0" layoutY="35.0" text="Label"/>
+                <Label fx:id="AccountNumber" layoutX="620.0" layoutY="60.0" text="Label"/>
+                <Label fx:id="TypeAccount" layoutX="620.0" layoutY="83.0" text="Label"/>
+                <Label fx:id="Balance" layoutX="620.0" layoutY="105.0" text="Label"/>
+            </children>
+        </Pane>
+    </top>
+</BorderPane>
