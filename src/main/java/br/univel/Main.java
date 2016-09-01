@@ -1,14 +1,16 @@
 package br.univel;
 
+import java.io.IOException;
+
 import br.univel.view.RootLayoutController;
+import br.univel.view.login.LoginController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
-
-import java.io.IOException;
 
 /**
  * Created by felipefrizzo on 8/30/16.
@@ -33,6 +35,7 @@ public class Main extends Application {
         this.primaryStage.getIcons().add(new Image("file:resources/images/Currency.png"));
 
         initRootLayout();
+        showLoginLayout();
     }
 
     public void initRootLayout() {
@@ -48,6 +51,20 @@ public class Main extends Application {
             controller.setMain(this);
 
             primaryStage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    
+    public void showLoginLayout(){
+    	try {
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(Main.class.getResource("view/login/LoginLayout.fxml"));
+            AnchorPane loginOverview = (AnchorPane) loader.load();
+
+            rootLayout.setCenter(loginOverview);
+            LoginController controller = loader.getController();
+            controller.setMainApp(this);
         } catch (IOException e) {
             e.printStackTrace();
         }
