@@ -9,15 +9,18 @@ import java.util.Objects;
  */
 public class TypePersonFactory implements PersonFactory {
     private String pwd;
+    private String passwd;
     @Override
     public Person create(TypePerson typePerson, String name, String username, Integer age, String cpf, String accessPassword, String operationPassword) {
         Objects.requireNonNull(typePerson, "Type Person cannot be null.");
+
+        if (typePerson == TypePerson.CUSTOMER) {
+            passwd = username + accessPassword;
+        }
+
         switch (typePerson) {
             case CUSTOMER:
-                StringBuilder newPassword = new StringBuilder();
-                newPassword.append(username).append(accessPassword);
-
-                pwd = new CryptographyFactory().create(newPassword.toString(), typePerson);
+                pwd = new CryptographyFactory().create(passwd, typePerson);
                 return new Customer(name, username, age, cpf, typePerson, pwd, operationPassword);
             case BANKING:
                 pwd = new CryptographyFactory().create(accessPassword, typePerson);
