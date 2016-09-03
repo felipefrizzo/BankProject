@@ -1,0 +1,12 @@
+package br.univel.model.account;
+
+import br.univel.model.person.Person;
+
+/**
+ * Created by felipefrizzo on 9/3/16.
+ */
+public class AccountSavings extends AbstractAccount {
+    protected AccountSavings(final TypeAccount typeAccount, final Long accountNumber, final Person client, final Long agency) {
+        super(typeAccount, accountNumber, client, agency);
+    }
+}
