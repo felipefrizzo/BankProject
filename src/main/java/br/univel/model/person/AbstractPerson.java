@@ -28,7 +28,6 @@ public abstract class AbstractPerson implements Person {
 
     protected AbstractPerson(final String name, final String username, final Integer age, final String cpf,
                              TypePerson typePerson, final String accessPassword, final String operationPassword) {
-        this.id = null;
         this.name = name;
         this.username = username;
         this.age = age;
@@ -36,6 +35,9 @@ public abstract class AbstractPerson implements Person {
         this.typePerson = typePerson;
         this.accessPassword = accessPassword;
         this.operationPassword = operationPassword;
+    }
+
+    protected AbstractPerson() {
     }
 
     @Override
