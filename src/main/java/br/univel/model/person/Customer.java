@@ -13,4 +13,7 @@ public class Customer extends AbstractPerson {
                        String accessPassword, String operationPassword) {
         super(name, username, age, cpf, typePerson, accessPassword, operationPassword);
     }
+
+    protected Customer() {
+    }
 }
