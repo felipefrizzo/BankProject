@@ -2,6 +2,11 @@ package br.univel;
 
 import java.io.IOException;
 
+import br.univel.database.person.PersonService;
+import br.univel.model.person.Customer;
+import br.univel.model.person.Person;
+import br.univel.model.person.TypePerson;
+import br.univel.model.person.TypePersonFactory;
 import br.univel.view.RootLayoutController;
 import br.univel.view.login.LoginController;
 import javafx.application.Application;
@@ -25,6 +30,10 @@ public class Main extends Application {
 
     public static void main(String[] args) {
         launch(args);
+        
+        Person c = (Person) new TypePersonFactory().create(TypePerson.CUSTOMER, "Luis", "luis", 18, "123456789", "123", "123");
+        PersonService person = new PersonService();
+        person.save(c);
     }
 
     @Override
