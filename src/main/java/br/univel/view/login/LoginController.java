@@ -2,6 +2,8 @@ package br.univel.view.login;
 
 import java.util.List;
 
+import org.bouncycastle.crypto.RuntimeCryptoException;
+
 import br.univel.Main;
 import br.univel.cryptography.person.CryptographyCustomer;
 import br.univel.cryptography.person.CryptographyFactory;
@@ -45,30 +47,31 @@ public class LoginController {
     }
     
     @FXML
-    private void handleLogin(String user , String password){
-    	
-    	String newPass = null;
-    	
+    private void handleLogin(){
+    	String errorMessage;
+    	String newPassword = null;
+ 
+    	CryptographyFactory crypto = new CryptographyFactory();
     	List <Person> person = null;
     	PersonService service = new PersonService();
     	person = service.getAll("FROM PERSON");
     	
     	if (isInputValid()){
-    		for (Person person1 : person ) {
-				if(user.equalsIgnoreCase(person1.getUsername())){
-					if (person1.getTypePerson() == TypePerson.CUSTOMER) {
-						String pwd = username + password;
-						newPass = new CryptographyFactory.create(pwd, person1.getTypePerson());
-					}else{
-						//newPass = new CryptographyFactory.create(password, );
+    		for (Person p : person ) {
+				if(p.getUsername().equalsIgnoreCase(this.username.getText())){
+					if (p.getTypePerson() == TypePerson.CUSTOMER) {
+						String pwd = this.username.getText() + this.password.getText();
+						newPassword = crypto.create(pwd, p.getTypePerson());
+					} else if (p.getTypePerson() == TypePerson.BANKING){
+						newPassword = crypto.create(this.password.getText(), p.getTypePerson());
 					}
 				}
 			}
     		
-    		for (Person person2 : person) {
-				if(user.equalsIgnoreCase(person2.getUsername()) && newPass.equalsIgnoreCase(person2.getOperationPassword())){
-					if(person2.getTypePerson() == TypePerson.CUSTOMER){
-						return new PersonFactory().	
+    		for (Person p : person) {
+				if(this.username.getText().equalsIgnoreCase(p.getUsername()) && newPassword.equalsIgnoreCase(p.getOperationPassword())){
+					if(p.getTypePerson() == TypePerson.CUSTOMER){
+						return new PersonFactory();
 				}
 			}
     	}
