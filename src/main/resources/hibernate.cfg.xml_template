@@ -15,5 +15,10 @@
         <property name="hibernate.format_sql">false</property>
 
         <!--<mapping class="br.univel.Main"></mapping>-->
+        <mapping class="br.univel.model.person.Customer"></mapping>
+        <mapping class="br.univel.model.person.Banking"></mapping>
+        <mapping class="br.univel.model.account.AccountCurrent"></mapping>
+        <mapping class="br.univel.model.account.AccountEletronic"></mapping>
+        <mapping class="br.univel.model.account.AccountSavings"></mapping>
     </session-factory>
 </hibernate-configuration>
