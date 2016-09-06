@@ -1,5 +1,6 @@
 package br.univel.model.account;
 
+import br.univel.model.agency.Agency;
 import br.univel.model.person.Customer;
 
 import javax.persistence.Entity;
@@ -11,7 +12,7 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "account")
 public class AccountCurrent extends AbstractAccount {
-    protected AccountCurrent(final TypeAccount typeAccount, final Long accountNumber, final Customer client, final Long agency) {
+    protected AccountCurrent(final TypeAccount typeAccount, final Long accountNumber, final Customer client, final Agency agency) {
         super(typeAccount, accountNumber, client, agency);
     }
 }

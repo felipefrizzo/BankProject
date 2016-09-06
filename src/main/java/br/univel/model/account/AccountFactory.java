@@ -1,5 +1,6 @@
 package br.univel.model.account;
 
+import br.univel.model.agency.Agency;
 import br.univel.model.person.Customer;
 
 import java.util.Objects;
@@ -8,7 +9,7 @@ import java.util.Objects;
  * Created by felipefrizzo on 9/3/16.
  */
 public class AccountFactory {
-    public Account create(TypeAccount typeAccount, Long accountNumber, Customer client, Long agency) {
+    public Account create(TypeAccount typeAccount, Long accountNumber, Customer client, Agency agency) {
         Objects.requireNonNull(typeAccount, "Account type cannot be null.");
 
         switch (typeAccount) {

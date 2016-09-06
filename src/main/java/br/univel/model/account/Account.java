@@ -1,5 +1,6 @@
 package br.univel.model.account;
 
+import br.univel.model.agency.Agency;
 import br.univel.model.person.Person;
 
 /**
@@ -14,6 +15,6 @@ public interface Account {
 
     public Person getClient();
 
-    public Long getAgency();
+    public Agency getAgency();
 
 }
