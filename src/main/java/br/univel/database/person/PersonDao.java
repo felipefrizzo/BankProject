@@ -14,7 +14,7 @@ public class PersonDao implements DaoInterface<Person, Long> {
 
     @Override
     public void save(Person entity) {
-        sessionFactory.getSession().persist(entity);
+        sessionFactory.getSession().save(entity);
     }
 
     @Override

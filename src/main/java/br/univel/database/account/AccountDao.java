@@ -14,7 +14,7 @@ public class AccountDao implements DaoInterface<Account, Long>{
 
     @Override
     public void save(Account entity) {
-        sessionFactory.getSession().persist(entity);
+        sessionFactory.getSession().save(entity);
     }
 
     @Override

@@ -1,6 +1,6 @@
 package br.univel.model.account;
 
-import br.univel.model.person.Person;
+import br.univel.model.person.Customer;
 
 import javax.persistence.*;
 
@@ -17,12 +17,13 @@ public abstract class AbstractAccount implements Account{
     private TypeAccount typeAccount;
     @Column(name = "account_number")
     private Long accountNumber;
-    @Column(name = "id_client")
-    private Person client;
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "id_client")
+    private Customer client;
     @Column(name = "id_agency")
     private Long agency;
 
-    protected AbstractAccount(final TypeAccount typeAccount, final Long accountNumber, final Person client, final Long agency) {
+    protected AbstractAccount(final TypeAccount typeAccount, final Long accountNumber, final Customer client, final Long agency) {
         this.typeAccount = typeAccount;
         this.accountNumber = accountNumber;
         this.client = client;
@@ -45,7 +46,7 @@ public abstract class AbstractAccount implements Account{
     }
 
     @Override
-    public Person getClient() {
+    public Customer getClient() {
         return client;
     }
 
@@ -69,7 +70,7 @@ public abstract class AbstractAccount implements Account{
         return this;
     }
 
-    public Account setClient(Person client) {
+    public Account setClient(Customer client) {
         this.client = client;
         return this;
     }
