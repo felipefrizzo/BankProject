@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.univel.view.main.MainController">
+   <children>
+      <GridPane layoutX="95.0" layoutY="94.0" prefHeight="212.0" prefWidth="410.0">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="205.0" minWidth="10.0" prefWidth="204.0" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="206.0" minWidth="10.0" prefWidth="206.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <Button fx:id="cashWithdrawal" mnemonicParsing="false" onAction="#handleCashWithdrawl" prefHeight="40.0" prefWidth="190.0" text="1 - SAQUE" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+               <padding>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </padding></Button>
+            <Button fx:id="transfer" layoutX="17.0" layoutY="31.0" mnemonicParsing="false" onAction="#handleTranfer" prefHeight="40.0" prefWidth="190.0" text="4 - TRANSFERÊNCIA" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+               <padding>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </padding>
+            </Button>
+            <Button fx:id="balance" layoutX="214.0" layoutY="31.0" mnemonicParsing="false" onAction="#handleBalance" prefHeight="40.0" prefWidth="190.0" text="2 - SALDO" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+               <padding>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </padding>
+            </Button>
+            <Button fx:id="payment" layoutX="10.0" layoutY="102.0" mnemonicParsing="false" onAction="#handlePayment" prefHeight="40.0" prefWidth="190.0" text="5 - PAGAMENTO" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+               <padding>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </padding>
+            </Button>
+            <Button fx:id="deposit" layoutX="214.0" layoutY="102.0" mnemonicParsing="false" onAction="#handleDeposit" prefHeight="40.0" prefWidth="190.0" text="3 - DEPÓSITO" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+               <padding>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </padding>
+            </Button>
+            <Button fx:id="finish" layoutX="17.0" layoutY="31.0" mnemonicParsing="false" onAction="#handleFinish" prefHeight="40.0" prefWidth="190.0" text="6 - FINALIZAR" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+               <padding>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </padding>
+            </Button>
+         </children>
+      </GridPane>
+   </children>
+</AnchorPane>
