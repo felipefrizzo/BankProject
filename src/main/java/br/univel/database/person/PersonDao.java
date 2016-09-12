@@ -39,4 +39,11 @@ public class PersonDao implements DaoInterface<Person, Long> {
         List<Person> persons = sessionFactory.getSession().createQuery(from).list();
         return persons;
     }
+
+    public List<Person> getByUsername(String username) {
+        List persons = sessionFactory.getSession()
+                .createQuery("from Customer where username = :username")
+                .setParameter("username", username).list();
+        return persons;
+    }
 }
