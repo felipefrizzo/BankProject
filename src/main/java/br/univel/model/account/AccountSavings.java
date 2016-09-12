@@ -5,6 +5,7 @@ import br.univel.model.person.Customer;
 
 import javax.persistence.Entity;
 import javax.persistence.Table;
+import java.math.BigDecimal;
 
 /**
  * Created by felipefrizzo on 9/3/16.
@@ -12,7 +13,7 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "account")
 public class AccountSavings extends AbstractAccount {
-    protected AccountSavings(final TypeAccount typeAccount, final Long accountNumber, final Customer client, final Agency agency) {
-        super(typeAccount, accountNumber, client, agency);
+    protected AccountSavings(final TypeAccount typeAccount, final Long accountNumber, final Customer client, final Agency agency, final BigDecimal balance) {
+        super(typeAccount, accountNumber, client, agency, balance);
     }
 }

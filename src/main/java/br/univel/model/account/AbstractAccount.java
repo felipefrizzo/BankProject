@@ -4,6 +4,7 @@ import br.univel.model.agency.Agency;
 import br.univel.model.person.Customer;
 
 import javax.persistence.*;
+import java.math.BigDecimal;
 
 /**
  * Created by felipefrizzo on 9/3/16.
@@ -24,12 +25,15 @@ public abstract class AbstractAccount implements Account{
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "id_agency", nullable = false)
     private Agency agency;
+    @Column(name = "balance")
+    private BigDecimal balance;
 
-    protected AbstractAccount(final TypeAccount typeAccount, final Long accountNumber, final Customer client, final Agency agency) {
+    protected AbstractAccount(final TypeAccount typeAccount, final Long accountNumber, final Customer client, final Agency agency, final BigDecimal balance) {
         this.typeAccount = typeAccount;
         this.accountNumber = accountNumber;
         this.client = client;
         this.agency = agency;
+        this.balance = balance;
     }
 
     @Override
@@ -55,6 +59,11 @@ public abstract class AbstractAccount implements Account{
     @Override
     public Agency getAgency() {
         return agency;
+    }
+
+    @Override
+    public BigDecimal getBalance() {
+        return null;
     }
 
     public Account setId(Long id) {
