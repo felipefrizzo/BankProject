@@ -1,9 +1,5 @@
 package br.univel;
 
-import br.univel.database.person.PersonService;
-import br.univel.model.person.Person;
-import br.univel.model.person.TypePerson;
-import br.univel.model.person.TypePersonFactory;
 import br.univel.view.RootLayoutController;
 import br.univel.view.login.LoginController;
 import br.univel.view.main.MainController;
@@ -29,10 +25,6 @@ public class Main extends Application {
     }
 
     public static void main(String[] args) {
-//        Person p = new TypePersonFactory().create(TypePerson.CUSTOMER, "FRIZZO", "felipe", 18, "0512", "1234", "1234");
-//        PersonService ps = new PersonService();
-//        ps.save(p);
-
         launch(args);
     }
 
@@ -79,7 +71,7 @@ public class Main extends Application {
         }
     }
 
-    public void showMainLayout() {
+    public void showMainCustomerLayout() {
         try {
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(Main.class.getResource("view/main/MainLayout.fxml"));
@@ -91,5 +83,9 @@ public class Main extends Application {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    public void showMainBankingLayout() {
+        System.out.println("MAIN BANKING");
     }
 }

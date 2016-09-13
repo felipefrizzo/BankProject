@@ -63,7 +63,12 @@ public class LoginController {
 
 			for (Person p : person) {
 				if (p.getAccessPassword().equals(newPassword) && p.getUsername().equals(this.username.getText())) {
-					main.showMainLayout();
+					if (p.getTypePerson() == TypePerson.CUSTOMER) {
+						main.showMainCustomerLayout();
+					} else if (p.getTypePerson() == TypePerson.BANKING) {
+
+					}
+
 				} else {
 					this.errorMsg.setText("Usuário ou senha incorretas");
 				}
