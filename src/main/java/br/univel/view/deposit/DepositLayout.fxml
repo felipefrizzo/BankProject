@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.univel.view.deposit.DepositController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.76-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.univel.view.deposit.DepositController">
    <children>
       <GridPane layoutX="15.0" layoutY="50.0" prefHeight="50.0" prefWidth="570.0">
         <columnConstraints>
@@ -24,7 +24,7 @@
         </rowConstraints>
          <children>
             <Label text="INFORME O VALOR A SER DEPOSITADO:" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
-            <TextField GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+            <TextField fx:id="value" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
             <Button mnemonicParsing="false" onAction="#handleConfirmDeposit" text="Confirme" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
          </children>
       </GridPane>
@@ -52,12 +52,12 @@
                   <CheckBox fx:id="isLogged" mnemonicParsing="false" text="Conta Logada" />
                   <Label text="Agência" GridPane.rowIndex="1" />
                   <Label text="Conta:" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                  <TextField fx:id="Agency" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+                  <TextField fx:id="agency" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
                      <GridPane.margin>
                         <Insets bottom="5.0" right="5.0" top="5.0" />
                      </GridPane.margin>
                   </TextField>
-                  <TextField fx:id="NumberAccount" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+                  <TextField fx:id="numberAccount" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
                      <GridPane.margin>
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                      </GridPane.margin>
@@ -74,7 +74,7 @@
               </rowConstraints>
                <children>
                   <Label text="Tipo Conta" />
-                  <ComboBox fx:id="TypeAccount" prefHeight="30.0" prefWidth="380.0" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+                  <ComboBox fx:id="typeAccount" prefHeight="30.0" prefWidth="380.0" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
                      <GridPane.margin>
                         <Insets bottom="5.0" right="5.0" top="5.0" />
                      </GridPane.margin>

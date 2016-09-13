@@ -17,16 +17,19 @@ public class DepositController {
     private CheckBox isLogged;
 
     @FXML
-    private TextField Agency;
+    private TextField agency;
 
     @FXML
-    private TextField NumberAccount;
+    private TextField value;
 
     @FXML
-    private ComboBox<?> TypeAccount;
+    private TextField numberAccount;
 
     @FXML
-    private TextField Holder;
+    private ComboBox<?> typeAccount;
+
+    @FXML
+    private TextField holder;
 
     public void setMain(Main main) {
         this.main = main;
