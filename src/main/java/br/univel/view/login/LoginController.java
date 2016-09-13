@@ -1,24 +1,17 @@
 package br.univel.view.login;
 
-import java.util.List;
-
-import org.bouncycastle.crypto.RuntimeCryptoException;
-
 import br.univel.Main;
-import br.univel.cryptography.person.CryptographyCustomer;
 import br.univel.cryptography.person.CryptographyFactory;
 import br.univel.database.person.PersonService;
-import br.univel.model.person.AbstractPerson;
-import br.univel.model.person.Customer;
 import br.univel.model.person.Person;
-import br.univel.model.person.PersonFactory;
 import br.univel.model.person.TypePerson;
-import br.univel.model.person.TypePersonFactory;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+
+import java.util.List;
 
 /**
  * Created by lfsobrinho on 8/30/16.
@@ -69,11 +62,10 @@ public class LoginController {
 			}
 
 			for (Person p : person) {
-				if (this.username.getText().equalsIgnoreCase(p.getUsername())
-						&& newPassword.equals(p.getOperationPassword())) {
-
+				if (p.getAccessPassword().equals(newPassword) && p.getUsername().equals(this.username.getText())) {
+					main.showMainLayout();
 				} else {
-					this.errorMsg.setText("Usuário ou Senha incorreta ou Inexistente");
+					this.errorMsg.setText("Usuário ou senha incorretas");
 				}
 			}
 		}
