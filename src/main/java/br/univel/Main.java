@@ -1,14 +1,8 @@
 package br.univel;
 
-import java.io.IOException;
-
-import br.univel.database.person.PersonService;
-import br.univel.model.person.Customer;
-import br.univel.model.person.Person;
-import br.univel.model.person.TypePerson;
-import br.univel.model.person.TypePersonFactory;
 import br.univel.view.RootLayoutController;
 import br.univel.view.login.LoginController;
+import br.univel.view.main.MainController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -16,6 +10,8 @@ import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
+
+import java.io.IOException;
 
 /**
  * Created by felipefrizzo on 8/30/16.
@@ -73,5 +69,23 @@ public class Main extends Application {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    public void showMainCustomerLayout() {
+        try {
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(Main.class.getResource("view/main/MainLayout.fxml"));
+            AnchorPane mainOverview = (AnchorPane) loader.load();
+
+            rootLayout.setCenter(mainOverview);
+            MainController controller = loader.getController();
+            controller.setMain(this);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void showMainBankingLayout() {
+        System.out.println("MAIN BANKING");
     }
 }
