@@ -55,7 +55,7 @@ public class LoginController {
 		PersonService service = new PersonService();
 
 		if (isInputValid()) {
-			person = service.getAll("FROM CUSTOMER");
+			person = service.getAll("FROM Customer");
 			
 			for (Person p : person) {
 				if (p.getUsername().equalsIgnoreCase(this.username.getText())) {

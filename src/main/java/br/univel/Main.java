@@ -30,10 +30,6 @@ public class Main extends Application {
 
     public static void main(String[] args) {
         launch(args);
-        
-        Person c = (Person) new TypePersonFactory().create(TypePerson.CUSTOMER, "Luis", "luis", 18, "123456789", "123", "123");
-        PersonService person = new PersonService();
-        person.save(c);
     }
 
     @Override
