@@ -20,12 +20,12 @@
         </rowConstraints>
          <children>
             <TextField fx:id="username" prefHeight="25.0" prefWidth="218.0" promptText="Usuário" />
+            <PasswordField fx:id="password" promptText="Senha" GridPane.rowIndex="1" />
             <Button fx:id="login" mnemonicParsing="false" onAction="#handleLogin" prefHeight="30.0" prefWidth="75.0" text="Login" GridPane.rowIndex="2">
                <GridPane.margin>
                   <Insets left="210.0" />
                </GridPane.margin>
             </Button>
-            <PasswordField fx:id="password" promptText="Senha" GridPane.rowIndex="1" />
          </children>
       </GridPane>
       <Label fx:id="errorMsg" alignment="CENTER" layoutX="203.0" layoutY="379.0" prefHeight="15.0" prefWidth="267.0" textFill="#ff0101" visible="false" />

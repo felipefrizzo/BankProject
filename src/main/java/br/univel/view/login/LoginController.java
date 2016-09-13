@@ -1,6 +1,19 @@
 package br.univel.view.login;
 
+import java.util.List;
+
+import org.bouncycastle.crypto.RuntimeCryptoException;
+
 import br.univel.Main;
+import br.univel.cryptography.person.CryptographyCustomer;
+import br.univel.cryptography.person.CryptographyFactory;
+import br.univel.database.person.PersonService;
+import br.univel.model.person.AbstractPerson;
+import br.univel.model.person.Customer;
+import br.univel.model.person.Person;
+import br.univel.model.person.PersonFactory;
+import br.univel.model.person.TypePerson;
+import br.univel.model.person.TypePersonFactory;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -11,40 +24,64 @@ import javafx.scene.control.TextField;
  * Created by lfsobrinho on 8/30/16.
  */
 public class LoginController {
-    private Main main;
-    @FXML
-    private PasswordField password;
+	private Main main;
+	@FXML
+	private PasswordField password;
 
-    @FXML
-    private Button login;
+	@FXML
+	private Button login;
 
-    @FXML
-    private TextField username;
-    
-    @FXML
-    private Label errorMsg;
-					
+	@FXML
+	private TextField username;
 
-    public void setMainApp(Main main) {
-        this.main = main;
-    }
-   
-    @FXML
-    void initialize() {
-    	
-    }
-    
-    @FXML
-    private void handleLogin(){
-    	if (isInputValid()){
-    		
-    	}
-    	
-    }
+	@FXML
+	private Label errorMsg;
 
-    private boolean isInputValid() {
+	public void setMainApp(Main main) {
+		this.main = main;
+	}
+
+	@FXML
+	void initialize() {
+
+	}
+
+	@FXML
+	private void handleLogin() {
+		String newPassword = null;
+
+		CryptographyFactory crypto = new CryptographyFactory();
+		List<Person> person = null;
+		PersonService service = new PersonService();
+
+		if (isInputValid()) {
+			person = service.getAll("FROM Customer");
+			
+			for (Person p : person) {
+				if (p.getUsername().equalsIgnoreCase(this.username.getText())) {
+					if (p.getTypePerson() == TypePerson.CUSTOMER) {
+						String pwd = this.username.getText() + this.password.getText();
+						newPassword = crypto.create(pwd, p.getTypePerson());
+					} else if (p.getTypePerson() == TypePerson.BANKING) {
+						newPassword = crypto.create(this.password.getText(), p.getTypePerson());
+					}
+				}
+			}
+
+			for (Person p : person) {
+				if (this.username.getText().equalsIgnoreCase(p.getUsername())
+						&& newPassword.equals(p.getOperationPassword())) {
+
+				} else {
+					this.errorMsg.setText("Usuário ou Senha incorreta ou Inexistente");
+				}
+			}
+		}
+	}
+
+	private boolean isInputValid() {
 		String errorMessage = "";
-		if ((this.username.getText() == null || this.username.getLength() == 0) 
+		if ((this.username.getText() == null || this.username.getLength() == 0)
 				&& (this.password.getText() == null || this.password.getLength() == 0)) {
 			errorMessage = "Informe usuário e senha.";
 		} else {
@@ -53,15 +90,15 @@ public class LoginController {
 			}
 			if (this.password.getText() == null || this.password.getLength() == 0) {
 				errorMessage = "Informe a senha.";
-			}	
+			}
 		}
-    	
-		if (errorMessage.length() == 0){
+
+		if (errorMessage.length() == 0) {
 			return true;
-		}else{
+		} else {
 			this.errorMsg.setVisible(true);
 			this.errorMsg.setText(errorMessage);
 			return false;
 		}
-    }
+	}
 }
