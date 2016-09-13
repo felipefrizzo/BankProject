@@ -1,8 +1,10 @@
 package br.univel.model.account;
 
-import br.univel.model.person.Person;
+import br.univel.model.agency.Agency;
+import br.univel.model.person.Customer;
 
 import javax.persistence.*;
+import java.math.BigDecimal;
 
 /**
  * Created by felipefrizzo on 9/3/16.
@@ -17,16 +19,21 @@ public abstract class AbstractAccount implements Account{
     private TypeAccount typeAccount;
     @Column(name = "account_number")
     private Long accountNumber;
-    @Column(name = "id_client")
-    private Person client;
-    @Column(name = "id_agency")
-    private Long agency;
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "id_client", nullable = false)
+    private Customer client;
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "id_agency", nullable = false)
+    private Agency agency;
+    @Column(name = "balance")
+    private BigDecimal balance;
 
-    protected AbstractAccount(final TypeAccount typeAccount, final Long accountNumber, final Person client, final Long agency) {
+    protected AbstractAccount(final TypeAccount typeAccount, final Long accountNumber, final Customer client, final Agency agency, final BigDecimal balance) {
         this.typeAccount = typeAccount;
         this.accountNumber = accountNumber;
         this.client = client;
         this.agency = agency;
+        this.balance = balance;
     }
 
     @Override
@@ -45,13 +52,18 @@ public abstract class AbstractAccount implements Account{
     }
 
     @Override
-    public Person getClient() {
+    public Customer getClient() {
         return client;
     }
 
     @Override
-    public Long getAgency() {
+    public Agency getAgency() {
         return agency;
+    }
+
+    @Override
+    public BigDecimal getBalance() {
+        return null;
     }
 
     public Account setId(Long id) {
@@ -69,12 +81,12 @@ public abstract class AbstractAccount implements Account{
         return this;
     }
 
-    public Account setClient(Person client) {
+    public Account setClient(Customer client) {
         this.client = client;
         return this;
     }
 
-    public Account setAgency(Long agency) {
+    public Account setAgency(Agency agency) {
         this.agency = agency;
         return this;
     }

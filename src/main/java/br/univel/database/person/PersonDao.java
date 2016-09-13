@@ -14,7 +14,7 @@ public class PersonDao implements DaoInterface<Person, Long> {
 
     @Override
     public void save(Person entity) {
-        sessionFactory.getSession().persist(entity);
+        sessionFactory.getSession().save(entity);
     }
 
     @Override
@@ -37,6 +37,13 @@ public class PersonDao implements DaoInterface<Person, Long> {
     @Override
     public List<Person> getAll(String from) {
         List<Person> persons = sessionFactory.getSession().createQuery(from).list();
+        return persons;
+    }
+
+    public List<Person> getByUsername(String username) {
+        List persons = sessionFactory.getSession()
+                .createQuery("from Customer where username = :username")
+                .setParameter("username", username).list();
         return persons;
     }
 }

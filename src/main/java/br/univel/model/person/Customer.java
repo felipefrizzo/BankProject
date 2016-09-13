@@ -14,6 +14,6 @@ public class Customer extends AbstractPerson {
         super(name, username, age, cpf, typePerson, accessPassword, operationPassword);
     }
 
-    protected Customer() {
+    public Customer() {
     }
 }

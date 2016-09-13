@@ -11,13 +11,13 @@ public abstract class AbstractPerson implements Person {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id")
     private Long id;
-    @Column(name = "name")
+    @Column(name = "name", unique = true)
     private String name;
-    @Column(name = "username")
+    @Column(name = "username", unique = true)
     private String username;
     @Column(name = "age")
     private Integer age;
-    @Column(name = "cpf")
+    @Column(name = "cpf", unique = true)
     private String cpf;
     @Column(name = "type_person")
     private TypePerson typePerson;
