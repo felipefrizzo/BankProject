@@ -25,4 +25,9 @@ public class PaymentController {
     void handlePaymentConfirm(ActionEvent event) {
 
     }
+
+    @FXML
+    void handleBack(ActionEvent event) {
+        main.showMainCustomerLayout();
+    }
 }

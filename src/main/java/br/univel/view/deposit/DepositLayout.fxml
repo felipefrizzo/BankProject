@@ -4,6 +4,7 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Hyperlink?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -100,5 +101,6 @@
             </GridPane>
          </children>
       </GridPane>
+      <Hyperlink layoutY="2.0" onAction="#handleBack" text="Principal" />
    </children>
 </AnchorPane>

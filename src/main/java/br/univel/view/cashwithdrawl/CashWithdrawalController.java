@@ -47,4 +47,9 @@ public class CashWithdrawalController {
     void handleWithdrawal500(ActionEvent event) {
 
     }
+
+    @FXML
+    void handleBack(ActionEvent event) {
+        main.showMainCustomerLayout();
+    }
 }

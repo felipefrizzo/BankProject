@@ -45,4 +45,9 @@ public class DepositController {
     void handleConfirmDeposit(ActionEvent event) {
 
     }
+
+    @FXML
+    void handleBack(ActionEvent event) {
+        main.showMainCustomerLayout();
+    }
 }

@@ -41,4 +41,9 @@ public class TransferController {
     void handleConfirmTransfer(ActionEvent event) {
 
     }
+
+    @FXML
+    void handleBack(ActionEvent event) {
+        main.showMainCustomerLayout();
+    }
 }
