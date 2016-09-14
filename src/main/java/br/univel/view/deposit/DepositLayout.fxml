@@ -50,15 +50,15 @@
                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <CheckBox fx:id="isLogged" mnemonicParsing="false" text="Conta Logada" />
+                  <CheckBox fx:id="isLogged" mnemonicParsing="false" onAction="#handleLogged" selected="true" text="Conta Logada" />
                   <Label text="Agência" GridPane.rowIndex="1" />
                   <Label text="Conta:" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                  <TextField fx:id="agency" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+                  <TextField fx:id="agency" disable="true" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
                      <GridPane.margin>
                         <Insets bottom="5.0" right="5.0" top="5.0" />
                      </GridPane.margin>
                   </TextField>
-                  <TextField fx:id="numberAccount" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+                  <TextField fx:id="numberAccount" disable="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
                      <GridPane.margin>
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                      </GridPane.margin>
@@ -75,7 +75,7 @@
               </rowConstraints>
                <children>
                   <Label text="Tipo Conta" />
-                  <ComboBox fx:id="typeAccount" prefHeight="30.0" prefWidth="380.0" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+                  <ComboBox fx:id="typeAccount" disable="true" prefHeight="30.0" prefWidth="380.0" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
                      <GridPane.margin>
                         <Insets bottom="5.0" right="5.0" top="5.0" />
                      </GridPane.margin>
@@ -92,7 +92,7 @@
               </rowConstraints>
                <children>
                   <Label text="Titular" />
-                  <TextField fx:id="Holder" editable="false" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+                  <TextField fx:id="Holder" disable="true" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
                      <GridPane.margin>
                         <Insets bottom="5.0" right="5.0" top="5.0" />
                      </GridPane.margin>

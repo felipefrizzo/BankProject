@@ -71,6 +71,7 @@ public class LoginController {
 
 				} else {
 					this.errorMsg.setText("Usuário ou senha incorretas");
+					this.errorMsg.setVisible(true);
 				}
 			}
 		}

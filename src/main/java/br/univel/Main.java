@@ -76,6 +76,7 @@ public class Main extends Application {
     }
 
     public void showMainCustomerLayout() {
+        this.primaryStage.setTitle("Bank Project Applications");
         try {
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(Main.class.getResource("view/main/MainCustomerLayout.fxml"));
@@ -94,6 +95,7 @@ public class Main extends Application {
     }
 
     public void showCashWithdrawal() {
+        this.primaryStage.setTitle("Bank Project Applications - Cash Withdrawal");
         try {
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(Main.class.getResource("view/cashwithdrawl/CashWithdrawalLayout.fxml"));
@@ -108,6 +110,7 @@ public class Main extends Application {
     }
 
     public void showDeposit() {
+        this.primaryStage.setTitle("Bank Project Applications - Deposit");
         try {
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(Main.class.getResource("view/deposit/DepositLayout.fxml"));
@@ -122,6 +125,7 @@ public class Main extends Application {
     }
 
     public void showPayment() {
+        this.primaryStage.setTitle("Bank Project Applications - Payment");
         try {
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(Main.class.getResource("view/payment/PaymentLayout.fxml"));
@@ -136,6 +140,7 @@ public class Main extends Application {
     }
 
     public void showTransfer() {
+        this.primaryStage.setTitle("Bank Project Applications - Transfer");
         try {
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(Main.class.getResource("view/transfer/TransferLayout.fxml"));

@@ -50,4 +50,17 @@ public class DepositController {
     void handleBack(ActionEvent event) {
         main.showMainCustomerLayout();
     }
+
+    @FXML
+    void handleLogged(ActionEvent event) {
+        if (this.isLogged.isSelected()) {
+            this.agency.setDisable(true);
+            this.numberAccount.setDisable(true);
+            this.typeAccount.setDisable(true);
+        } else {
+            this.agency.setDisable(false);
+            this.numberAccount.setDisable(false);
+            this.typeAccount.setDisable(false);
+        }
+    }
 }

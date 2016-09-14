@@ -12,7 +12,7 @@ import java.math.BigDecimal;
 @MappedSuperclass
 public abstract class AbstractAccount implements Account{
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Long id;
     @Column(name = "type_account")
