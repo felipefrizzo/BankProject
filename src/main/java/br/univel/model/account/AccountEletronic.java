@@ -16,4 +16,7 @@ public class AccountEletronic extends AbstractAccount {
     protected AccountEletronic(final TypeAccount typeAccount, final Long accountNumber, final Customer client, final Agency agency, final BigDecimal balance) {
         super(typeAccount, accountNumber, client, agency, balance);
     }
+
+    protected AccountEletronic() {
+    }
 }

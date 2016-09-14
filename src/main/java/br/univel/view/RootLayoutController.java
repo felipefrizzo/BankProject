@@ -10,19 +10,19 @@ import javafx.scene.control.Label;
 public class RootLayoutController {
     private Main main;
     @FXML
-    private Label Date;
+    private Label date;
 
     @FXML
-    private Label BranchCode;
+    private Label branchCode;
 
     @FXML
-    private Label AccountNumber;
+    private Label accountNumber;
 
     @FXML
-    private Label TypeAccount;
+    private Label typeAccount;
 
     @FXML
-    private Label Balance;
+    private Label balance;
 
     public void setMain(Main main) {
         this.main = main;

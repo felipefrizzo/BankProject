@@ -2,7 +2,9 @@ package br.univel.view.login;
 
 import br.univel.Main;
 import br.univel.cryptography.person.CryptographyFactory;
+import br.univel.database.account.AccountService;
 import br.univel.database.person.PersonService;
+import br.univel.model.account.Account;
 import br.univel.model.person.Person;
 import br.univel.model.person.TypePerson;
 import javafx.fxml.FXML;
@@ -17,6 +19,9 @@ import java.util.List;
  * Created by lfsobrinho on 8/30/16.
  */
 public class LoginController {
+	private AccountService accountService = new AccountService();
+	private PersonService personService = new PersonService();
+
 	private Main main;
 	@FXML
 	private PasswordField password;
@@ -35,20 +40,14 @@ public class LoginController {
 	}
 
 	@FXML
-	void initialize() {
-
-	}
-
-	@FXML
 	private void handleLogin() {
 		String newPassword = null;
 
 		CryptographyFactory crypto = new CryptographyFactory();
-		List<Person> person = null;
-		PersonService service = new PersonService();
+		List<Person> person;
 
 		if (isInputValid()) {
-			person = service.getAll("FROM Customer");
+			person = personService.getAll("FROM Customer");
 			
 			for (Person p : person) {
 				if (p.getUsername().equalsIgnoreCase(this.username.getText())) {
@@ -64,7 +63,10 @@ public class LoginController {
 			for (Person p : person) {
 				if (p.getAccessPassword().equals(newPassword) && p.getUsername().equals(this.username.getText())) {
 					if (p.getTypePerson() == TypePerson.CUSTOMER) {
+						Account account = accountService.getAccountByCustomer(p);
+
 						main.showMainCustomerLayout();
+						main.setAccount(account);
 					} else if (p.getTypePerson() == TypePerson.BANKING) {
 						main.showMainBankingLayout();
 					}

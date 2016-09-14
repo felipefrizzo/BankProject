@@ -36,6 +36,9 @@ public abstract class AbstractAccount implements Account{
         this.balance = balance;
     }
 
+    protected AbstractAccount() {
+    }
+
     @Override
     public Long getId() {
         return id;

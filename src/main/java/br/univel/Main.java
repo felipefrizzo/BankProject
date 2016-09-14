@@ -1,5 +1,6 @@
 package br.univel;
 
+import br.univel.model.account.Account;
 import br.univel.view.RootLayoutController;
 import br.univel.view.cashwithdrawl.CashWithdrawalController;
 import br.univel.view.deposit.DepositController;
@@ -21,11 +22,20 @@ import java.io.IOException;
  * Created by felipefrizzo on 8/30/16.
  */
 public class Main extends Application {
+    private Account account;
     private Stage primaryStage;
     private BorderPane rootLayout;
 
     public Stage getPrimaryStage() {
         return primaryStage;
+    }
+
+    public Account getAccount() {
+        return account;
+    }
+
+    public void setAccount(Account account) {
+        this.account = account;
     }
 
     public static void main(String[] args) {
