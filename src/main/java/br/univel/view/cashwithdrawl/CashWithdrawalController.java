@@ -1,5 +1,6 @@
 package br.univel.view.cashwithdrawl;
 
+import br.univel.Main;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
@@ -8,6 +9,12 @@ import javafx.scene.control.TextField;
  * Created by felipefrizzo on 9/12/16.
  */
 public class CashWithdrawalController {
+    private Main main;
+
+    public void setMain(Main main) {
+        this.main = main;
+    }
+
     @FXML
     private TextField withdrawalValue;
 

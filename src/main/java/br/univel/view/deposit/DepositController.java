@@ -1,6 +1,7 @@
 package br.univel.view.deposit;
 
 import br.univel.Main;
+import br.univel.model.account.TypeAccount;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.CheckBox;
@@ -12,6 +13,11 @@ import javafx.scene.control.TextField;
  */
 public class DepositController {
     private Main main;
+
+    @FXML
+    private void initialize() {
+        typeAccount.getItems().setAll(TypeAccount.CURRENT, TypeAccount.ELETRONIC, TypeAccount.SAVINGS);
+    }
 
     @FXML
     private CheckBox isLogged;
@@ -26,7 +32,7 @@ public class DepositController {
     private TextField numberAccount;
 
     @FXML
-    private ComboBox<?> typeAccount;
+    private ComboBox<TypeAccount> typeAccount;
 
     @FXML
     private TextField holder;

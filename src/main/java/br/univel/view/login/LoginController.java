@@ -66,7 +66,7 @@ public class LoginController {
 					if (p.getTypePerson() == TypePerson.CUSTOMER) {
 						main.showMainCustomerLayout();
 					} else if (p.getTypePerson() == TypePerson.BANKING) {
-
+						main.showMainBankingLayout();
 					}
 
 				} else {

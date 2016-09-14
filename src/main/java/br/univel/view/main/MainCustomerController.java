@@ -41,12 +41,12 @@ public class MainCustomerController {
 
     @FXML
     private void handleCashWithdrawl(ActionEvent event) {
-
+        main.showCashWithdrawal();
     }
 
     @FXML
     private void handleDeposit(ActionEvent event) {
-
+        main.showDeposit();
     }
 
     @FXML
@@ -56,11 +56,11 @@ public class MainCustomerController {
 
     @FXML
     private void handlePayment(ActionEvent event) {
-
+        main.showPayment();
     }
 
     @FXML
     private void handleTranfer(ActionEvent event) {
-
+        main.showTransfer();
     }
 }
