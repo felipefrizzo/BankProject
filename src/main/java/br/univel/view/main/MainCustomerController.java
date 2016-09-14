@@ -8,7 +8,7 @@ import javafx.scene.control.Button;
 /**
  * Created by felipefrizzo on 9/12/16.
  */
-public class MainController {
+public class MainCustomerController {
     private Main main;
 
     @FXML

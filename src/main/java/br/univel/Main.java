@@ -2,7 +2,7 @@ package br.univel;
 
 import br.univel.view.RootLayoutController;
 import br.univel.view.login.LoginController;
-import br.univel.view.main.MainController;
+import br.univel.view.main.MainCustomerController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -74,11 +74,11 @@ public class Main extends Application {
     public void showMainCustomerLayout() {
         try {
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(Main.class.getResource("view/main/MainLayout.fxml"));
+            loader.setLocation(Main.class.getResource("view/main/MainCustomerLayout.fxml"));
             AnchorPane mainOverview = (AnchorPane) loader.load();
 
             rootLayout.setCenter(mainOverview);
-            MainController controller = loader.getController();
+            MainCustomerController controller = loader.getController();
             controller.setMain(this);
         } catch (IOException e) {
             e.printStackTrace();
