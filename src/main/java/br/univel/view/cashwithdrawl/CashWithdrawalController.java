@@ -26,7 +26,29 @@ public class CashWithdrawalController {
 
     @FXML
     void handleConfirmWithdrawal(ActionEvent event) {
-    	System.out.println("HI");
+        if (withdrawalValue.getText() == null || withdrawalValue.getLength() == 0) {
+            showError(
+                    "Campo inválido",
+                    "Por favor, corrija o campo inválido",
+                    "O campo valor não pode estar em branco"
+            );
+        } else {
+            String value = withdrawalValue.getText().replace(",", ".");
+    	    BigDecimal withdral = new BigDecimal(value);
+
+            if (isValidBalance(withdral)) {
+                boolean okPassword = main.showPasswordModal(main.getAccount().getClient());
+                if (okPassword) {
+                    updateBalance(withdral);
+                }
+            } else {
+                showError(
+                        "Saldo insulficiente",
+                        "Saldo insulficiente",
+                        "Você não tem saldo sulficiente para completar essa transação"
+                );
+            }
+        }
     }
 
     @FXML
