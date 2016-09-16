@@ -85,7 +85,7 @@ public class CashWithdrawalController {
         accountService.update(main.getAccount());
     }
 
-    public void showError(String title, String headerTitle, String contentText) {
+    protected void showError(String title, String headerTitle, String contentText) {
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.initOwner(main.getPrimaryStage());
         alert.setTitle(title);

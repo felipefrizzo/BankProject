@@ -39,6 +39,7 @@ public class DepositController {
 
     public void setMain(Main main) {
         this.main = main;
+        showInitialInformation();
     }
 
     @FXML
@@ -62,5 +63,12 @@ public class DepositController {
             this.numberAccount.setDisable(false);
             this.typeAccount.setDisable(false);
         }
+    }
+
+    public void showInitialInformation() {
+        agency.setText(main.getAccount().getAgency().getNumero());
+        numberAccount.setText(String.valueOf(main.getAccount().getAccountNumber()));
+        holder.setText(main.getAccount().getClient().getName());
+        typeAccount.getSelectionModel().select(main.getAccount().getTypeAccount());
     }
 }

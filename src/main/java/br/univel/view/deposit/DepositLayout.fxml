@@ -92,7 +92,7 @@
               </rowConstraints>
                <children>
                   <Label text="Titular" />
-                  <TextField fx:id="Holder" disable="true" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+                  <TextField fx:id="holder" disable="true" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
                      <GridPane.margin>
                         <Insets bottom="5.0" right="5.0" top="5.0" />
                      </GridPane.margin>
