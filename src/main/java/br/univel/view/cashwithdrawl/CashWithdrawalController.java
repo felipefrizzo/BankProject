@@ -22,21 +22,6 @@ public class CashWithdrawalController {
     }
 
     @FXML
-    private Button btn50;
-
-    @FXML
-    private Button btn100;
-
-    @FXML
-    private Button btn200;
-
-    @FXML
-    private Button btn300;
-
-    @FXML
-    private Button btn500;
-
-    @FXML
     private TextField withdrawalValue;
 
     @FXML
