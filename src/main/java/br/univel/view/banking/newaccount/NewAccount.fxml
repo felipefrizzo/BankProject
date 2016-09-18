@@ -6,8 +6,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <GridPane layoutX="85.0" layoutY="71.0" prefHeight="258.0" prefWidth="430.0">
         <columnConstraints>
@@ -50,7 +49,7 @@
               </rowConstraints>
                <children>
                   <Label text="Idade" />
-                  <TextField GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+                  <TextField fx:id="age" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
                      <opaqueInsets>
                         <Insets bottom="5.0" right="5.0" top="5.0" />
                      </opaqueInsets>
@@ -59,7 +58,7 @@
                      </GridPane.margin>
                   </TextField>
                   <Label text="CPF" GridPane.columnIndex="1" />
-                  <TextField GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+                  <TextField fx:id="cpf" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
                      <opaqueInsets>
                         <Insets bottom="5.0" right="5.0" top="5.0" />
                      </opaqueInsets>
