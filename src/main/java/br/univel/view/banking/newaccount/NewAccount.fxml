@@ -133,7 +133,7 @@
                   </PasswordField>
                </children>
             </GridPane>
-            <Button mnemonicParsing="false" onAction="#handle" text="Confirme" GridPane.halignment="RIGHT" GridPane.rowIndex="5" GridPane.valignment="BOTTOM" />
+            <Button fx:id="confirm" mnemonicParsing="false" onAction="#handle" text="Confirme" GridPane.halignment="RIGHT" GridPane.rowIndex="5" GridPane.valignment="BOTTOM" />
          </children>
       </GridPane>
    </children>
