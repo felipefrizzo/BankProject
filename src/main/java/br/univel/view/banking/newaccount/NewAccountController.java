@@ -42,15 +42,17 @@ public class NewAccountController {
 
 	@FXML
 	void handle(ActionEvent event) {
+		String errorMessage;
 		if(isValid()){
 			int ageInt = Integer.parseInt(this.age.getText()); 
 	        Person p = new TypePersonFactory().create(TypePerson.CUSTOMER, this.name.getText(), this.username.getText(),ageInt
 	        	,this.cpf.getText(), this.passwordAccess.getText(), this.passwordOperation.getText());
 	        PersonService ps = new PersonService();
 	        ps.save(p);
-			
-			
+		}else{
+			errorMessage = "Erro inexperado";//apenas teste ^^ , sem criatividade
 		}
+		
 	}
 
 	boolean isValid() {
