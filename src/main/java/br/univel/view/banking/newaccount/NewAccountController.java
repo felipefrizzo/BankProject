@@ -47,14 +47,13 @@ public class NewAccountController {
 				return true;
 			} else {
 				errorMessage = "Senha de Operação inválida! Deve conter 6 digitos";
-
+				return false;
 			}
 
-		}else{
+		} else {
 			errorMessage = "Todos os campos devem ser Completados";
 			return false;
 		}
-		return false;
 	}
 
 }
