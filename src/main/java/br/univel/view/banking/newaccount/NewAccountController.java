@@ -1,5 +1,9 @@
 package br.univel.view.banking.newaccount;
 
+import br.univel.database.person.PersonService;
+import br.univel.model.person.Person;
+import br.univel.model.person.TypePerson;
+import br.univel.model.person.TypePersonFactory;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -38,7 +42,15 @@ public class NewAccountController {
 
 	@FXML
 	void handle(ActionEvent event) {
-		isValid();
+		if(isValid()){
+			int ageInt = Integer.parseInt(this.age.getText()); 
+	        Person p = new TypePersonFactory().create(TypePerson.CUSTOMER, this.name.getText(), this.username.getText(),ageInt
+	        	,this.cpf.getText(), this.passwordAccess.getText(), this.passwordOperation.getText());
+	        PersonService ps = new PersonService();
+	        ps.save(p);
+			
+			
+		}
 	}
 
 	boolean isValid() {
