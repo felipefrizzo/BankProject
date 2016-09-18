@@ -8,11 +8,13 @@
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8">
    <children>
-      <TableView layoutY="1.0" prefHeight="400.0" prefWidth="600.0">
+      <TableView layoutY="1.0" prefHeight="350.0" prefWidth="600.0">
         <columns>
           <TableColumn fx:id="name" prefWidth="300.0" text="C1" />
           <TableColumn fx:id="username" minWidth="0.0" prefWidth="299.0" text="C2" />
         </columns>
       </TableView>
+      <Button fx:id="addBanking" layoutX="524.0" layoutY="361.0" mnemonicParsing="false" text="Novo" />
+      <Button fx:id="editBanking" layoutX="453.0" layoutY="361.0" mnemonicParsing="false" text="Editar" />
    </children>
 </AnchorPane>
