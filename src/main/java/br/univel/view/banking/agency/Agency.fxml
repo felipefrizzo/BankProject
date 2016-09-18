@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8">
+   <children>
+      <TableView prefHeight="360.0" prefWidth="600.0">
+        <columns>
+          <TableColumn fx:id="name" prefWidth="200.0" text="Nome" />
+          <TableColumn fx:id="number" prefWidth="200.0" text="Numero" />
+            <TableColumn fx:id="city" prefWidth="200.0" text="Cidade" />
+        </columns>
+      </TableView>
+      <Button fx:id="newAgency" layoutX="534.0" layoutY="368.0" mnemonicParsing="false" text="Novo" />
+      <Button fx:id="editAgency" layoutX="462.0" layoutY="368.0" mnemonicParsing="false" text="Editar" />
+   </children>
+</AnchorPane>
