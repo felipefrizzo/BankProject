@@ -5,6 +5,8 @@ import br.univel.model.person.Customer;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by felipefrizzo on 9/3/16.
@@ -12,7 +14,7 @@ import java.math.BigDecimal;
 @MappedSuperclass
 public abstract class AbstractAccount implements Account{
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Long id;
     @Column(name = "type_account")
@@ -28,12 +30,28 @@ public abstract class AbstractAccount implements Account{
     @Column(name = "balance")
     private BigDecimal balance;
 
+    @Transient
+    private List<AccountObserver> observers = new ArrayList<>();
+
     protected AbstractAccount(final TypeAccount typeAccount, final Long accountNumber, final Customer client, final Agency agency, final BigDecimal balance) {
         this.typeAccount = typeAccount;
         this.accountNumber = accountNumber;
         this.client = client;
         this.agency = agency;
         this.balance = balance;
+    }
+
+    protected AbstractAccount() {
+    }
+
+    public void notifyObservers() {
+        for (AccountObserver observer: observers) {
+            observer.haveChanges(this);
+        }
+    }
+
+    public void addObservers(AccountObserver observer) {
+        this.observers.add(observer);
     }
 
     @Override
@@ -63,31 +81,48 @@ public abstract class AbstractAccount implements Account{
 
     @Override
     public BigDecimal getBalance() {
-        return null;
+        return balance;
     }
 
+    @Override
     public Account setId(Long id) {
         this.id = id;
+        notifyObservers();
         return this;
     }
 
+    @Override
     public Account setTypeAccount(TypeAccount typeAccount) {
         this.typeAccount = typeAccount;
+        notifyObservers();
         return this;
     }
 
+    @Override
     public Account setAccountNumber(Long accountNumber) {
         this.accountNumber = accountNumber;
+        notifyObservers();
         return this;
     }
 
+    @Override
     public Account setClient(Customer client) {
         this.client = client;
+        notifyObservers();
         return this;
     }
 
+    @Override
     public Account setAgency(Agency agency) {
         this.agency = agency;
+        notifyObservers();
+        return this;
+    }
+
+    @Override
+    public Account setBalance(BigDecimal balance) {
+        this.balance = balance;
+        notifyObservers();
         return this;
     }
 }
