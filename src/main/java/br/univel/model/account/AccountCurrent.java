@@ -16,4 +16,7 @@ public class AccountCurrent extends AbstractAccount {
     protected AccountCurrent(final TypeAccount typeAccount, final Long accountNumber, final Customer client, final Agency agency, final BigDecimal balance) {
         super(typeAccount, accountNumber, client, agency, balance);
     }
+    protected AccountCurrent() {
+
+    }
 }

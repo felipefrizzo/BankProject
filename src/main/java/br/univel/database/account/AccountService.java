@@ -3,6 +3,7 @@ package br.univel.database.account;
 import br.univel.database.DaoService;
 import br.univel.database.SessionFactory;
 import br.univel.model.account.Account;
+import br.univel.model.person.Person;
 
 import java.util.List;
 
@@ -53,5 +54,12 @@ public class AccountService implements DaoService<Account, Long> {
         List<Account> account = accountDao.getAll(from);
         sessionFactory.closeSessionWithTransaction();
         return account;
+    }
+
+    public Account getAccountByCustomer(final Person customer) {
+        sessionFactory.openSessionWithTransaction();
+        Account accounts = accountDao.getAccountByCustomer(customer);
+        sessionFactory.closeSessionWithTransaction();
+        return accounts;
     }
 }

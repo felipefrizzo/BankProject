@@ -8,7 +8,7 @@ import javax.persistence.*;
 @MappedSuperclass
 public abstract class AbstractPerson implements Person {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Long id;
     @Column(name = "name", unique = true)
