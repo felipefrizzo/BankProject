@@ -30,13 +30,26 @@ public class AgencyDao implements DaoInterface<Agency, Long>{
     @Override
     public Agency getById(Long id, Object object) {
         Class<?> cl = object.getClass();
-        Agency account = (Agency) sessionFactory.getSession().get(cl, id);
-        return account;
+        Agency agency = (Agency) sessionFactory.getSession().get(cl, id);
+        return agency;
     }
 
     @Override
     public List<Agency> getAll(String from) {
-        List<Agency> account = sessionFactory.getSession().createQuery(from).list();
-        return account;
+        List<Agency> agency = sessionFactory.getSession().createQuery(from).list();
+        return agency;
+    }
+
+    public Agency getByNumberAgency(Long numberAgency) {
+        Agency agency = null;
+        List<Agency> agencies = sessionFactory.getSession()
+                .createQuery("where Agency number_agency = :number_agency")
+                .setParameter("number_agency", numberAgency)
+                .list();
+
+        for (Agency a: agencies) {
+            agency = a;
+        }
+        return agency;
     }
 }
