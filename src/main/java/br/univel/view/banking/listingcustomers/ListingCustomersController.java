@@ -1,4 +1,4 @@
-package br.univel.view.banking.listingCustomers;
+package br.univel.view.banking.listingcustomers;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
