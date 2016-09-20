@@ -61,4 +61,11 @@ public class PersonService implements DaoService<Person, Long> {
         sessionFactory.closeSessionWithTransaction();
         return person;
     }
+
+    public Person getByCPF(String cpf) {
+        sessionFactory.openSessionWithTransaction();
+        Person person = personDao.getByCPF(cpf);
+        sessionFactory.closeSessionWithTransaction();
+        return person;
+    }
 }
