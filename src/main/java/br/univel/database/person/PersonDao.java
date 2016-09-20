@@ -46,4 +46,14 @@ public class PersonDao implements DaoInterface<Person, Long> {
                 .setParameter("username", username).list();
         return persons;
     }
+
+    public Person getByCPF(String cpf) {
+        List<Person> persons = sessionFactory.getSession().createQuery("from Customer where cpf like :cpf")
+                .setParameter("cpf", cpf)
+                .list();
+        for (Person person: persons) {
+            return person;
+        }
+        return null;
+    }
 }
