@@ -3,6 +3,8 @@ package br.univel.database.account;
 import br.univel.database.DaoInterface;
 import br.univel.database.SessionFactory;
 import br.univel.model.account.Account;
+import br.univel.model.account.TypeAccount;
+import br.univel.model.agency.Agency;
 import br.univel.model.person.Person;
 
 import java.util.List;
@@ -46,6 +48,35 @@ public class AccountDao implements DaoInterface<Account, Long>{
                 .createQuery("from AccountCurrent where id_client = :id_client")
                 .setParameter("id_client", customer.getId()).list();
 
+        for (Account account: accounts) {
+            return account;
+        }
+        return null;
+    }
+
+    public Account getAccountByNumber(Long numberAccount) {
+        List<Account> accounts = sessionFactory.getSession()
+                .createQuery("from AccountCurrent where account_number = :account_number")
+                .setParameter("account_number", numberAccount)
+                .list();
+        for (Account account: accounts) {
+            return account;
+        }
+        return null;
+    }
+
+    public Account getAccountByNumberAccountTypeAccountAgency(Long numberAccount, Integer typeAccount, Integer agency) {
+        List<Account> accounts = sessionFactory.getSession()
+            .createQuery(
+                "from AccountCurrent where" +
+                    " account_number = :account_number" +
+                    " and type_account = :type_account" +
+                    " and id_agency = :id_agency"
+            )
+            .setParameter("account_number", numberAccount)
+            .setParameter("id_agency", agency)
+            .setParameter("type_account", typeAccount)
+            .list();
         for (Account account: accounts) {
             return account;
         }
