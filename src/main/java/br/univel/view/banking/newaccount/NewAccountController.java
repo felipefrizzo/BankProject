@@ -67,8 +67,8 @@ public class NewAccountController {
 	        	this.passwordAccess.getText(), 
 	        	this.passwordOperation.getText()
 	        );
-
-	        personService.save(person);
+	        	        	        
+	        
 		}
 	}
 
