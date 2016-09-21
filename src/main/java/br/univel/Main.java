@@ -27,7 +27,7 @@ import java.util.List;
 /**
  * Created by felipefrizzo on 8/30/16.
  */
-public class Main extends Application implements AccountObserver{
+public class Main extends Application implements AccountObserver {
     final List<MainObserver> observers = new ArrayList<>();
 
     private Account account;
@@ -35,7 +35,7 @@ public class Main extends Application implements AccountObserver{
     private BorderPane rootLayout;
 
     public void notifyObservers() {
-        for (final MainObserver observer: observers) {
+        for (final MainObserver observer : observers) {
             observer.showAccountInformation(this);
         }
     }
@@ -92,9 +92,9 @@ public class Main extends Application implements AccountObserver{
             e.printStackTrace();
         }
     }
-    
-    public void showLoginLayout(){
-    	try {
+
+    public void showLoginLayout() {
+        try {
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(Main.class.getResource("view/login/LoginLayout.fxml"));
             AnchorPane loginOverview = (AnchorPane) loader.load();

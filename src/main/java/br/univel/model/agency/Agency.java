@@ -12,11 +12,9 @@ public class Agency {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Long id;
-    @Column(name = "number_agency")
-    private Long numberAgency;
     @Column(name = "name")
     private String name;
-    @Column(name = "numero")
+    @Column(name = "numero_agency")
     private String numero;
     @Column(name = "cidade")
     private String cidade;
@@ -24,9 +22,8 @@ public class Agency {
     public Agency() {
     }
 
-    protected Agency(final String name, final Long numberAgency, final String numero, final String cidade) {
+    protected Agency(final String name, final String numero, final String cidade) {
         this.name = name;
-        this.numberAgency = numberAgency;
         this.numero = numero;
         this.cidade = cidade;
     }
