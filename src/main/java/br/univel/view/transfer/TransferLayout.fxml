@@ -10,8 +10,9 @@
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.76-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.univel.view.transfer.TransferController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.univel.view.transfer.TransferController">
    <children>
       <GridPane layoutX="14.0" layoutY="87.0" prefHeight="279.0" prefWidth="553.0">
         <columnConstraints>
@@ -44,7 +45,7 @@
                     </rowConstraints>
                      <children>
                         <Label text="Agencia" />
-                        <TextField fx:id="agency" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+                        <TextField fx:id="agency" onKeyTyped="#handleGetAccount" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
                            <GridPane.margin>
                               <Insets bottom="5.0" right="5.0" top="5.0" />
                            </GridPane.margin>
@@ -61,7 +62,7 @@
                      </rowConstraints>
                      <children>
                         <Label text="Conta" />
-                        <TextField fx:id="account" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+                        <TextField fx:id="tfAccount" onKeyTyped="#handleGetAccount" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
                            <GridPane.margin>
                               <Insets bottom="5.0" right="5.0" top="5.0" />
                            </GridPane.margin>
@@ -80,7 +81,7 @@
                </rowConstraints>
                <children>
                   <Label text="Tipo Conta" />
-                  <ComboBox fx:id="typeAccount" prefHeight="27.0" prefWidth="371.0" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+                  <ComboBox fx:id="typeAccount" onKeyTyped="#handleGetAccount" onMouseClicked="#onClickGetAccount" prefHeight="27.0" prefWidth="371.0" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
                      <GridPane.margin>
                         <Insets bottom="5.0" right="5.0" top="5.0" />
                      </GridPane.margin>
@@ -97,7 +98,7 @@
                </rowConstraints>
                <children>
                   <Label text="Titular" />
-                  <TextField fx:id="holder" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+                  <TextField fx:id="holder" disable="true" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
                      <GridPane.margin>
                         <Insets bottom="5.0" right="5.0" top="5.0" />
                      </GridPane.margin>
@@ -129,5 +130,10 @@
          </children>
       </GridPane>
       <Hyperlink onAction="#handleBack" text="Principal" />
+      <Label layoutX="32.0" layoutY="58.0" text="Conta de destino/crédito" textAlignment="CENTER">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

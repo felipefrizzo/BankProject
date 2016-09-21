@@ -4,6 +4,8 @@ import br.univel.Main;
 import br.univel.database.account.AccountService;
 import br.univel.model.account.Account;
 import br.univel.model.account.TypeAccount;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
@@ -73,33 +75,50 @@ public class DepositController {
     @FXML
     void handleChangeAccount(KeyEvent event) {
         if (isInputValid(false)) {
-            if (!agency.getText().equals(account.getAgency().getNumero())
-                    || !numberAccount.getText().equals(String.valueOf(account.getAccountNumber()))) {
-
-                account = accountService.getAccountByNumberAccountTypeAccountAgency(
-                    numberAccount.getText(),
-                    typeAccount.getSelectionModel().getSelectedItem(),
-                    agency.getText()
-                );
-            }
-            showInformation(false);
-        }
-    }
-
-    @FXML
-    void onClickChangeAccount(MouseEvent event) {
-        if (isInputValid(false)) {
-            if (!agency.getText().equals(account.getAgency().getNumero())
-                    || !numberAccount.getText().equals(String.valueOf(account.getAccountNumber()))) {
+            if (!agency.getText().equals(account.getAgency().getNumero()) ||
+                    !numberAccount.getText().equals(String.valueOf(account.getAccountNumber()))) {
 
                 account = accountService.getAccountByNumberAccountTypeAccountAgency(
                         numberAccount.getText(),
                         typeAccount.getSelectionModel().getSelectedItem(),
                         agency.getText()
                 );
+                if (account == null) {
+                    showError(
+                        "Conta errada",
+                        "Por favor, corrija os erros abaixo",
+                        "Conta selecionada invalida"
+                    );
+                } else {
+                    showInformation(false);
+                }
             }
-            showInformation(false);
         }
+    }
+
+    @FXML
+    void onClickChangeAccount(MouseEvent event) {
+        typeAccount.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<TypeAccount>() {
+            @Override
+            public void changed(ObservableValue<? extends TypeAccount> observable, TypeAccount oldValue, TypeAccount newValue) {
+                if (isInputValid(false)) {
+                    account = accountService.getAccountByNumberAccountTypeAccountAgency(
+                            numberAccount.getText(),
+                            typeAccount.getSelectionModel().getSelectedItem(),
+                            agency.getText()
+                    );
+                    if (account == null) {
+                        showError(
+                            "Conta errada",
+                            "Por favor, corrija os erros abaixo",
+                            "Conta inexistente, informe outra conta"
+                        );
+                    } else {
+                        showInformation(false);
+                    }
+                }
+            }
+        });
     }
 
     @FXML
@@ -146,7 +165,7 @@ public class DepositController {
         if (typeAccount.getSelectionModel().isEmpty()) {
             errorMessage += "Tipo da conta não pode estar em branco\n";
         }
-        if (tfValue.getText() == null | tfValue.getLength() == 0) {
+        if (isConfirmed && (tfValue.getText() == null | tfValue.getLength() == 0)) {
             errorMessage += "O valor a ser depositado não pode estar em branco\n";
         }
 
