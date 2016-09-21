@@ -4,6 +4,7 @@ import br.univel.Main;
 import br.univel.database.account.AccountService;
 import br.univel.database.agency.AgencyService;
 import br.univel.database.person.PersonService;
+import br.univel.model.account.AccountFactory;
 import br.univel.model.account.TypeAccount;
 import br.univel.model.agency.Agency;
 import br.univel.model.person.TypePerson;
@@ -20,6 +21,7 @@ public class NewAccountController {
     final private PersonService personService = new PersonService();
     final private AccountService accountService = new AccountService();
     final private AgencyService agencyService = new AgencyService();
+    final private AccountFactory accountFactory = new AccountFactory();
     
     private Agency agency;
     private Main main;
@@ -67,16 +69,27 @@ public class NewAccountController {
 	        	this.passwordAccess.getText(), 
 	        	this.passwordOperation.getText()
 	        );
-	        	        	        
 	        
+	        if (personService.getByCPF(this.cpf.getText()) == null) {
+	        	personService.save(person);
+			}else{
+				showError(
+						"Usuário ja Cadastrado",
+						"Pessoa ja conta no nosso registro",	
+						"Ja existe uma pessoa com essse mesmo cpf"
+					);
+			}
+	        
+	        accountFactory.create(this.typeAccount.getSelectionModel().getSelectedItem(), accountNumber, person, agency, 00);
 		}
-	}
+	}	
+		
 
 	protected boolean isInputValid() {
 		String errorMessage = "";
 		if (this.passwordOperation.getLength() > 6) {
 			showError(
-				"TITULO",
+				"Senha Inválida",
 				"A senha deve conter 6 digitos",
 				"A senha deve conter 6 digitos"
 			); 
@@ -111,6 +124,10 @@ public class NewAccountController {
 			errorMessage += "A senha de Operação não pode estar em branco\n";
 		}
 		
+		if (this.typeAccount.getSelectionModel().getSelectedItem() == null ){
+			errorMessage += "Selecione o tipo da conta";
+		}
+		
 		if (errorMessage.equals("")) {
 			return true;
 		} else {
@@ -120,7 +137,6 @@ public class NewAccountController {
 					errorMessage
 				);
 				return false;
-		
 		}
 	}		
 	
