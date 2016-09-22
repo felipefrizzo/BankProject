@@ -120,6 +120,8 @@ public class Main extends Application implements AccountObserver {
             rootLayout.setCenter(mainOverview);
             MainCustomerController controller = loader.getController();
             controller.setMain(this);
+
+            addObservers(controller);
         } catch (IOException e) {
             e.printStackTrace();
         }

@@ -1,6 +1,8 @@
 package br.univel.view.main;
 
 import br.univel.Main;
+import br.univel.MainObserver;
+import br.univel.model.account.Account;
 import br.univel.model.account.TypeAccount;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
@@ -10,7 +12,7 @@ import javafx.scene.control.Button;
 /**
  * Created by felipefrizzo on 9/12/16.
  */
-public class MainCustomerController {
+public class MainCustomerController implements MainObserver {
     private Main main;
 
     @FXML
@@ -33,17 +35,6 @@ public class MainCustomerController {
 
     public void setMain(Main main) {
         this.main = main;
-    }
-
-
-    @FXML
-    private void initialize() {
-        if (main.getAccount().getTypeAccount() == TypeAccount.ELETRONIC) {
-            cashWithdrawal.setDisable(true);
-            deposit.setDisable(true);
-        } else if (main.getAccount().getTypeAccount() == TypeAccount.SAVINGS) {
-            payment.setDisable(true);
-        }
     }
 
     @FXML
@@ -75,5 +66,15 @@ public class MainCustomerController {
     @FXML
     private void handleTranfer(ActionEvent event) {
         main.showTransfer();
+    }
+
+    @Override
+    public void showAccountInformation(Main main) {
+        if (main.getAccount().getTypeAccount().equals(TypeAccount.ELETRONIC)) {
+            cashWithdrawal.setDisable(true);
+            deposit.setDisable(true);
+        } else if (main.getAccount().getTypeAccount().equals(TypeAccount.SAVINGS)) {
+            payment.setDisable(true);
+        }
     }
 }
