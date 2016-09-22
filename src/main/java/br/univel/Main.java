@@ -1,5 +1,6 @@
 package br.univel;
 
+import br.univel.model.account.Account;
 import br.univel.model.account.AccountInterface;
 import br.univel.model.account.AccountObserver;
 import br.univel.model.person.Person;
@@ -30,7 +31,7 @@ import java.util.List;
 public class Main extends Application implements AccountObserver {
     final List<MainObserver> observers = new ArrayList<>();
 
-    private AccountInterface account;
+    private Account account;
     private Stage primaryStage;
     private BorderPane rootLayout;
 
@@ -48,11 +49,11 @@ public class Main extends Application implements AccountObserver {
         return primaryStage;
     }
 
-    public AccountInterface getAccount() {
+    public Account getAccount() {
         return account;
     }
 
-    public void setAccount(AccountInterface account) {
+    public void setAccount(Account account) {
         this.account = account;
         account.addObservers(this);
         notifyObservers();

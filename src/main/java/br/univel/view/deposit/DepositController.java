@@ -3,7 +3,7 @@ package br.univel.view.deposit;
 import br.univel.Main;
 import br.univel.database.account.AccountService;
 import br.univel.database.operationbanking.OperationBankingService;
-import br.univel.model.account.AccountInterface;
+import br.univel.model.account.Account;
 import br.univel.model.account.TypeAccount;
 import br.univel.model.operationbanking.OperationBanking;
 import br.univel.model.operationbanking.OperationBankingFactory;
@@ -26,7 +26,7 @@ import java.util.Date;
  */
 public class DepositController {
     private Main main;
-    private AccountInterface account;
+    private Account account;
     final private AccountService accountService = new AccountService();
     final private OperationBankingService operationBankingService = new OperationBankingService();
 
