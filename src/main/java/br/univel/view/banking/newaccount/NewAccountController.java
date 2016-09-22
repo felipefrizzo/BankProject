@@ -64,13 +64,14 @@ public class NewAccountController {
 			agency = agencyService.getByNumberAgency(this.tFAgency.getText());
 
 			Person person = new TypePersonFactory().create(
-					TypePerson.CUSTOMER, 
-					this.name.getText(),
-					this.username.getText(), 
-					Integer.parseInt(this.age.getText()), 
-					this.cpf.getText(),
-					this.passwordAccess.getText(), 
-					this.passwordOperation.getText());
+				TypePerson.CUSTOMER, 
+				this.name.getText(),
+				this.username.getText(), 
+				Integer.parseInt(this.age.getText()), 
+				this.cpf.getText(),
+				this.passwordAccess.getText(), 
+				this.passwordOperation.getText()
+			);
 
 			if (personService.getByCPF(this.cpf.getText()) == null) {
 				personService.save(person);
@@ -89,6 +90,7 @@ public class NewAccountController {
 				agency, 
 				BigDecimal.ZERO
 			);
+			accountService.save(account);
 		}
 	}
 
@@ -141,7 +143,11 @@ public class NewAccountController {
 
 	private Long generateAccountNumber() {
 		Long number = (long) (1 + (Math.random() * (100000)));
-		return number;
+		if (accountService.getAccountByNumber(String.valueOf(number)) == null) {
+			return number;			
+		}else{
+			return generateAccountNumber();
+		}
 	}
 
 	protected void showError(String title, String headerTitle, String contentText) {

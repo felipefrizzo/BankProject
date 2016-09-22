@@ -1,4 +1,4 @@
-package br.univel.view.banking.popoutconta;
+package br.univel.view.banking.popoutaccount;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
