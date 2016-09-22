@@ -14,7 +14,7 @@ public class Agency {
     private Long id;
     @Column(name = "name")
     private String name;
-    @Column(name = "numero_agency")
+    @Column(name = "number_agency")
     private String numero;
     @Column(name = "cidade")
     private String cidade;
@@ -26,6 +26,14 @@ public class Agency {
         this.name = name;
         this.numero = numero;
         this.cidade = cidade;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getName() {

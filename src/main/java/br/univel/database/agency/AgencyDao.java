@@ -40,10 +40,10 @@ public class AgencyDao implements DaoInterface<Agency, Long>{
         return agency;
     }
 
-    public Agency getByNumberAgency(Long numberAgency) {
+    public Agency getByNumberAgency(String numberAgency) {
         Agency agency = null;
         List<Agency> agencies = sessionFactory.getSession()
-                .createQuery("where Agency number_agency = :number_agency")
+                .createQuery("from Agency where number_agency = :number_agency")
                 .setParameter("number_agency", numberAgency)
                 .list();
 

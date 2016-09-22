@@ -71,12 +71,12 @@ public class AccountService implements DaoService<Account, Long> {
         return account;
     }
 
-    public Account getAccountByNumberAccountTypeAccountAgency(String accountNumber, TypeAccount typeAccount, String agency) {
+    public Account getAccountByNumberAccountTypeAccountAgency(String accountNumber, TypeAccount typeAccount, Long agency) {
         sessionFactory.openSessionWithTransaction();
         Account account = accountDao.getAccountByNumberAccountTypeAccountAgency(
                 Long.parseLong(accountNumber),
                 typeAccount.ordinal(),
-                Integer.parseInt(agency)
+                Long.valueOf(agency).intValue()
         );
         sessionFactory.closeSessionWithTransaction();
         return account;

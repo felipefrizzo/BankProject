@@ -2,9 +2,11 @@ package br.univel.view.transfer;
 
 import br.univel.Main;
 import br.univel.database.account.AccountService;
+import br.univel.database.agency.AgencyService;
 import br.univel.database.operationbanking.OperationBankingService;
 import br.univel.model.account.Account;
 import br.univel.model.account.TypeAccount;
+import br.univel.model.agency.Agency;
 import br.univel.model.operationbanking.OperationBanking;
 import br.univel.model.operationbanking.OperationBankingFactory;
 import javafx.beans.value.ChangeListener;
@@ -98,10 +100,11 @@ public class TransferController {
     @FXML
     void handleGetAccount(KeyEvent event) {
         if (isInputValid(false)) {
+            Agency a = new AgencyService().getByNumberAgency(agency.getText());
             account = accountService.getAccountByNumberAccountTypeAccountAgency(
                 tfAccount.getText(),
                 typeAccount.getSelectionModel().getSelectedItem(),
-                agency.getText()
+                a.getId()
             );
             if (account == null) {
                 showError(
@@ -121,10 +124,11 @@ public class TransferController {
             @Override
             public void changed(ObservableValue<? extends TypeAccount> observable, TypeAccount oldValue, TypeAccount newValue) {
                 if (isInputValid(false)) {
+                    Agency a = new AgencyService().getByNumberAgency(agency.getText());
                     account = accountService.getAccountByNumberAccountTypeAccountAgency(
                             tfAccount.getText(),
                             typeAccount.getSelectionModel().getSelectedItem(),
-                            agency.getText()
+                            a.getId()
                     );
                     if (account == null) {
                         showError(

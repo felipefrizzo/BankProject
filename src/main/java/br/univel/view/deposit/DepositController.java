@@ -2,9 +2,11 @@ package br.univel.view.deposit;
 
 import br.univel.Main;
 import br.univel.database.account.AccountService;
+import br.univel.database.agency.AgencyService;
 import br.univel.database.operationbanking.OperationBankingService;
 import br.univel.model.account.Account;
 import br.univel.model.account.TypeAccount;
+import br.univel.model.agency.Agency;
 import br.univel.model.operationbanking.OperationBanking;
 import br.univel.model.operationbanking.OperationBankingFactory;
 import javafx.beans.value.ChangeListener;
@@ -89,11 +91,11 @@ public class DepositController {
         if (isInputValid(false)) {
             if (!agency.getText().equals(account.getAgency().getNumero()) ||
                     !numberAccount.getText().equals(String.valueOf(account.getAccountNumber()))) {
-
+                Agency a = new AgencyService().getByNumberAgency(agency.getText());
                 account = accountService.getAccountByNumberAccountTypeAccountAgency(
                         numberAccount.getText(),
                         typeAccount.getSelectionModel().getSelectedItem(),
-                        agency.getText()
+                        a.getId()
                 );
                 if (account == null) {
                     showError(
@@ -114,10 +116,11 @@ public class DepositController {
             @Override
             public void changed(ObservableValue<? extends TypeAccount> observable, TypeAccount oldValue, TypeAccount newValue) {
                 if (isInputValid(false)) {
+                    Agency a = new AgencyService().getByNumberAgency(agency.getText());
                     account = accountService.getAccountByNumberAccountTypeAccountAgency(
                             numberAccount.getText(),
                             typeAccount.getSelectionModel().getSelectedItem(),
-                            agency.getText()
+                            a.getId()
                     );
                     if (account == null) {
                         showError(
