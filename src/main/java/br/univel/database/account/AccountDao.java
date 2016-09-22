@@ -43,7 +43,7 @@ public class AccountDao implements DaoInterface<Account, Long>{
 
     public Account getAccountByCustomer(final Person customer) {
         List<Account> accounts = sessionFactory.getSession()
-                .createQuery("from AccountCurrent where id_client = :id_client")
+                .createQuery("from Account where id_client = :id_client")
                 .setParameter("id_client", customer.getId()).list();
 
         for (Account account: accounts) {
@@ -54,7 +54,7 @@ public class AccountDao implements DaoInterface<Account, Long>{
 
     public Account getAccountByNumber(Long numberAccount) {
         List<Account> accounts = sessionFactory.getSession()
-                .createQuery("from AccountCurrent where account_number = :account_number")
+                .createQuery("from Account where account_number = :account_number")
                 .setParameter("account_number", numberAccount)
                 .list();
         for (Account account: accounts) {
@@ -66,7 +66,7 @@ public class AccountDao implements DaoInterface<Account, Long>{
     public Account getAccountByNumberAccountTypeAccountAgency(Long numberAccount, Integer typeAccount, Integer agency) {
         List<Account> accounts = sessionFactory.getSession()
             .createQuery(
-                "from AccountCurrent where" +
+                "from Account where" +
                     " account_number = :account_number" +
                     " and type_account = :type_account" +
                     " and id_agency = :id_agency"

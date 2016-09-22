@@ -16,7 +16,8 @@ public class OperationBanking {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Long id;
-    @Column(name = "id_account")
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "id_account")
     private Account account;
     @Column(name = "operation")
     private String operation;

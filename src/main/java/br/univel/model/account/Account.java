@@ -11,7 +11,8 @@ import java.util.List;
 /**
  * Created by felipefrizzo on 9/3/16.
  */
-@MappedSuperclass
+@Entity
+@Table(name = "account")
 public class Account implements AccountInterface {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
