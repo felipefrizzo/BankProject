@@ -4,7 +4,7 @@ import br.univel.Main;
 import br.univel.cryptography.person.CryptographyFactory;
 import br.univel.database.account.AccountService;
 import br.univel.database.person.PersonService;
-import br.univel.model.account.Account;
+import br.univel.model.account.AccountInterface;
 import br.univel.model.person.Person;
 import br.univel.model.person.TypePerson;
 import javafx.fxml.FXML;
@@ -63,7 +63,7 @@ public class LoginController {
 			for (Person p : person) {
 				if (p.getAccessPassword().equals(newPassword) && p.getUsername().equals(this.username.getText())) {
 					if (p.getTypePerson() == TypePerson.CUSTOMER) {
-						Account account = accountService.getAccountByCustomer(p);
+						AccountInterface account = accountService.getAccountByCustomer(p);
 
 						main.showMainCustomerLayout();
 						main.setAccount(account);

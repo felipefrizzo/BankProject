@@ -2,8 +2,11 @@ package br.univel.view.deposit;
 
 import br.univel.Main;
 import br.univel.database.account.AccountService;
-import br.univel.model.account.Account;
+import br.univel.database.operationbanking.OperationBankingService;
+import br.univel.model.account.AccountInterface;
 import br.univel.model.account.TypeAccount;
+import br.univel.model.operationbanking.OperationBanking;
+import br.univel.model.operationbanking.OperationBankingFactory;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
@@ -16,14 +19,16 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 
 import java.math.BigDecimal;
+import java.util.Date;
 
 /**
  * Created by felipefrizzo on 9/12/16.
  */
 public class DepositController {
     private Main main;
-    private Account account;
-    private AccountService accountService = new AccountService();
+    private AccountInterface account;
+    final private AccountService accountService = new AccountService();
+    final private OperationBankingService operationBankingService = new OperationBankingService();
 
     @FXML
     private void initialize() {
@@ -64,6 +69,10 @@ public class DepositController {
 
             account.setBalance(newValue);
             accountService.update(account);
+
+            OperationBanking operationBanking = new OperationBankingFactory()
+                    .create(account, "Deposito", newValue, new Date());
+            operationBankingService.save(operationBanking);
         }
     }
 

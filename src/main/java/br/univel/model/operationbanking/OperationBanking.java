@@ -16,7 +16,7 @@ public class OperationBanking {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Long id;
-    @JoinColumn(name = "id_account")
+    @Column(name = "id_account")
     private Account account;
     @Column(name = "operation")
     private String operation;

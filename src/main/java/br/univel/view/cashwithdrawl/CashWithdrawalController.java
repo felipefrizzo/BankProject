@@ -2,6 +2,9 @@ package br.univel.view.cashwithdrawl;
 
 import br.univel.Main;
 import br.univel.database.account.AccountService;
+import br.univel.database.operationbanking.OperationBankingService;
+import br.univel.model.operationbanking.OperationBanking;
+import br.univel.model.operationbanking.OperationBankingFactory;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
@@ -9,12 +12,14 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 
 import java.math.BigDecimal;
+import java.util.Date;
 
 /**
  * Created by felipefrizzo on 9/12/16.
  */
 public class CashWithdrawalController {
-    private AccountService accountService = new AccountService();
+    final private AccountService accountService = new AccountService();
+    final private OperationBankingService operationBankingService = new OperationBankingService();
     private Main main;
 
     public void setMain(Main main) {
@@ -83,6 +88,10 @@ public class CashWithdrawalController {
         BigDecimal newbalance = this.main.getAccount().getBalance().subtract(withdrawal);
         main.getAccount().setBalance(newbalance);
         accountService.update(main.getAccount());
+
+        OperationBanking operationBanking = new OperationBankingFactory()
+                .create(main.getAccount(), "Saque", withdrawal, new Date());
+        operationBankingService.save(operationBanking);
     }
 
     protected void showError(String title, String headerTitle, String contentText) {

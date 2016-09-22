@@ -1,6 +1,7 @@
 package br.univel.model.operationbanking;
 
 import br.univel.model.account.Account;
+import br.univel.model.account.AccountInterface;
 
 import java.math.BigDecimal;
 import java.util.Date;
