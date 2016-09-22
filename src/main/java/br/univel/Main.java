@@ -9,6 +9,7 @@ import br.univel.view.cashwithdrawl.CashWithdrawalController;
 import br.univel.view.deposit.DepositController;
 import br.univel.view.login.LoginController;
 import br.univel.view.main.MainCustomerController;
+import br.univel.view.operation.OperationController;
 import br.univel.view.passwordmodal.PasswordModalController;
 import br.univel.view.payment.PaymentController;
 import br.univel.view.transfer.TransferController;
@@ -22,6 +23,7 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -208,6 +210,23 @@ public class Main extends Application implements AccountObserver {
             rootLayout.setCenter(mainOverview);
             TransferController controller = loader.getController();
             controller.setMain(this);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void showOperation(String operation, BigDecimal value) {
+        this.primaryStage.setTitle("Bank Project Applications - Operation");
+        try {
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(Main.class.getResource("view/operation/OperationLayout.fxml"));
+            AnchorPane mainOverview = (AnchorPane) loader.load();
+
+            rootLayout.setCenter(mainOverview);
+            OperationController controller = loader.getController();
+            controller.setMain(this);
+            controller.setOperation(operation);
+            controller.setValue(value);
         } catch (IOException e) {
             e.printStackTrace();
         }

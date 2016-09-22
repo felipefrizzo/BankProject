@@ -6,6 +6,7 @@ import br.univel.model.person.Customer;
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -30,6 +31,8 @@ public class Account implements AccountInterface {
     private Agency agency;
     @Column(name = "balance")
     private BigDecimal balance;
+    @Column(name = "opening_date")
+    private Date openingDate;
 
     @Transient
     private List<AccountObserver> observers = new ArrayList<>();
@@ -40,6 +43,7 @@ public class Account implements AccountInterface {
         this.client = client;
         this.agency = agency;
         this.balance = balance;
+        this.openingDate = new Date();
     }
 
     protected Account() {

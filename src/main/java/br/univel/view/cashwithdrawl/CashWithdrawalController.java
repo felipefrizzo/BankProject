@@ -93,6 +93,8 @@ public class CashWithdrawalController {
         OperationBanking operationBanking = new OperationBankingFactory()
                 .create(main.getAccount(), "Saque", withdrawal, new Date());
         operationBankingService.save(operationBanking);
+
+        main.showOperation("Saque", withdrawal);
     }
 
     protected void showError(String title, String headerTitle, String contentText) {

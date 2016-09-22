@@ -45,6 +45,8 @@ public class PaymentController {
                 OperationBanking operationBanking = new OperationBankingFactory()
                         .create(main.getAccount(), "Pagamento", payment, new Date());
                 operationBankingService.save(operationBanking);
+
+                main.showOperation("Pagamento", payment);
             }
         }
     }

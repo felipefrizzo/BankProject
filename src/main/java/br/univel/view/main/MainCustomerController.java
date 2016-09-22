@@ -1,6 +1,7 @@
 package br.univel.view.main;
 
 import br.univel.Main;
+import br.univel.model.account.TypeAccount;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -34,6 +35,16 @@ public class MainCustomerController {
         this.main = main;
     }
 
+
+    @FXML
+    private void initialize() {
+        if (main.getAccount().getTypeAccount() == TypeAccount.ELETRONIC) {
+            cashWithdrawal.setDisable(true);
+            deposit.setDisable(true);
+        } else if (main.getAccount().getTypeAccount() == TypeAccount.SAVINGS) {
+            payment.setDisable(true);
+        }
+    }
 
     @FXML
     private void handleBalance(ActionEvent event) {

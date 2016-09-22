@@ -71,8 +71,10 @@ public class DepositController {
             accountService.update(account);
 
             OperationBanking operationBanking = new OperationBankingFactory()
-                    .create(account, "Deposito", newValue, new Date());
+                    .create(account, "Deposito", new BigDecimal(value), new Date());
             operationBankingService.save(operationBanking);
+
+            main.showOperation("Depósito", new BigDecimal(value));
         }
     }
 

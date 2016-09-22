@@ -76,6 +76,8 @@ public class TransferController {
                     OperationBanking mainOperationBanking = new OperationBankingFactory()
                             .create(main.getAccount(), "Transferencia para:" + account.getClient().getName(), transferValue, new Date());
                     operationBankingService.save(mainOperationBanking);
+
+                    main.showOperation("Tranferencia", transferValue);
                 }
             } else {
                 showError(
