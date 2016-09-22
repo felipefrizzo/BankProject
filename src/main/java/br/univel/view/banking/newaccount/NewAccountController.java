@@ -1,5 +1,9 @@
 package br.univel.view.banking.newaccount;
 
+import java.util.Random;
+
+import com.ibm.icu.math.BigDecimal;
+
 import br.univel.Main;
 import br.univel.database.account.AccountService;
 import br.univel.database.agency.AgencyService;
@@ -22,7 +26,6 @@ public class NewAccountController {
     final private AccountService accountService = new AccountService();
     final private AgencyService agencyService = new AgencyService();
     final private AccountFactory accountFactory = new AccountFactory();
-    final private GenerateAccountNumber generateAccount = new GenerateAccountNumber(null);
     
     private Agency agency;
     private Main main;
@@ -80,9 +83,9 @@ public class NewAccountController {
 						"Ja existe uma pessoa com essse mesmo cpf"
 					);
 			}
+	        numberAccount = generateAccountNumber();
 	        
-	        
-	        accountFactory.create(this.typeAccount.getSelectionModel().getSelectedItem(),numberAccount, person, agency, 00);
+	        accountFactory.create(this.typeAccount.getSelectionModel().getSelectedItem(),numberAccount, person, agency, BigDecimal.ZERO);
 		}
 	}	
 		
@@ -142,6 +145,13 @@ public class NewAccountController {
 		}
 	}		
 	
+	private Long generateAccountNumber(){
+		Long i ;
+		Random rand = new Random();
+		String s = Long.toHexString(rand.nextLong()) + Long.toHexString(rand.nextLong());
+		i = Long.parseLong(s);
+		return i;
+	}
 	
 	protected void showError(String title, String headerTitle, String contentText) {
 		 Alert alert = new Alert(Alert.AlertType.ERROR);
