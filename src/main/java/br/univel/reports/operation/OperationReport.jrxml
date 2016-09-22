@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.1.0.final using JasperReports Library version 6.1.0  -->
+<!-- 2016-09-22T19:40:25 -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="OperationReport" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="b72c9a70-5b6c-4047-9185-6586223009e4">
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<field name="operation" class="java.lang.String">
+		<fieldDescription><![CDATA[operation]]></fieldDescription>
+	</field>
+	<field name="value" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[value]]></fieldDescription>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<frame>
+				<reportElement mode="Opaque" x="-20" y="-20" width="595" height="92" backcolor="#006699" uuid="9f14459d-1880-44db-82fe-a1f854092600"/>
+				<staticText>
+					<reportElement x="380" y="10" width="80" height="20" forecolor="#FFFFFF" uuid="732808fd-a927-4fb4-a3e1-66429af5023a"/>
+					<textElement>
+						<font fontName="Arial Black" size="11"/>
+					</textElement>
+					<text><![CDATA[Bank Project]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="390" y="26" width="198" height="30" forecolor="#FFFFFF" uuid="89468b1f-1916-4606-9176-69c96a6f0dc9"/>
+					<textElement>
+						<font fontName="Arial" size="11" isItalic="true"/>
+					</textElement>
+					<text><![CDATA[Work of Object-oriented programming]]></text>
+				</staticText>
+				<textField>
+					<reportElement x="9" y="20" width="361" height="43" forecolor="#FFFFFF" uuid="accec7db-37a7-46d9-8fc1-e438eb11eb1e"/>
+					<textElement>
+						<font size="34" isBold="true" isItalic="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{operation}]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="1" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="7" splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="26" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="80" height="20" uuid="da311d28-1c10-41f6-9281-e47faf3ea911"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[A operação ]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="80" y="0" width="100" height="20" uuid="f792c2c8-346b-4034-aa83-34fbd89749d8"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{operation}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="180" y="0" width="110" height="20" uuid="8789a3b4-0564-424f-96c9-03b8997daf0b"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[no valor de R$]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="290" y="0" width="90" height="20" uuid="0cf812f4-2389-4343-b183-1c87f28a00e1"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{value}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="380" y="0" width="100" height="20" uuid="3f17041e-bf77-4a4f-8cc1-ae92bec39a34"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[com sucesso!]]></text>
+			</staticText>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="4" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="4" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="23" splitType="Stretch">
+			<frame>
+				<reportElement mode="Opaque" x="-20" y="0" width="595" height="23" backcolor="#E5E5E5" uuid="e8592c09-a92b-44b7-abfd-dc32d3e74af9"/>
+				<staticText>
+					<reportElement x="19" y="4" width="180" height="14" uuid="2c3ec0bd-2ea7-4939-a80c-abed8dea975f"/>
+					<text><![CDATA[Powered by Felipe Frizzo]]></text>
+				</staticText>
+				<textField pattern="MMMMM dd, yyyy">
+					<reportElement x="470" y="5" width="100" height="13" uuid="f125ef80-d973-4f3f-9084-c474f403fb93"/>
+					<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</summary>
+</jasperReport>

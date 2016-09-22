@@ -3,6 +3,7 @@ package br.univel;
 import br.univel.model.account.Account;
 import br.univel.model.account.AccountInterface;
 import br.univel.model.account.AccountObserver;
+import br.univel.model.operationbanking.OperationBanking;
 import br.univel.model.person.Person;
 import br.univel.view.RootLayoutController;
 import br.univel.view.balance.BalanceController;
@@ -233,7 +234,7 @@ public class Main extends Application implements AccountObserver {
         }
     }
 
-    public void showOperation(String operation, BigDecimal value) {
+    public void showOperation(OperationBanking operationBanking, String operation, BigDecimal value) {
         this.primaryStage.setTitle("Bank Project Applications - Operation");
         try {
             FXMLLoader loader = new FXMLLoader();
@@ -245,6 +246,7 @@ public class Main extends Application implements AccountObserver {
             controller.setMain(this);
             controller.setOperation(operation);
             controller.setValue(value);
+            controller.setOperationBanking(operationBanking);
         } catch (IOException e) {
             e.printStackTrace();
         }

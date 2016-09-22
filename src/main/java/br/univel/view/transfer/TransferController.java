@@ -79,7 +79,7 @@ public class TransferController {
                             .create(main.getAccount(), "Transferencia para: " + account.getClient().getName(), transferValue, new Date());
                     operationBankingService.save(mainOperationBanking);
 
-                    main.showOperation("Tranferencia", transferValue);
+                    main.showOperation(operationBanking, "Tranferencia", transferValue);
                 }
             } else {
                 showError(
