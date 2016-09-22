@@ -31,6 +31,11 @@ public class NewAccountController {
 	private Main main;
 
 	@FXML
+	private void initialize() {
+		typeAccount.getItems().setAll(TypeAccount.CURRENT, TypeAccount.ELETRONIC, TypeAccount.SAVINGS);
+	}
+
+	@FXML
 	private TextField tFAgency;
 
 	@FXML
@@ -75,6 +80,26 @@ public class NewAccountController {
 
 			if (personService.getByCPF(this.cpf.getText()) == null) {
 				personService.save(person);
+
+				Long numberAccount = generateAccountNumber();
+				Account account = (Account) accountFactory.create(
+						typeAccount.getSelectionModel().getSelectedItem(),
+						numberAccount,
+						(Customer) person,
+						agency,
+						BigDecimal.ZERO
+				);
+				accountService.save(account);
+
+				Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+				alert.initOwner(main.getPrimaryStage());
+				alert.setTitle("Conta criada com sucesso");
+				alert.setHeaderText("Conta criado com sucesso!");
+				alert.setContentText("Sua conta foi criada com sucesso, o numero da sua conta é: " + numberAccount);
+
+				alert.showAndWait();
+
+				cleanFields();
 			} else {
 				showError(
 					"Usuário ja Cadastrado", 
@@ -82,16 +107,18 @@ public class NewAccountController {
 					"Ja existe uma pessoa com essse mesmo cpf"
 				);
 			}
-
-			Account account = (Account) accountFactory.create(
-				typeAccount.getSelectionModel().getSelectedItem(),
-				generateAccountNumber(), 
-				(Customer) person, 
-				agency, 
-				BigDecimal.ZERO
-			);
-			accountService.save(account);
 		}
+	}
+
+	protected void cleanFields() {
+		tFAgency.setText("");
+		passwordAccess.setText("");
+		cpf.setText("");
+		age.setText("");
+		passwordOperation.setText("");
+		name.setText("");
+		typeAccount.getSelectionModel().clearSelection();
+		username.setText("");
 	}
 
 	protected boolean isInputValid() {

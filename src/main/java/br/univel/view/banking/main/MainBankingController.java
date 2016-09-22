@@ -1,52 +1,43 @@
 package br.univel.view.banking.main;
 
-import javafx.event.ActionEvent;
+import br.univel.Main;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
 
 public class MainBankingController {
+    private Main main;
 
-	 @FXML
-	    private Button balance;
+    public void setMain(Main main) {
+        this.main = main;
+    }
+    
+    @FXML
+    public void handleBalance() {
 
-	    @FXML
-	    private Button professionals;
+    }
 
-	    @FXML
-	    private Button information;
+    @FXML
+    public void handleProfessionals() {
 
-	    @FXML
-	    private Button agencies;
+    }
 
-	    @FXML
-	    private Button newAccount;
+    @FXML
+    public void handleInformation() {
 
-	    @FXML
-	    private Button customers;
+    }
 
-	    
-	    private void handleBalance(){
-	    	
-	    }
-	    
-	    private void handleProfessionals(){
-	    	
-	    }
-	    
-	    private void handleInformation(){
-	    	
-	    }
-	    
-	    private void handleAgencies(){
-	    	
-	    }
-	    
-	    private void handleNewAccount(){
-	    	
-	    }
-	    
-	    private void handleCustomers(){
-	    	
-	    }
-	
+    @FXML
+    public void handleAgencies() {
+
+    }
+
+    @FXML
+    public void handleNewAccount() {
+        main.showNewAccount();
+    }
+
+    @FXML
+    public void handleCustomers() {
+
+    }
+
 }
