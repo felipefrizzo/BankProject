@@ -1,7 +1,9 @@
 package br.univel.view.balance;
 
 import br.univel.Main;
+import br.univel.database.operationbanking.OperationBankingService;
 import br.univel.model.operationbanking.OperationBanking;
+import br.univel.reports.balance.BalanceReport;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.DatePicker;
@@ -12,12 +14,15 @@ import javafx.scene.control.cell.PropertyValueFactory;
 
 import java.math.BigDecimal;
 import java.util.Date;
+import java.util.List;
 
 /**
  * Created by felipefrizzo on 9/22/16.
  */
 public class BalanceController {
     private Main main;
+    private OperationBankingService operationBankingService = new OperationBankingService();
+    private BalanceReport balanceReport = new BalanceReport();
 
     @FXML
     private void initialize() {
@@ -85,7 +90,8 @@ public class BalanceController {
 
     @FXML
     void handlePrint(ActionEvent event) {
-
+        List<OperationBanking> list = operationBankingService.getAllByAccount(main.getAccount().getId());
+        balanceReport.printReport(list);
     }
 
     @FXML

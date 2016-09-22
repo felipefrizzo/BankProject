@@ -1,12 +1,9 @@
 package br.univel;
 
-import br.univel.database.operationbanking.OperationBankingService;
 import br.univel.model.account.Account;
 import br.univel.model.account.AccountInterface;
 import br.univel.model.account.AccountObserver;
-import br.univel.model.operationbanking.OperationBanking;
 import br.univel.model.person.Person;
-import br.univel.reports.balance.BalanceReport;
 import br.univel.view.RootLayoutController;
 import br.univel.view.balance.BalanceController;
 import br.univel.view.cashwithdrawl.CashWithdrawalController;
@@ -66,10 +63,7 @@ public class Main extends Application implements AccountObserver {
     }
 
     public static void main(String[] args) {
-        List<OperationBanking> list = new OperationBankingService().getAll("from OperationBanking");
-        BalanceReport b = new BalanceReport();
-        b.printReport(list);
-//        launch(args);
+        launch(args);
     }
 
     @Override

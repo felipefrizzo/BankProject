@@ -3,6 +3,7 @@ package br.univel.reports.balance;
 import br.univel.model.operationbanking.OperationBanking;
 import net.sf.jasperreports.engine.*;
 import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
+import net.sf.jasperreports.view.JasperViewer;
 
 import java.io.InputStream;
 import java.util.List;
@@ -23,6 +24,10 @@ public class BalanceReport {
             JasperReport report = JasperCompileManager.compileReport(getPathReport());
             JasperPrint print = JasperFillManager.fillReport(report, null, new JRBeanCollectionDataSource(banking));
             JasperExportManager.exportReportToPdfFile(print, "balance_report.pdf");
+
+            JasperViewer viewer = new JasperViewer(print, false);
+            viewer.show();
+            viewer.setExtendedState(JasperViewer.MAXIMIZED_BOTH);
         } catch (JRException e) {
             e.printStackTrace();
         }
