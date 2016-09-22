@@ -26,6 +26,9 @@ public class OperationBanking {
     @Column(name = "date")
     private Date date;
 
+    public OperationBanking() {
+    }
+
     public OperationBanking(final Account account, final String operation, final BigDecimal value, final Date date) {
         this.account = account;
         this.operation = operation;

@@ -79,6 +79,7 @@ public class CashWithdrawalController {
     @FXML
     void handleBack(ActionEvent event) {
         main.showMainCustomerLayout();
+        main.notifyObservers();
     }
 
     protected Boolean isValidBalance(BigDecimal withdrawal) {

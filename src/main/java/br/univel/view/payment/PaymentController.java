@@ -54,6 +54,7 @@ public class PaymentController {
     @FXML
     void handleBack(ActionEvent event) {
         main.showMainCustomerLayout();
+        main.notifyObservers();
     }
 
 

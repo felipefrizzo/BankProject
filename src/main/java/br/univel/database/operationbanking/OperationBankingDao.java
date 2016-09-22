@@ -39,4 +39,13 @@ public class OperationBankingDao implements DaoInterface<OperationBanking, Long>
         List<OperationBanking> operationBankings = sessionFactory.getSession().createQuery(from).list();
         return operationBankings;
     }
+
+    public List<OperationBanking> getAllByAccount(Long account) {
+        List<OperationBanking> operationBanking = sessionFactory.getSession()
+                .createQuery("from OperationBanking where id_account = :id_account")
+                .setParameter("id_account", account)
+                .list();
+
+        return operationBanking;
+    }
 }

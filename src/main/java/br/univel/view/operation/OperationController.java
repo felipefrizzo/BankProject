@@ -40,5 +40,6 @@ public class OperationController {
     @FXML
     void handleReturn(ActionEvent event) {
         main.showMainCustomerLayout();
+        main.notifyObservers();
     }
 }

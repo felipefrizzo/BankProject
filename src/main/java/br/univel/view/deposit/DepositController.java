@@ -81,6 +81,7 @@ public class DepositController {
     @FXML
     void handleBack(ActionEvent event) {
         main.showMainCustomerLayout();
+        main.notifyObservers();
     }
 
     @FXML

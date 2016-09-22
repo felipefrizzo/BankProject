@@ -5,6 +5,7 @@ import br.univel.model.account.AccountInterface;
 import br.univel.model.account.AccountObserver;
 import br.univel.model.person.Person;
 import br.univel.view.RootLayoutController;
+import br.univel.view.balance.BalanceController;
 import br.univel.view.cashwithdrawl.CashWithdrawalController;
 import br.univel.view.deposit.DepositController;
 import br.univel.view.login.LoginController;
@@ -196,6 +197,21 @@ public class Main extends Application implements AccountObserver {
 
             rootLayout.setCenter(mainOverview);
             PaymentController controller = loader.getController();
+            controller.setMain(this);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void showBalance() {
+        this.primaryStage.setTitle("Bank Project Applications - Balance");
+        try {
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(Main.class.getResource("view/balance/BalanceLayout.fxml"));
+            AnchorPane mainOverview = (AnchorPane) loader.load();
+
+            rootLayout.setCenter(mainOverview);
+            BalanceController controller = loader.getController();
             controller.setMain(this);
         } catch (IOException e) {
             e.printStackTrace();

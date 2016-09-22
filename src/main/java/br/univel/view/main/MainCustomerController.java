@@ -39,7 +39,7 @@ public class MainCustomerController implements MainObserver {
 
     @FXML
     private void handleBalance(ActionEvent event) {
-
+        main.showBalance();
     }
 
     @FXML

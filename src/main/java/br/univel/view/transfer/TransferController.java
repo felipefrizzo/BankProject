@@ -70,11 +70,11 @@ public class TransferController {
                     accountService.update(main.getAccount());
 
                     OperationBanking operationBanking = new OperationBankingFactory()
-                            .create(account, "Transferencia de:" + main.getAccount().getClient().getName(), transferValue, new Date());
+                            .create(account, "Transferencia de: " + main.getAccount().getClient().getName(), transferValue, new Date());
                     operationBankingService.save(operationBanking);
 
                     OperationBanking mainOperationBanking = new OperationBankingFactory()
-                            .create(main.getAccount(), "Transferencia para:" + account.getClient().getName(), transferValue, new Date());
+                            .create(main.getAccount(), "Transferencia para: " + account.getClient().getName(), transferValue, new Date());
                     operationBankingService.save(mainOperationBanking);
 
                     main.showOperation("Tranferencia", transferValue);
@@ -92,6 +92,7 @@ public class TransferController {
     @FXML
     void handleBack(ActionEvent event) {
         main.showMainCustomerLayout();
+        main.notifyObservers();
     }
 
     @FXML
