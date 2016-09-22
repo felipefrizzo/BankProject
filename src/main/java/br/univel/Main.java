@@ -1,13 +1,16 @@
 package br.univel;
 
 import br.univel.model.account.Account;
+import br.univel.model.account.AccountInterface;
 import br.univel.model.account.AccountObserver;
 import br.univel.model.person.Person;
 import br.univel.view.RootLayoutController;
+import br.univel.view.balance.BalanceController;
 import br.univel.view.cashwithdrawl.CashWithdrawalController;
 import br.univel.view.deposit.DepositController;
 import br.univel.view.login.LoginController;
 import br.univel.view.main.MainCustomerController;
+import br.univel.view.operation.OperationController;
 import br.univel.view.passwordmodal.PasswordModalController;
 import br.univel.view.payment.PaymentController;
 import br.univel.view.transfer.TransferController;
@@ -21,13 +24,14 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
 /**
  * Created by felipefrizzo on 8/30/16.
  */
-public class Main extends Application implements AccountObserver{
+public class Main extends Application implements AccountObserver {
     final List<MainObserver> observers = new ArrayList<>();
 
     private Account account;
@@ -35,7 +39,7 @@ public class Main extends Application implements AccountObserver{
     private BorderPane rootLayout;
 
     public void notifyObservers() {
-        for (final MainObserver observer: observers) {
+        for (final MainObserver observer : observers) {
             observer.showAccountInformation(this);
         }
     }
@@ -92,9 +96,9 @@ public class Main extends Application implements AccountObserver{
             e.printStackTrace();
         }
     }
-    
-    public void showLoginLayout(){
-    	try {
+
+    public void showLoginLayout() {
+        try {
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(Main.class.getResource("view/login/LoginLayout.fxml"));
             AnchorPane loginOverview = (AnchorPane) loader.load();
@@ -117,6 +121,8 @@ public class Main extends Application implements AccountObserver{
             rootLayout.setCenter(mainOverview);
             MainCustomerController controller = loader.getController();
             controller.setMain(this);
+
+            addObservers(controller);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -197,6 +203,21 @@ public class Main extends Application implements AccountObserver{
         }
     }
 
+    public void showBalance() {
+        this.primaryStage.setTitle("Bank Project Applications - Balance");
+        try {
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(Main.class.getResource("view/balance/BalanceLayout.fxml"));
+            AnchorPane mainOverview = (AnchorPane) loader.load();
+
+            rootLayout.setCenter(mainOverview);
+            BalanceController controller = loader.getController();
+            controller.setMain(this);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
     public void showTransfer() {
         this.primaryStage.setTitle("Bank Project Applications - Transfer");
         try {
@@ -212,8 +233,25 @@ public class Main extends Application implements AccountObserver{
         }
     }
 
+    public void showOperation(String operation, BigDecimal value) {
+        this.primaryStage.setTitle("Bank Project Applications - Operation");
+        try {
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(Main.class.getResource("view/operation/OperationLayout.fxml"));
+            AnchorPane mainOverview = (AnchorPane) loader.load();
+
+            rootLayout.setCenter(mainOverview);
+            OperationController controller = loader.getController();
+            controller.setMain(this);
+            controller.setOperation(operation);
+            controller.setValue(value);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
     @Override
-    public void haveChanges(Account account) {
+    public void haveChanges(AccountInterface account) {
         notifyObservers();
     }
 }

@@ -57,7 +57,7 @@ public class AgencyService implements DaoService<Agency, Long>{
 
     public Agency getByNumberAgency(String numberAgency) {
         sessionFactory.openSessionWithTransaction();
-        Agency agency = agencyDao.getByNumberAgency(Long.parseLong(numberAgency));
+        Agency agency = agencyDao.getByNumberAgency(numberAgency);
         sessionFactory.closeSessionWithTransaction();
         return agency;
     }

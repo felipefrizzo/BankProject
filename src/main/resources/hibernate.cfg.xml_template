@@ -24,6 +24,8 @@
         <mapping class="br.univel.model.account.AccountSavings"></mapping>
         <!-- AGENCY -->
         <mapping class="br.univel.model.agency.Agency"></mapping>
+        <!-- OPERATION BANKING -->
+        <mapping class="br.univel.model.operationbanking.OperationBanking"></mapping>
 
     </session-factory>
 </hibernate-configuration>
