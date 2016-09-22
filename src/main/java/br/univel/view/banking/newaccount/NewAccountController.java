@@ -7,8 +7,8 @@ import br.univel.database.person.PersonService;
 import br.univel.model.account.AccountFactory;
 import br.univel.model.account.TypeAccount;
 import br.univel.model.agency.Agency;
-import br.univel.model.person.TypePerson;
 import br.univel.model.person.Person;
+import br.univel.model.person.TypePerson;
 import br.univel.model.person.TypePersonFactory;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -22,6 +22,7 @@ public class NewAccountController {
     final private AccountService accountService = new AccountService();
     final private AgencyService agencyService = new AgencyService();
     final private AccountFactory accountFactory = new AccountFactory();
+    final private GenerateAccountNumber generateAccount = new GenerateAccountNumber(null);
     
     private Agency agency;
     private Main main;
@@ -58,7 +59,7 @@ public class NewAccountController {
 	void handleNewAccount(ActionEvent event) {
 		if(isInputValid()){ 
 			agency = agencyService.getByNumberAgency(this.tFAgency.getText());
-			
+			Long numberAccount;
 			
 	        Person person = new TypePersonFactory().create(
 	        	TypePerson.CUSTOMER, 
@@ -80,7 +81,8 @@ public class NewAccountController {
 					);
 			}
 	        
-	        accountFactory.create(this.typeAccount.getSelectionModel().getSelectedItem(), accountNumber, person, agency, 00);
+	        
+	        accountFactory.create(this.typeAccount.getSelectionModel().getSelectedItem(),numberAccount, person, agency, 00);
 		}
 	}	
 		
@@ -139,6 +141,7 @@ public class NewAccountController {
 				return false;
 		}
 	}		
+	
 	
 	protected void showError(String title, String headerTitle, String contentText) {
 		 Alert alert = new Alert(Alert.AlertType.ERROR);
