@@ -56,4 +56,15 @@ public class PersonDao implements DaoInterface<Person, Long> {
         }
         return null;
     }
+
+    public Person getPersonByName(String name) {
+        List<Person> persons = sessionFactory.getSession()
+                .createQuery("from Custumer where name like :name")
+                .setParameter("name", "name")
+                .list();
+        for (Person person: persons) {
+            return person;
+        }
+        return null;
+    }
 }
