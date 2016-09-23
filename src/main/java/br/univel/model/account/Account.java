@@ -19,6 +19,8 @@ public class Account implements AccountInterface {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Long id;
+    @Column
+    private boolean isActive;
     @Column(name = "type_account")
     private TypeAccount typeAccount;
     @Column(name = "account_number")
@@ -44,6 +46,7 @@ public class Account implements AccountInterface {
         this.agency = agency;
         this.balance = balance;
         this.openingDate = new Date();
+        this.isActive = false;
     }
 
     protected Account() {
@@ -67,6 +70,14 @@ public class Account implements AccountInterface {
     @Override
     public TypeAccount getTypeAccount() {
         return typeAccount;
+    }
+
+    public boolean isActive() {
+        return isActive;
+    }
+
+    public void setActive(boolean active) {
+        isActive = active;
     }
 
     @Override

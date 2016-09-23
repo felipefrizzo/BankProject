@@ -27,12 +27,29 @@ public class RootLayoutController implements MainObserver{
     @FXML
     private Label balance;
 
+    @FXML
+    private Label agencyLabel;
+
+    @FXML
+    private Label accountLabel;
+
+    @FXML
+    private Label typeAccountLabel;
+
+    @FXML
+    private Label balanceLabel;
+
     public void setMain(Main main) {
         this.main = main;
     }
 
     @Override
     public void showAccountInformation(Main main) {
+        this.agencyLabel.setVisible(true);
+        this.accountLabel.setVisible(true);
+        this.typeAccountLabel.setVisible(true);
+        this.balanceLabel.setVisible(true);
+
         this.branchCode.setVisible(true);
         this.accountNumber.setVisible(true);
         this.typeAccount.setVisible(true);

@@ -65,8 +65,13 @@ public class LoginController {
 					if (p.getTypePerson() == TypePerson.CUSTOMER) {
 						Account account = accountService.getAccountByCustomer(p);
 
-						main.showMainCustomerLayout();
-						main.setAccount(account);
+						if (!account.isActive()) {
+							main.showMainCustomerLayout();
+							main.setAccount(account);
+						} else {
+							this.errorMsg.setText("Conta inátiva");
+							this.errorMsg.setVisible(true);
+						}
 					} else if (p.getTypePerson() == TypePerson.BANKING) {
 						main.showMainBankingLayout();
 					}

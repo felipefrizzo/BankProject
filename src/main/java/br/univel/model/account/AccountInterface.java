@@ -12,6 +12,8 @@ import java.math.BigDecimal;
 public interface AccountInterface {
     public Long getId();
 
+    public boolean isActive();
+
     public TypeAccount getTypeAccount();
 
     public Long getAccountNumber();
@@ -25,6 +27,8 @@ public interface AccountInterface {
     public void addObservers(AccountObserver observer);
 
     public AccountInterface setId(Long id);
+
+    public void setActive(boolean active);
 
     public AccountInterface setTypeAccount(TypeAccount typeAccount);
 

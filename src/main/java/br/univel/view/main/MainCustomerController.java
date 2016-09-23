@@ -2,17 +2,25 @@ package br.univel.view.main;
 
 import br.univel.Main;
 import br.univel.MainObserver;
+import br.univel.database.account.AccountService;
 import br.univel.model.account.Account;
 import br.univel.model.account.TypeAccount;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonBar;
+import javafx.scene.control.ButtonType;
+
+import java.math.BigDecimal;
+import java.util.Optional;
 
 /**
  * Created by felipefrizzo on 9/12/16.
  */
 public class MainCustomerController implements MainObserver {
+    final private AccountService accountService = new AccountService();
     private Main main;
 
     @FXML
@@ -54,8 +62,20 @@ public class MainCustomerController implements MainObserver {
 
     @FXML
     private void handleFinish(ActionEvent event) {
-        Platform.exit();
-        System.exit(0);
+        if (main.getAccount().getBalance().compareTo(BigDecimal.ZERO) == 1) {
+            showError(
+                "error",
+                "Não é possivel encerrar a conta",
+                "Por favor, corrija os erros abaixos",
+                "Sua conta ainda tem saldo, porfavor zere ela antes de encerrar"
+            );
+        } else {
+            if (showError("confirmation", "Inativar conta", "Você realmente deseja inativar sua conta ?", "")) {
+                main.getAccount().setActive(true);
+                accountService.update(main.getAccount());
+                main.showLoginLayout();
+            }
+        }
     }
 
     @FXML
@@ -76,5 +96,27 @@ public class MainCustomerController implements MainObserver {
         } else if (main.getAccount().getTypeAccount().equals(TypeAccount.SAVINGS)) {
             payment.setDisable(true);
         }
+    }
+
+    protected boolean showError(String type, String title, String headerTitle, String contentText) {
+        Alert alert;
+        if (type.equalsIgnoreCase("confirmation")) {
+             alert = new Alert(Alert.AlertType.CONFIRMATION);
+        } else {
+            alert = new Alert(Alert.AlertType.ERROR);
+        }
+
+        alert.initOwner(main.getPrimaryStage());
+        alert.setTitle(title);
+        alert.setHeaderText(headerTitle);
+        alert.setContentText(contentText);
+
+        Optional<ButtonType> result = alert.showAndWait();
+
+        if (result.get() == ButtonType.OK) {
+            return true;
+        }
+
+        return false;
     }
 }
