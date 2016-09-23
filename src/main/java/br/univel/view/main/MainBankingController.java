@@ -1,4 +1,4 @@
-package br.univel.view.banking.main;
+package br.univel.view.main;
 
 import br.univel.Main;
 import javafx.fxml.FXML;

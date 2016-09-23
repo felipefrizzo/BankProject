@@ -6,7 +6,7 @@ import br.univel.model.account.AccountObserver;
 import br.univel.model.person.Person;
 import br.univel.view.RootLayoutController;
 import br.univel.view.balance.BalanceController;
-import br.univel.view.banking.main.MainBankingController;
+import br.univel.view.main.MainBankingController;
 import br.univel.view.banking.newaccount.NewAccountController;
 import br.univel.view.cashwithdrawl.CashWithdrawalController;
 import br.univel.view.deposit.DepositController;
@@ -133,7 +133,7 @@ public class Main extends Application implements AccountObserver {
     public void showMainBankingLayout() {
         try {
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(Main.class.getResource("view/banking/main/MainBanking.fxml"));
+            loader.setLocation(Main.class.getResource("view/main/MainBanking.fxml"));
             AnchorPane mainOverview = (AnchorPane) loader.load();
 
             rootLayout.setCenter(mainOverview);
