@@ -14,6 +14,7 @@ public class AgencyController {
 	
 	public void setMain(Main main){
 		this.main = main;
+		agencyTable.setItems(new GetAgency().getObservableList());
 	}
 
 	@FXML
