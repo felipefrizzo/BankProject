@@ -9,19 +9,18 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 
 public class AgencyController {
-	
 	private Main main;
-
 	private Agency agency = new Agency();
 	
 	public void setMain(Main main){
 		this.main = main;
 	}
-	
+
+	@FXML
 	public void initialize(){
-		columnumber.setCellValueFactory(new PropertyValueFactory <> ("numero"));
-		columcity.setCellValueFactory(new PropertyValueFactory <> ("cidade"));
-		columname.setCellValueFactory(new PropertyValueFactory <> ("name"));
+		columnumber.setCellValueFactory(new PropertyValueFactory<>("numero"));
+		columcity.setCellValueFactory(new PropertyValueFactory<>("cidade"));
+		columname.setCellValueFactory(new PropertyValueFactory<>("name"));
 	}
 	
 
