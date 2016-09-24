@@ -78,7 +78,8 @@ public class NewAccountController {
 				this.passwordOperation.getText()
 			);
 
-			if (personService.getByCPF(this.cpf.getText()) == null && (personService.getPersonByName(this.name.getText()) == null)) {
+			if (personService.getByCPF(this.cpf.getText()) == null && 
+					(personService.getPersonByName(this.name.getText()) == null)) {
 				personService.save(person);
 
 				Long numberAccount = generateAccountNumber();

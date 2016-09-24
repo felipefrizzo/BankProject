@@ -1,16 +1,12 @@
 package br.univel;
 
-import java.io.IOException;
-import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.List;
-
 import br.univel.model.account.Account;
 import br.univel.model.account.AccountInterface;
 import br.univel.model.account.AccountObserver;
 import br.univel.model.person.Person;
 import br.univel.view.RootLayoutController;
 import br.univel.view.balance.BalanceController;
+import br.univel.view.main.MainBankingController;
 import br.univel.view.banking.newaccount.NewAccountController;
 import br.univel.view.cashwithdrawl.CashWithdrawalController;
 import br.univel.view.deposit.DepositController;
@@ -29,6 +25,11 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+
+import java.io.IOException;
+import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by felipefrizzo on 8/30/16.
