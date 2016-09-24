@@ -124,7 +124,7 @@ public class NewAccountController {
 
 	protected boolean isInputValid() {
 		String errorMessage = "";
-		if (this.passwordOperation.getLength() > 6) {
+		if (this.passwordOperation.getLength() < 6) {
 			showError("Senha Inválida", "A senha deve conter 6 digitos", "A senha deve conter 6 digitos");
 			return false;
 		}
