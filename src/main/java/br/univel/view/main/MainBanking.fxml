@@ -20,7 +20,7 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="190.0" text="1 - INFORMAÇOES">
+            <Button mnemonicParsing="false" onAction="#handleInformation" prefHeight="40.0" prefWidth="190.0" text="1 - INFORMAÇOES">
                <padding>
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                </padding>
@@ -30,22 +30,22 @@
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                </padding>
             </Button>
-            <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="190.0" text="3 - CLIENTES" GridPane.rowIndex="2">
+            <Button mnemonicParsing="false" onAction="#handleCustomers" prefHeight="40.0" prefWidth="190.0" text="3 - CLIENTES" GridPane.rowIndex="2">
                <padding>
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                </padding>
             </Button>
-            <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="190.0" text="4 - PROFISSIONAIS" GridPane.columnIndex="1">
+            <Button mnemonicParsing="false" onAction="#handleProfessionals" prefHeight="40.0" prefWidth="190.0" text="4 - PROFISSIONAIS" GridPane.columnIndex="1">
                <padding>
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                </padding>
             </Button>
-            <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="190.0" text="5 - BALANÇO" GridPane.columnIndex="1" GridPane.rowIndex="1">
+            <Button mnemonicParsing="false" onAction="#handleBalance" prefHeight="40.0" prefWidth="190.0" text="5 - BALANÇO" GridPane.columnIndex="1" GridPane.rowIndex="1">
                <padding>
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                </padding>
             </Button>
-            <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="190.0" text="6 - AGÊNCIAS" GridPane.columnIndex="1" GridPane.rowIndex="2">
+            <Button mnemonicParsing="false" onAction="#handleAgencies" prefHeight="40.0" prefWidth="190.0" text="6 - AGÊNCIAS" GridPane.columnIndex="1" GridPane.rowIndex="2">
                <padding>
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                </padding>
