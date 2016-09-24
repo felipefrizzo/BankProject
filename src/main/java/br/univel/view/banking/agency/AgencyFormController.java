@@ -4,6 +4,7 @@ import br.univel.Main;
 import br.univel.database.agency.AgencyService;
 import br.univel.model.agency.Agency;
 import br.univel.model.agency.AgencyFactory;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
@@ -44,8 +45,8 @@ public class AgencyFormController {
                 } else {
                     showError(
                         "Erro",
-                        "Agência ja cadastrada",
-                        "Esse numero de agencia ja esta cadastrado, por favor , digite outro "
+                        "Agência ja cadastrada.",
+                        "Agencia já cadastrada, por favor infrome outro numero de agencia"
                     );
                 }
             } else {
@@ -57,6 +58,12 @@ public class AgencyFormController {
                 main.showAgency();
             }
         }
+    }
+
+
+    @FXML
+    void handleBackToAgencies(ActionEvent event) {
+        main.showAgency();
     }
 
 

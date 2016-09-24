@@ -2,6 +2,7 @@ package br.univel.view.banking.agency;
 
 import br.univel.Main;
 import br.univel.model.agency.Agency;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TableColumn;
@@ -56,4 +57,10 @@ public class AgencyController {
 			alert.showAndWait();
 		}
 	}
+
+
+    @FXML
+    void handleBack(ActionEvent event) {
+        main.showMainBankingLayout();
+    }
 }
