@@ -1,5 +1,9 @@
 package br.univel.view.banking.listingcustomers;
 
+import java.math.BigDecimal;
+import java.util.Date;
+
+import br.univel.model.account.TypeAccount;
 import br.univel.model.person.Customer;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -12,22 +16,22 @@ public class ListingCustomersController {
 	private TableView<Customer> tableCustomers;
 	
 	@FXML
-	private TableColumn<Customer, ?> number;
+	private TableColumn<Customer, String> number;
 
 	@FXML
-	private TableColumn<Customer, ?> agency;
+	private TableColumn<Customer, String> agency;
 
 	@FXML
-	private TableColumn<Customer, ?> balance;
+	private TableColumn<Customer, BigDecimal> balance;
 
 	@FXML
-	private TableColumn<Customer, ?> typeAccount;
+	private TableColumn<Customer, TypeAccount> typeAccount;
 
 	@FXML
-	private TableColumn<Customer, ?> openedIn;
+	private TableColumn<Customer, Date> openedIn;
 
 	@FXML
-	private TableColumn<Customer, ?> customer;
+	private TableColumn<Customer, String> customer;
 	
 	@FXML
 	private Button print;
