@@ -111,6 +111,11 @@ public class NewAccountController {
 		}
 	}
 
+	@FXML
+	void handleBack(ActionEvent event) {
+		main.showMainBankingLayout();
+	}
+
 	protected void cleanFields() {
 		tFAgency.setText("");
 		passwordAccess.setText("");

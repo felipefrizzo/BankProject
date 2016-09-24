@@ -27,7 +27,7 @@ public class MainBankingController {
 
     @FXML
     public void handleAgencies() {
-
+    	main.showAgency();
     }
 
     @FXML
