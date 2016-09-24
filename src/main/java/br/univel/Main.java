@@ -1,5 +1,10 @@
 package br.univel;
 
+import java.io.IOException;
+import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
+
 import br.univel.model.account.Account;
 import br.univel.model.account.AccountInterface;
 import br.univel.model.account.AccountObserver;
@@ -7,11 +12,13 @@ import br.univel.model.operationbanking.OperationBanking;
 import br.univel.model.person.Person;
 import br.univel.view.RootLayoutController;
 import br.univel.view.balance.BalanceController;
-import br.univel.view.main.MainBankingController;
+import br.univel.view.banking.agency.AgencyController;
+import br.univel.view.banking.agency.AgencyFormController;
 import br.univel.view.banking.newaccount.NewAccountController;
 import br.univel.view.cashwithdrawl.CashWithdrawalController;
 import br.univel.view.deposit.DepositController;
 import br.univel.view.login.LoginController;
+import br.univel.view.main.MainBankingController;
 import br.univel.view.main.MainCustomerController;
 import br.univel.view.operation.OperationController;
 import br.univel.view.passwordmodal.PasswordModalController;
@@ -25,11 +32,6 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-
-import java.io.IOException;
-import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created by felipefrizzo on 8/30/16.
@@ -278,6 +280,54 @@ public class Main extends Application implements AccountObserver {
             e.printStackTrace();
         }
     }
+    
+    public void showAgency() {
+        this.primaryStage.setTitle("Bank Project Applications - Agency");
+        try {
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(Main.class.getResource("view/banking/agency/AgencyLayout.fxml"));
+            AnchorPane mainOverview = (AnchorPane) loader.load();
+
+            rootLayout.setCenter(mainOverview);
+            AgencyController controller = loader.getController();
+            controller.setMain(this);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    
+    public void showNewAgency() {
+        this.primaryStage.setTitle("Bank Project Applications - New Agency");
+        try {
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(Main.class.getResource("view/banking/agency/AgencyForm.fxml"));
+            AnchorPane mainOverview = (AnchorPane) loader.load();
+
+            rootLayout.setCenter(mainOverview);
+            AgencyFormController controller = loader.getController();
+            controller.setMain(this);
+            
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    
+    public void showEditAgency() {
+        this.primaryStage.setTitle("Bank Project Applications - Edit Agency");
+        try {
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(Main.class.getResource("view/banking/agency/AgencyForm.fxml"));
+            AnchorPane mainOverview = (AnchorPane) loader.load();
+
+            rootLayout.setCenter(mainOverview);
+            AgencyFormController controller = loader.getController();
+            controller.setMain(this);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    
+   
 
     @Override
     public void haveChanges(AccountInterface account) {

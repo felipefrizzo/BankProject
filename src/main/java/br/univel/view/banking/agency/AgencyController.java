@@ -10,6 +10,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 public class AgencyController {
 	
 	private Main main;
+
 	private Agency agency = new Agency();
 	
 	public void setMain(Main main){
@@ -31,11 +32,16 @@ public class AgencyController {
 
 	@FXML
 	private TableColumn<Agency, String> columname;
-
+	
 	@FXML
-	private Button editAgency;
-
+	private void handleNew(){
+//		main.showNewAgency(true);
+	}
+	
 	@FXML
-	private Button newAgency;
+	private void handleEdit(){
+//		main.showNewAgency(false);
+	}
+	
 
 }
