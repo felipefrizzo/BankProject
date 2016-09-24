@@ -59,7 +59,7 @@ public class PersonDao implements DaoInterface<Person, Long> {
 
     public Person getPersonByName(String name) {
         List<Person> persons = sessionFactory.getSession()
-                .createQuery("from Custumer where name like :name")
+                .createQuery("from Customer where name like :name")
                 .setParameter("name", "name")
                 .list();
         for (Person person: persons) {
