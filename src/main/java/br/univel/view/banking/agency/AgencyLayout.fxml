@@ -1,20 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.univel.view.banking.agency.AgencyController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.univel.view.banking.agency.AgencyController">
    <children>
-      <TableView fx:id="agencyTable" prefHeight="360.0" prefWidth="600.0">
+      <TableView fx:id="agencyTable" layoutX="14.0" layoutY="30.0" prefHeight="330.0" prefWidth="576.0">
         <columns>
-          <TableColumn fx:id="columname" prefWidth="200.0" text="Nome" />
-          <TableColumn fx:id="columnumber" prefWidth="200.0" text="Numero" />
-            <TableColumn fx:id="columcity" prefWidth="200.0" text="Cidade" />
+          <TableColumn fx:id="nameColumn" prefWidth="209.0" text="Nome" />
+          <TableColumn fx:id="numberColumn" prefWidth="150.0" text="Numero" />
+            <TableColumn fx:id="cityColumn" prefWidth="216.0" text="Cidade" />
         </columns>
       </TableView>
-      <Button layoutX="534.0" layoutY="368.0" mnemonicParsing="false" onAction="#handleNew" text="Novo" />
-      <Button layoutX="462.0" layoutY="368.0" mnemonicParsing="false" onAction="#handleEdit" text="Editar" />
+      <HBox layoutX="457.0" layoutY="360.0" spacing="10.0">
+         <children>
+            <Button mnemonicParsing="false" onAction="#handleEdit" text="Editar" />
+            <Button mnemonicParsing="false" onAction="#handleNew" text="Novo" />
+         </children>
+         <padding>
+            <Insets bottom="5.0" right="5.0" top="5.0" />
+         </padding>
+      </HBox>
    </children>
 </AnchorPane>

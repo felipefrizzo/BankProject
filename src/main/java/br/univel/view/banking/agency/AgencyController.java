@@ -10,8 +10,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 
 public class AgencyController {
 	private Main main;
-	private Agency agency = new Agency();
-	
+
 	public void setMain(Main main){
 		this.main = main;
 		agencyTable.setItems(new GetAgency().getObservableList());
@@ -19,9 +18,9 @@ public class AgencyController {
 
 	@FXML
 	public void initialize(){
-		columnumber.setCellValueFactory(new PropertyValueFactory<>("numero"));
-		columcity.setCellValueFactory(new PropertyValueFactory<>("cidade"));
-		columname.setCellValueFactory(new PropertyValueFactory<>("name"));
+		numberColumn.setCellValueFactory(new PropertyValueFactory<>("numero"));
+		cityColumn.setCellValueFactory(new PropertyValueFactory<>("cidade"));
+		nameColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
 	}
 	
 
@@ -29,24 +28,23 @@ public class AgencyController {
 	private TableView<Agency> agencyTable;
 	
 	@FXML
-	private TableColumn<Agency, String> columnumber;
+	private TableColumn<Agency, String> numberColumn;
 
 	@FXML
-	private TableColumn<Agency, String> columcity;
+	private TableColumn<Agency, String> cityColumn;
 
 	@FXML
-	private TableColumn<Agency, String> columname;
-	
+	private TableColumn<Agency, String> nameColumn;
+
 	@FXML
 	private void handleNew(){
-		Agency agency = new Agency();
-		main.showNewAgency(agency);
+		main.showNewAgency(null);
 	}
 	
 	@FXML
 	private void handleEdit() {
-		Agency selectedAgency = agencyTable.getSelectionModel().getSelectedItem();
-		if (selectedAgency != null) {
+        Agency selectedAgency = agencyTable.getSelectionModel().getSelectedItem();
+        if (selectedAgency != null) {
 			main.showNewAgency(selectedAgency);
 
 		} else {

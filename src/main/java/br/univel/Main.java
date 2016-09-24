@@ -301,7 +301,7 @@ public class Main extends Application implements AccountObserver {
         this.primaryStage.setTitle("Bank Project Applications - New Agency");
         try {
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(Main.class.getResource("view/banking/agency/AgencyForm.fxml"));
+            loader.setLocation(Main.class.getResource("view/banking/agency/AgencyFormLayout.fxml"));
             AnchorPane mainOverview = (AnchorPane) loader.load();
 
             rootLayout.setCenter(mainOverview);
