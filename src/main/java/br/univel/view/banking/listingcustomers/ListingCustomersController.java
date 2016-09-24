@@ -1,30 +1,35 @@
 package br.univel.view.banking.listingcustomers;
 
+import br.univel.model.person.Customer;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 
 public class ListingCustomersController {
 
 	@FXML
-	private TableColumn<?, ?> number;
+	private TableView<Customer> tableCustomers;
+	
+	@FXML
+	private TableColumn<Customer, ?> number;
 
+	@FXML
+	private TableColumn<Customer, ?> agency;
+
+	@FXML
+	private TableColumn<Customer, ?> balance;
+
+	@FXML
+	private TableColumn<Customer, ?> typeAccount;
+
+	@FXML
+	private TableColumn<Customer, ?> openedIn;
+
+	@FXML
+	private TableColumn<Customer, ?> customer;
+	
 	@FXML
 	private Button print;
-
-	@FXML
-	private TableColumn<?, ?> agency;
-
-	@FXML
-	private TableColumn<?, ?> balance;
-
-	@FXML
-	private TableColumn<?, ?> typeAccount;
-
-	@FXML
-	private TableColumn<?, ?> openedIn;
-
-	@FXML
-	private TableColumn<?, ?> customer;
 
 }
