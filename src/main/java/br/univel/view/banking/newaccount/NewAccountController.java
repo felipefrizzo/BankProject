@@ -78,7 +78,7 @@ public class NewAccountController {
 				this.passwordOperation.getText()
 			);
 
-			if (personService.getByCPF(this.cpf.getText()) == null) {
+			if (personService.getByCPF(this.cpf.getText()) == null && (personService.getPersonByName(this.name.getText()) == null)) {
 				personService.save(person);
 
 				Long numberAccount = generateAccountNumber();
@@ -104,7 +104,7 @@ public class NewAccountController {
 				showError(
 					"Usuário ja Cadastrado", 
 					"Pessoa ja conta no nosso registro",
-					"Ja existe uma pessoa com essse mesmo cpf"
+					"Ja existe uma pessoa com essse mesmo cpf ou Nome"
 				);
 			}
 		}
@@ -127,7 +127,7 @@ public class NewAccountController {
 			showError("Senha Inválida", "A senha deve conter 6 digitos", "A senha deve conter 6 digitos");
 			return false;
 		}
-
+		
 		if (this.tFAgency.getText() == null || this.tFAgency.getLength() == 0) {
 			errorMessage += "A Agencia não pode estar em branco\n";
 		}
