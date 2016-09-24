@@ -11,7 +11,6 @@ import br.univel.view.banking.newaccount.NewAccountController;
 import br.univel.view.cashwithdrawl.CashWithdrawalController;
 import br.univel.view.deposit.DepositController;
 import br.univel.view.login.LoginController;
-import br.univel.view.main.MainBankingController;
 import br.univel.view.main.MainCustomerController;
 import br.univel.view.operation.OperationController;
 import br.univel.view.passwordmodal.PasswordModalController;
