@@ -7,6 +7,8 @@ import br.univel.model.operationbanking.OperationBanking;
 import br.univel.model.person.Person;
 import br.univel.view.RootLayoutController;
 import br.univel.view.balance.BalanceController;
+import br.univel.view.main.MainBankingController;
+import br.univel.view.banking.newaccount.NewAccountController;
 import br.univel.view.cashwithdrawl.CashWithdrawalController;
 import br.univel.view.deposit.DepositController;
 import br.univel.view.login.LoginController;
@@ -130,7 +132,17 @@ public class Main extends Application implements AccountObserver {
     }
 
     public void showMainBankingLayout() {
-        System.out.println("MAIN BANKING");
+        try {
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(Main.class.getResource("view/main/MainBanking.fxml"));
+            AnchorPane mainOverview = (AnchorPane) loader.load();
+
+            rootLayout.setCenter(mainOverview);
+            MainBankingController controller = loader.getController();
+            controller.setMain(this);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public boolean showPasswordModal(Person person) {
@@ -247,6 +259,21 @@ public class Main extends Application implements AccountObserver {
             controller.setOperation(operation);
             controller.setValue(value);
             controller.setOperationBanking(operationBanking);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void showNewAccount() {
+        this.primaryStage.setTitle("Bank Project Applications - New Account");
+        try {
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(Main.class.getResource("view/banking/newaccount/NewAccount.fxml"));
+            AnchorPane mainOverview = (AnchorPane) loader.load();
+
+            rootLayout.setCenter(mainOverview);
+            NewAccountController controller = loader.getController();
+            controller.setMain(this);
         } catch (IOException e) {
             e.printStackTrace();
         }
