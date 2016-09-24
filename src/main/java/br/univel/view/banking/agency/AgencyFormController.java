@@ -15,11 +15,6 @@ public class AgencyFormController {
 	private AgencyService agencyService = new AgencyService();
 	private AgencyFactory agencyFactory = new AgencyFactory();
 	
-	
-	public void setAgency(Agency agency){
-		this.agency = agency;
-	}
-	
 	@FXML
 	private TextField number;
 
@@ -33,18 +28,34 @@ public class AgencyFormController {
 		this.main = main;
 	}
 	
+	public void setAgency(Agency agency){
+		this.agency = agency;
+	}
+	
 	@FXML
-	private void NewAgency(){
-		
+	private void initialize(){
+		showAgencyDetails(agency);
+	}
+	
+	@FXML
+	private void handleCreateAgency(){
 		if(isInputValid()){
-			if(agencyService.getByNumberAgency(number.getText())== null){
-				agency = agencyFactory.create(name.getText(), number.getText(), city.getText());				
+			if(agency == null){				
+				if(agencyService.getByNumberAgency(number.getText())== null){
+					agency = agencyFactory.create(name.getText(), number.getText(), city.getText());
+					agencyService.save(agency);
+				}else{
+					showError(
+							"Erro",
+							"Agência ja cadastrada", 
+							"Esse numero de agencia ja esta cadastrado, por favor , digite outro "
+							);
+				}
 			}else{
-				showError(
-						"Erro",
-						"Agência ja cadastrada", 
-						"Esse numero de agencia ja esta cadastrado, por favor , digite outro "
-				);
+				agency.setCidade(city.getText());
+				agency.setName(name.getText());
+				agency.setNumero(number.getText());
+				agencyService.update(agency);
 			}
 		}
 	}
@@ -72,6 +83,19 @@ public class AgencyFormController {
 		}
 	
 	}
+	
+	public void showAgencyDetails(Agency agency) {
+	       if (agency != null) {
+	           name.setText(agency.getName());
+	           number.setText(agency.getNumero());
+	           city.setText(agency.getCidade());
+	       } else {
+	    	   name.setText("");
+	           number.setText("");
+	           city.setText("");
+	       }
+	   }
+	
 	protected void showError(String title, String headerTitle, String contentText) {
 		Alert alert = new Alert(Alert.AlertType.ERROR);
 		alert.initOwner(main.getPrimaryStage());

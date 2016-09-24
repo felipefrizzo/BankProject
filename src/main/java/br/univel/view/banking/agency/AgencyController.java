@@ -3,8 +3,9 @@ package br.univel.view.banking.agency;
 import br.univel.Main;
 import br.univel.model.agency.Agency;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
+import javafx.scene.control.Alert;
 import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 
 public class AgencyController {
@@ -25,6 +26,9 @@ public class AgencyController {
 	
 
 	@FXML
+	private TableView<Agency> agencyTable;
+	
+	@FXML
 	private TableColumn<Agency, String> columnumber;
 
 	@FXML
@@ -35,13 +39,23 @@ public class AgencyController {
 	
 	@FXML
 	private void handleNew(){
-//		main.showNewAgency(true);
+		Agency agency = new Agency();
+		main.showNewAgency(agency);
 	}
 	
 	@FXML
-	private void handleEdit(){
-//		main.showNewAgency(false);
-	}
-	
+	private void handleEdit() {
+		Agency selectedAgency = agencyTable.getSelectionModel().getSelectedItem();
+		if (selectedAgency != null) {
+			main.showNewAgency(selectedAgency);
 
+		} else {
+			Alert alert = new Alert(Alert.AlertType.ERROR);
+			alert.setTitle("Nenhuma seleção");
+			alert.setHeaderText("Nenhuma Agência Selecionada.");
+			alert.setContentText("Por favor, selecione uma agência.");
+
+			alert.showAndWait();
+		}
+	}
 }

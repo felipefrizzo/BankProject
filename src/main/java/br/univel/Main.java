@@ -8,6 +8,7 @@ import java.util.List;
 import br.univel.model.account.Account;
 import br.univel.model.account.AccountInterface;
 import br.univel.model.account.AccountObserver;
+import br.univel.model.agency.Agency;
 import br.univel.model.operationbanking.OperationBanking;
 import br.univel.model.person.Person;
 import br.univel.view.RootLayoutController;
@@ -296,7 +297,7 @@ public class Main extends Application implements AccountObserver {
         }
     }
     
-    public void showNewAgency() {
+    public void showNewAgency(Agency agency) {
         this.primaryStage.setTitle("Bank Project Applications - New Agency");
         try {
             FXMLLoader loader = new FXMLLoader();
@@ -306,28 +307,11 @@ public class Main extends Application implements AccountObserver {
             rootLayout.setCenter(mainOverview);
             AgencyFormController controller = loader.getController();
             controller.setMain(this);
-            
+            controller.setAgency(agency);
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
-    
-    public void showEditAgency() {
-        this.primaryStage.setTitle("Bank Project Applications - Edit Agency");
-        try {
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(Main.class.getResource("view/banking/agency/AgencyForm.fxml"));
-            AnchorPane mainOverview = (AnchorPane) loader.load();
-
-            rootLayout.setCenter(mainOverview);
-            AgencyFormController controller = loader.getController();
-            controller.setMain(this);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-    
-   
 
     @Override
     public void haveChanges(AccountInterface account) {
