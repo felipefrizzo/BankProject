@@ -15,6 +15,7 @@ import br.univel.view.RootLayoutController;
 import br.univel.view.balance.BalanceController;
 import br.univel.view.banking.agency.AgencyController;
 import br.univel.view.banking.agency.AgencyFormController;
+import br.univel.view.banking.listingcustomers.ListingCustomersController;
 import br.univel.view.banking.newaccount.NewAccountController;
 import br.univel.view.banking.professionalslist.ProfessionalsFormController;
 import br.univel.view.banking.professionalslist.ProfessionalsListController;
@@ -310,6 +311,21 @@ public class Main extends Application implements AccountObserver {
             AgencyFormController controller = loader.getController();
             controller.setMain(this);
             controller.setAgency(agency);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void showListCustomer() {
+        this.primaryStage.setTitle("Bank Project Applications - List Customers");
+        try {
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(Main.class.getResource("view/banking/listingcustomers/ListingCustomers.fxml"));
+            AnchorPane mainOverview = (AnchorPane) loader.load();
+
+            rootLayout.setCenter(mainOverview);
+            ListingCustomersController controller = loader.getController();
+            controller.setMain(this);
         } catch (IOException e) {
             e.printStackTrace();
         }
