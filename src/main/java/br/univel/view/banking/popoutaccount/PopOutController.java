@@ -16,100 +16,123 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 
 public class PopOutController {
+    private Main main;
+    private AccountService accountService = new AccountService();
+    private Account account;
 
-	private Main main;
-	private AccountService accountService = new AccountService();
-	private Account account;
-	@FXML
-	private TextField agency;
+    public void setMain(Main main) {
+        this.main = main;
+    }
 
-	@FXML
-	private ComboBox<TypeAccount> typeAccount;
+    @FXML
+    private void initialize() {
+        typeAccount.getItems().setAll(TypeAccount.CURRENT, TypeAccount.ELETRONIC, TypeAccount.SAVINGS);
+    }
 
-	@FXML
-	private TextField holder;
+    @FXML
+    private TextField agency;
 
-	@FXML
-	private TextField accountField;
-	
-	@FXML
-	private void handleConfirm(){
-		if (isInputValid(true)) {			
-			main.showMainCustomerLayout();
-			main.setAccount(account);
-		}
-	
-	}
+    @FXML
+    private ComboBox<TypeAccount> typeAccount;
 
-	@FXML
-	void handleChangeAccount(KeyEvent event) {
-		if (isInputValid(false)) {
-			Agency a = new AgencyService().getByNumberAgency(agency.getText());
-			account = accountService.getAccountByNumberAccountTypeAccountAgency(accountField.getText(),
-					typeAccount.getSelectionModel().getSelectedItem(), a.getId());
+    @FXML
+    private TextField holder;
 
-			if (account == null) {
-				showError("Conta errada", "Por favor, corrija os erros abaixo", "Conta selecionada invalida");
-			} else {
-				holder.setText(account.getClient().getName());
-			}
-		}
-	}
+    @FXML
+    private TextField accountField;
 
-	@FXML
-	void onClickChangeAccount(MouseEvent event) {
-		typeAccount.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<TypeAccount>() {
-			@Override
-			public void changed(ObservableValue<? extends TypeAccount> observable, TypeAccount oldValue,
-					TypeAccount newValue) {
-				if (isInputValid(false)) {
-					Agency a = new AgencyService().getByNumberAgency(agency.getText());
-					account = accountService.getAccountByNumberAccountTypeAccountAgency(accountField.getText(),
-							typeAccount.getSelectionModel().getSelectedItem(), a.getId());
+    @FXML
+    void handleBack() {
+        main.showMainBankingLayout();
+    }
 
-					if (account == null) {
-						showError("Conta errada", "Por favor, corrija os erros abaixo", "Conta selecionada invalida");
-					} else {
-						holder.setText(account.getClient().getName());
-					}
-				}
+    @FXML
+    void handleConfirm() {
+        if (isInputValid(true)) {
+            main.showMainCustomerLayout();
+            main.setAccount(account);
+        }
 
-			}
-		});
-	}
-	
-	
-	private boolean isInputValid(boolean isConfirmed){
-		 String errorMessage = "";
-	        if (this.agency.getText() == null || this.agency.getLength() == 0) {
-	            errorMessage += "Informe o numero da agencia\n";
-	        }
-	        if (this.accountField.getText() == null || this.accountField.getLength() == 0) {
-	            errorMessage += "Informe o numero da conta\n";
-	        }
-	        if (this.typeAccount.getSelectionModel().getSelectedItem() == null) {
-	            errorMessage += "Informe o tipo da Conta\n";
-	        }
+    }
 
-	        if (errorMessage.equals("")) {
-	            return true;
-	        } else {
-	            showError(
-	                "Erros",
-	                "Por favor corrija os campos inválidos",
-	                errorMessage
-	            );
-	            return false;
-	        }
-	}
-	
-	  protected void showError(String title, String headerTitle, String contentText) {
-	        Alert alert = new Alert(Alert.AlertType.ERROR);
-	        alert.initOwner(main.getPrimaryStage());
-	        alert.setTitle(title);
-	        alert.setHeaderText(headerTitle);
-	        alert.setContentText(contentText);
+    @FXML
+    void handleChangeAccount(KeyEvent event) {
+        if (isInputValid(false)) {
+            Agency a = new AgencyService().getByNumberAgency(agency.getText());
+            account = accountService.getAccountByNumberAccountTypeAccountAgency(accountField.getText(),
+                    typeAccount.getSelectionModel().getSelectedItem(), a.getId());
 
-	        alert.showAndWait();
-	    }
+            if (account == null) {
+                showError(
+                    "Conta errada",
+                    "Por favor, corrija os erros abaixo",
+                    "Conta selecionada invalida"
+                );
+            } else {
+                holder.setText(account.getClient().getName());
+            }
+        }
+    }
+
+    @FXML
+    void onClickChangeAccount(MouseEvent event) {
+        typeAccount.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<TypeAccount>() {
+            @Override
+            public void changed(ObservableValue<? extends TypeAccount> observable, TypeAccount oldValue,
+                                TypeAccount newValue) {
+                if (isInputValid(false)) {
+                    Agency a = new AgencyService().getByNumberAgency(agency.getText());
+                    account = accountService.getAccountByNumberAccountTypeAccountAgency(accountField.getText(),
+                            typeAccount.getSelectionModel().getSelectedItem(), a.getId());
+
+                    if (account == null) {
+                        showError(
+                            "Conta errada",
+                            "Por favor, corrija os erros abaixo",
+                            "Conta selecionada invalida"
+                        );
+                    } else {
+                        holder.setText(account.getClient().getName());
+                    }
+                }
+
+            }
+        });
+    }
+
+
+    private boolean isInputValid(boolean isConfirmed) {
+        String errorMessage = "";
+        if (this.agency.getText() == null || this.agency.getLength() == 0) {
+            errorMessage += "Informe o numero da agencia\n";
+        }
+        if (this.accountField.getText() == null || this.accountField.getLength() == 0) {
+            errorMessage += "Informe o numero da conta\n";
+        }
+        if (this.typeAccount.getSelectionModel().getSelectedItem() == null) {
+            errorMessage += "Informe o tipo da Conta\n";
+        }
+        if (errorMessage.equals("")) {
+            return true;
+        } else {
+            if (isConfirmed) {
+                showError(
+                    "Erros",
+                    "Por favor corrija os campos inválidos",
+                    errorMessage
+                );
+            }
+            return false;
+        }
+    }
+
+    protected void showError(String title, String headerTitle, String contentText) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.initOwner(main.getPrimaryStage());
+        alert.setTitle(title);
+        alert.setHeaderText(headerTitle);
+        alert.setContentText(contentText);
+
+        alert.showAndWait();
+    }
 }

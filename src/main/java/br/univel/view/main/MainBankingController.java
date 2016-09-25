@@ -22,7 +22,7 @@ public class MainBankingController {
 
     @FXML
     public void handleInformation() {
-
+        main.showPopOut();
     }
 
     @FXML

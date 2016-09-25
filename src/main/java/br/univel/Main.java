@@ -17,6 +17,7 @@ import br.univel.view.banking.agency.AgencyController;
 import br.univel.view.banking.agency.AgencyFormController;
 import br.univel.view.banking.listingcustomers.ListingCustomersController;
 import br.univel.view.banking.newaccount.NewAccountController;
+import br.univel.view.banking.popoutaccount.PopOutController;
 import br.univel.view.banking.professionalslist.ProfessionalsFormController;
 import br.univel.view.banking.professionalslist.ProfessionalsListController;
 import br.univel.view.cashwithdrawl.CashWithdrawalController;
@@ -357,6 +358,21 @@ public class Main extends Application implements AccountObserver {
             ProfessionalsFormController controller = loader.getController();
             controller.setMain(this);
             controller.setPerson(person);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void showPopOut() {
+        this.primaryStage.setTitle("Bank Project Applications - Banking PoupOut");
+        try {
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(Main.class.getResource("view/banking/popoutaccount/PopoutAccount.fxml"));
+            AnchorPane mainOverview = (AnchorPane) loader.load();
+
+            rootLayout.setCenter(mainOverview);
+            PopOutController controller = loader.getController();
+            controller.setMain(this);
         } catch (IOException e) {
             e.printStackTrace();
         }
