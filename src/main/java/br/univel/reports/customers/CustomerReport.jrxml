@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.1.0.final using JasperReports Library version 6.1.0  -->
+<!-- 2016-09-25T17:29:43 -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="CustomerReport" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="9ac9d8b4-74d5-442f-ae1c-91247db1daf9">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<field name="agency" class="br.univel.model.agency.Agency">
+		<fieldDescription><![CDATA[agency]]></fieldDescription>
+	</field>
+	<field name="accountNumber" class="java.lang.Long">
+		<fieldDescription><![CDATA[accountNumber]]></fieldDescription>
+	</field>
+	<field name="client" class="br.univel.model.person.Person">
+		<fieldDescription><![CDATA[client]]></fieldDescription>
+	</field>
+	<field name="balance" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[balance]]></fieldDescription>
+	</field>
+	<field name="openingDate" class="java.sql.Timestamp">
+		<fieldDescription><![CDATA[openingDate]]></fieldDescription>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<frame>
+				<reportElement mode="Opaque" x="-20" y="-20" width="595" height="92" backcolor="#006699" uuid="8fd3d27c-c57c-400a-b971-243b12c77237"/>
+				<staticText>
+					<reportElement x="380" y="10" width="80" height="20" forecolor="#FFFFFF" uuid="c3083570-0011-4c5e-b80d-6eb2e5d1555c"/>
+					<textElement>
+						<font fontName="Arial Black" size="11"/>
+					</textElement>
+					<text><![CDATA[Bank Project]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="390" y="26" width="198" height="30" forecolor="#FFFFFF" uuid="d791d67d-86cf-4b3f-b17b-833e623fce4a"/>
+					<textElement>
+						<font fontName="Arial" size="11" isItalic="true"/>
+					</textElement>
+					<text><![CDATA[Work of Object-oriented programming]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="0" y="40" width="421" height="43" forecolor="#FFFFFF" uuid="dd316239-3408-4dad-a2f9-ab23dff969df"/>
+					<textElement>
+						<font size="34" isBold="true" isItalic="true"/>
+					</textElement>
+					<text><![CDATA[LISTAGEM DE CLIENTES]]></text>
+				</staticText>
+			</frame>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="4" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="21" splitType="Stretch">
+			<frame>
+				<reportElement mode="Opaque" x="-20" y="0" width="595" height="21" forecolor="#000000" backcolor="#E5E5E5" uuid="d2e423ef-8f5d-44f6-a802-0bd7e128c14d"/>
+				<staticText>
+					<reportElement x="510" y="0" width="80" height="20" uuid="476810c2-6572-4507-ae21-a2cf88760185"/>
+					<textElement>
+						<font fontName="SansSerif" size="14" isBold="true"/>
+					</textElement>
+					<text><![CDATA[BALANCE R$]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="0" y="0" width="84" height="20" uuid="2d4f5cd2-cc65-46f6-8832-c025d4c45cd9"/>
+					<textElement>
+						<font fontName="SansSerif" size="14" isBold="true"/>
+					</textElement>
+					<text><![CDATA[AGENCIA]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="128" y="2" width="66" height="19" uuid="ad7959d7-eb48-4477-a9fe-4e81124de23a"/>
+					<textElement>
+						<font fontName="SansSerif" size="14" isBold="true"/>
+					</textElement>
+					<text><![CDATA[NUMERO]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="194" y="2" width="214" height="19" uuid="5b38c4ea-bd59-45aa-a1a8-08acd6a7420b"/>
+					<textElement>
+						<font fontName="SansSerif" size="14" isBold="true"/>
+					</textElement>
+					<text><![CDATA[TITULAR]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="408" y="0" width="100" height="20" uuid="a8f07ef6-0854-4645-946f-df10d73d03c7"/>
+					<textElement>
+						<font fontName="SansSerif" size="11" isBold="true"/>
+					</textElement>
+					<text><![CDATA[DATA ABERTURA]]></text>
+				</staticText>
+			</frame>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="28" splitType="Stretch">
+			<frame>
+				<reportElement mode="Opaque" x="-20" y="-1" width="595" height="25" uuid="6ef03559-9dcf-46d8-bf4e-2c29dc578451"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textField>
+					<reportElement x="2" y="4" width="82" height="21" uuid="161c50da-4c15-4f62-a6e6-9c4f399f35da"/>
+					<textFieldExpression><![CDATA[$F{agency}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="130" y="5" width="65" height="20" uuid="78da08f5-cfc9-41bc-8037-1163d753cc55"/>
+					<textFieldExpression><![CDATA[$F{accountNumber}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="196" y="5" width="213" height="20" uuid="86992c32-dcb7-4a9b-aab8-c83ce60486b1"/>
+					<textFieldExpression><![CDATA[$F{client}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="511" y="4" width="80" height="21" uuid="eec75f50-2f14-46ef-ba8f-742e7fc558a8"/>
+					<textFieldExpression><![CDATA[$F{balance}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="408" y="5" width="100" height="20" uuid="d73481f7-00c5-4e4e-8738-f2f0d7a86202"/>
+					<textFieldExpression><![CDATA[$F{openingDate}]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="23" splitType="Stretch">
+			<frame>
+				<reportElement mode="Opaque" x="-20" y="0" width="595" height="23" backcolor="#E5E5E5" uuid="219e0fa5-44b2-4966-af24-734559e37522"/>
+				<staticText>
+					<reportElement x="19" y="4" width="180" height="14" uuid="44a8e036-c073-4dd6-9d10-9c99d9105c2a"/>
+					<text><![CDATA[Powered by Felipe Frizzo]]></text>
+				</staticText>
+				<textField pattern="MMMMM dd, yyyy">
+					<reportElement x="470" y="5" width="100" height="13" uuid="080c3aad-2368-49ca-a94d-0864e8ed3814"/>
+					<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

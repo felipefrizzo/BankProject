@@ -37,7 +37,7 @@ public class MainBankingController {
 
     @FXML
     public void handleCustomers() {
-
+        main.showListCustomer();
     }
 
 }
