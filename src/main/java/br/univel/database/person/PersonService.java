@@ -75,4 +75,11 @@ public class PersonService implements DaoService<Person, Long> {
         sessionFactory.closeSessionWithTransaction();
         return person;
     }
+
+    public List<Person> getAllBankings() {
+        sessionFactory.openSessionWithTransaction();
+        List<Person> person = personDao.getAllBankings();
+        sessionFactory.closeSessionWithTransaction();
+        return person;
+    }
 }

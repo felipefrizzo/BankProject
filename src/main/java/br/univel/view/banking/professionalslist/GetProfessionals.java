@@ -16,7 +16,7 @@ public class GetProfessionals {
 	private List<Person> person = new ArrayList<>();
 	
 	public GetProfessionals(){
-		person = personService.getAll("from Banking");
+		person = personService.getAllBankings();
 		
 		for(Person p : person){
 			observableList.add(p);

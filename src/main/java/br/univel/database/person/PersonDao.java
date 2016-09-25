@@ -3,6 +3,7 @@ package br.univel.database.person;
 import br.univel.database.DaoInterface;
 import br.univel.database.SessionFactory;
 import br.univel.model.person.Person;
+import br.univel.model.person.TypePerson;
 
 import java.util.List;
 
@@ -66,5 +67,13 @@ public class PersonDao implements DaoInterface<Person, Long> {
             return person;
         }
         return null;
+    }
+
+    public List<Person> getAllBankings() {
+        List<Person> persons = sessionFactory.getSession()
+                .createQuery("from Banking where type_person = :type_person")
+                .setParameter("type_person", TypePerson.BANKING.ordinal())
+                .list();
+        return persons;
     }
 }
