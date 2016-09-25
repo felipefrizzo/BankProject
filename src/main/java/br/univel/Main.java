@@ -45,8 +45,10 @@ public class Main extends Application implements AccountObserver {
     final List<MainObserver> observers = new ArrayList<>();
 
     private Account account;
+    private boolean isBanking;
     private Stage primaryStage;
     private BorderPane rootLayout;
+    private Person banking;
 
     public void notifyObservers() {
         for (final MainObserver observer : observers) {
@@ -70,6 +72,18 @@ public class Main extends Application implements AccountObserver {
         this.account = account;
         account.addObservers(this);
         notifyObservers();
+    }
+
+    public boolean isBanking() {
+        return isBanking;
+    }
+
+    public void setBanking(boolean banking) {
+        isBanking = banking;
+    }
+
+    public void setBanking(Person banking) {
+        this.banking = banking;
     }
 
     public static void main(String[] args) {
@@ -167,7 +181,11 @@ public class Main extends Application implements AccountObserver {
 
             PasswordModalController controller = loader.getController();
             controller.setDialogStage(dialogStage);
-            controller.setPerson(person);
+            if (isBanking) {
+                controller.setPerson(banking);
+            } else {
+                controller.setPerson(person);
+            }
 
             dialogStage.showAndWait();
 

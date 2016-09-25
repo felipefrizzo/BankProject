@@ -68,12 +68,15 @@ public class LoginController {
 						if (!account.isActive()) {
 							main.showMainCustomerLayout();
 							main.setAccount(account);
+							main.setBanking(false);
 						} else {
 							this.errorMsg.setText("Conta inátiva");
 							this.errorMsg.setVisible(true);
 						}
 					} else if (p.getTypePerson() == TypePerson.BANKING) {
 						main.showMainBankingLayout();
+						main.setBanking(true);
+						main.setBanking(p);
 					}
 
 				} else {

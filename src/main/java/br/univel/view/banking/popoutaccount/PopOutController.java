@@ -51,6 +51,7 @@ public class PopOutController {
         if (isInputValid(true)) {
             main.showMainCustomerLayout();
             main.setAccount(account);
+            main.setBanking(true);
         }
 
     }
