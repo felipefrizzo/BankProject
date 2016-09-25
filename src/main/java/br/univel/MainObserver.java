@@ -5,4 +5,6 @@ package br.univel;
  */
 public interface MainObserver {
     void showAccountInformation(final Main main);
+
+    void disableAccountInformation(final Main main);
 }

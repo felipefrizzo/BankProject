@@ -60,4 +60,22 @@ public class RootLayoutController implements MainObserver{
         this.typeAccount.setText(main.getAccount().getTypeAccount().name());
         this.balance.setText(String.valueOf(main.getAccount().getBalance()));
     }
+
+    @Override
+    public void disableAccountInformation(Main main) {
+        this.agencyLabel.setVisible(false);
+        this.accountLabel.setVisible(false);
+        this.typeAccountLabel.setVisible(false);
+        this.balanceLabel.setVisible(false);
+
+        this.branchCode.setVisible(false);
+        this.accountNumber.setVisible(false);
+        this.typeAccount.setVisible(false);
+        this.balance.setVisible(false);
+
+        this.branchCode.setText("");
+        this.accountNumber.setText("");
+        this.typeAccount.setText("");
+        this.balance.setText("");
+    }
 }

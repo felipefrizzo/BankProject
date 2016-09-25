@@ -8,10 +8,7 @@ import br.univel.model.account.TypeAccount;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.ButtonBar;
-import javafx.scene.control.ButtonType;
+import javafx.scene.control.*;
 
 import java.math.BigDecimal;
 import java.util.Optional;
@@ -41,8 +38,14 @@ public class MainCustomerController implements MainObserver {
     @FXML
     private Button finish;
 
+    @FXML
+    private Hyperlink backToBanking;
+
     public void setMain(Main main) {
         this.main = main;
+        if (this.main.isBanking()) {
+            backToBanking.setVisible(true);
+        }
     }
 
     @FXML
@@ -98,6 +101,11 @@ public class MainCustomerController implements MainObserver {
         }
     }
 
+    @Override
+    public void disableAccountInformation(Main main) {
+
+    }
+
     protected boolean showError(String type, String title, String headerTitle, String contentText) {
         Alert alert;
         if (type.equalsIgnoreCase("confirmation")) {
@@ -118,5 +126,11 @@ public class MainCustomerController implements MainObserver {
         }
 
         return false;
+    }
+
+    @FXML
+    void handleBackToBanking(ActionEvent event) {
+        main.showMainBankingLayout();
+        main.notifyObserversCleanFields();
     }
 }

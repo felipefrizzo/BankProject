@@ -56,6 +56,12 @@ public class Main extends Application implements AccountObserver {
         }
     }
 
+    public void notifyObserversCleanFields() {
+        for (final MainObserver observer : observers) {
+            observer.disableAccountInformation(this);
+        }
+    }
+
     public void addObservers(MainObserver observer) {
         this.observers.add(observer);
     }
