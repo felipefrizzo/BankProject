@@ -5,18 +5,18 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.univel.view.banking.listingcustomers.ListingCustomersController">
    <children>
       <TableView fx:id="tableCustomers" layoutY="3.0" prefHeight="350.0" prefWidth="600.0">
         <columns>
-          <TableColumn fx:id="typeAccount" prefWidth="103.0" text="Tipo Conta" />
-          <TableColumn fx:id="agency" prefWidth="91.0" text="Agencia" />
-            <TableColumn fx:id="number" prefWidth="73.0" text="Numero" />
-            <TableColumn fx:id="customer" prefWidth="145.0" text="Titular" />
-            <TableColumn fx:id="openedIn" prefWidth="96.0" text="Aberta em" />
-            <TableColumn fx:id="balance" prefWidth="89.0" text="Saldo" />
+          <TableColumn fx:id="typeAccountColumn" prefWidth="103.0" text="Tipo Conta" />
+          <TableColumn fx:id="agencyColumn" prefWidth="91.0" text="Agencia" />
+            <TableColumn fx:id="numberColumn" prefWidth="73.0" text="Numero" />
+            <TableColumn fx:id="customerColumn" prefWidth="145.0" text="Titular" />
+            <TableColumn fx:id="openedInColumn" prefWidth="96.0" text="Aberta em" />
+            <TableColumn fx:id="balanceColumn" prefWidth="89.0" text="Saldo" />
         </columns>
       </TableView>
-      <Button fx:id="print" layoutX="512.0" layoutY="361.0" mnemonicParsing="false" text="Imprimir" />
+      <Button fx:id="print" layoutX="512.0" layoutY="361.0" mnemonicParsing="false" onAction="#handlePrint" text="Imprimir" />
    </children>
 </AnchorPane>
