@@ -16,6 +16,8 @@ import br.univel.view.balance.BalanceController;
 import br.univel.view.banking.agency.AgencyController;
 import br.univel.view.banking.agency.AgencyFormController;
 import br.univel.view.banking.newaccount.NewAccountController;
+import br.univel.view.banking.professionalslist.ProfessionalsFormController;
+import br.univel.view.banking.professionalslist.ProfessionalsListController;
 import br.univel.view.cashwithdrawl.CashWithdrawalController;
 import br.univel.view.deposit.DepositController;
 import br.univel.view.login.LoginController;
@@ -308,6 +310,37 @@ public class Main extends Application implements AccountObserver {
             AgencyFormController controller = loader.getController();
             controller.setMain(this);
             controller.setAgency(agency);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void showProfessionals() {
+        this.primaryStage.setTitle("Bank Project Applications - Banking Professional");
+        try {
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(Main.class.getResource("view/banking/professionalslist/ProfessionalsList.fxml"));
+            AnchorPane mainOverview = (AnchorPane) loader.load();
+
+            rootLayout.setCenter(mainOverview);
+            ProfessionalsListController controller = loader.getController();
+            controller.setMain(this);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void showProfessionalsDetail(Person person) {
+        this.primaryStage.setTitle("Bank Project Applications - Banking Professional");
+        try {
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(Main.class.getResource("view/banking/professionalslist/ProfessionalsForm.fxml"));
+            AnchorPane mainOverview = (AnchorPane) loader.load();
+
+            rootLayout.setCenter(mainOverview);
+            ProfessionalsFormController controller = loader.getController();
+            controller.setMain(this);
+            controller.setPerson(person);
         } catch (IOException e) {
             e.printStackTrace();
         }

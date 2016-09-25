@@ -17,7 +17,7 @@ public class MainBankingController {
 
     @FXML
     public void handleProfessionals() {
-
+        main.showProfessionals();
     }
 
     @FXML

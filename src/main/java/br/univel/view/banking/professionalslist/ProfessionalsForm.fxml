@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.univel.view.banking.newaccount.NewAccountController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.univel.view.banking.professionalslist.ProfessionalsFormController">
    <children>
       <GridPane alignment="CENTER" layoutX="66.0" layoutY="33.0" prefHeight="335.0" prefWidth="469.0">
         <columnConstraints>
@@ -116,9 +116,9 @@
                   </PasswordField>
                </children>
             </GridPane>
-            <Button fx:id="confirm" mnemonicParsing="false" onAction="#handleNewBanking" text="Confirme" GridPane.halignment="RIGHT" GridPane.rowIndex="4" GridPane.valignment="BOTTOM" />
+            <Button mnemonicParsing="false" onAction="#handleNewBanking" text="Confirme" GridPane.halignment="RIGHT" GridPane.rowIndex="4" GridPane.valignment="BOTTOM" />
          </children>
       </GridPane>
-      <Hyperlink layoutY="2.0" onAction="#handleBack" text="Principal" />
+      <Hyperlink layoutY="2.0" onAction="#handleBackToBanking" text="Bancarios" />
    </children>
 </AnchorPane>

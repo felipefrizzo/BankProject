@@ -1,29 +1,31 @@
 package br.univel.view.banking.professionalslist;
 
-import java.awt.event.ActionEvent;
-import java.math.BigDecimal;
-
 import br.univel.Main;
 import br.univel.database.person.PersonService;
-import br.univel.model.account.Account;
-import br.univel.model.person.Customer;
 import br.univel.model.person.Person;
-import br.univel.model.person.PersonFactory;
 import br.univel.model.person.TypePerson;
 import br.univel.model.person.TypePersonFactory;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 
 public class ProfessionalsFormController {
-
 	private Main main;
+    private Person person;
+    private TypePersonFactory personFactory = new TypePersonFactory();
 	private PersonService personService = new PersonService();
-	
-	
-	@FXML
+
+    public void setMain(Main main) {
+        this.main = main;
+    }
+
+    public void setPerson(Person person) {
+        this.person = person;
+        showBankingDetails(this.person);
+    }
+
+    @FXML
     private TextField name;
 
     @FXML
@@ -42,40 +44,55 @@ public class ProfessionalsFormController {
     private PasswordField passwordOperation;
 
     @FXML
-    private Button confirm;
-
-    @FXML
-    void handleBack(ActionEvent event) {
-    	main.showMainBankingLayout();
+    void handleBackToBanking() {
+        main.showProfessionals();
     }
 
     @FXML
-    void handleNewBanking(ActionEvent event) {
-    	if (isInputValid()) {
+    void handleNewBanking() {
+        if (isInputValid()) {
+            if (this.person == null) {
+                Person p = personFactory.create(
+                        TypePerson.BANKING,
+                        this.name.getText(),
+                        this.username.getText(),
+                        Integer.parseInt(this.age.getText()),
+                        this.cpf.getText(),
+                        this.passwordAccess.getText(),
+                        this.passwordOperation.getText()
+                );
+                personService.save(p);
+                main.showProfessionals();
+            } else {
+                person.setName(name.getText());
+                person.setAge(Integer.valueOf(age.getText()));
+                person.setCpf(cpf.getText());
+                person.setOperationPassword(passwordOperation.getText());
 
-			Person person = new TypePersonFactory().create(
-				TypePerson.BANKING, 
-				this.name.getText(),
-				this.username.getText(), 
-				Integer.parseInt(this.age.getText()), 
-				this.cpf.getText(),
-				this.passwordAccess.getText(), 
-				this.passwordOperation.getText()
-			);
-				personService.save(person);	
-				cleanFields();
-			
-		}
-	}
+                personService.update(person);
+            }
+        }
+    }
 
-    protected void cleanFields() {
-		passwordAccess.setText("");
-		cpf.setText("");
-		age.setText("");
-		passwordOperation.setText("");
-		name.setText("");
-		username.setText("");
-	}
+	public void showBankingDetails(Person p) {
+        if (p != null) {
+            name.setText(p.getName());
+            age.setText(String.valueOf(p.getAge()));
+            cpf.setText(p.getCpf());
+            username.setText(p.getUsername());
+            passwordAccess.setText(p.getAccessPassword());
+            passwordOperation.setText(p.getOperationPassword());
+
+            passwordAccess.setDisable(true);
+        } else {
+            name.setText("");
+            age.setText("");
+            cpf.setText("");
+            username.setText("");
+            passwordAccess.setText("");
+            passwordOperation.setText("");
+        }
+    }
 
     private boolean isInputValid(){
     	String errorMessage = "";
