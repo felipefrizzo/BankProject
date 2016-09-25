@@ -100,6 +100,14 @@ public class Account implements AccountInterface {
         return balance;
     }
 
+    public Date getOpeningDate() {
+        return openingDate;
+    }
+
+    public void setOpeningDate(Date openingDate) {
+        this.openingDate = openingDate;
+    }
+
     @Override
     public AccountInterface setId(Long id) {
         this.id = id;

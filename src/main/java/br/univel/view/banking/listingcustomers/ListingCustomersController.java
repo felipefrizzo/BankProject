@@ -1,27 +1,29 @@
 package br.univel.view.banking.listingcustomers;
 
-import java.math.BigDecimal;
-import java.util.Date;
-
 import br.univel.Main;
+import br.univel.database.account.AccountService;
 import br.univel.model.account.Account;
 import br.univel.model.account.TypeAccount;
+import br.univel.model.agency.Agency;
+import br.univel.model.person.Person;
+import br.univel.reports.customers.CustomerReport;
 import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 
+import java.math.BigDecimal;
+import java.util.Date;
+import java.util.List;
+
 public class ListingCustomersController {
-
+	private CustomerReport customerReport = new CustomerReport();
+	private AccountService accountService = new AccountService();
 	private Main main;
-	private Account account;
-	
-	private void setMain(Main main) {
-		this.main = main;
-	}
 
-	private void setAccount(Account account) {
-		this.account = account;
+	public void setMain(Main main) {
+		this.main = main;
+        tableCustomers.setItems(new GetCustomers().getObservableList());
 	}
 
 	@FXML
@@ -32,7 +34,6 @@ public class ListingCustomersController {
 		typeAccountColumn.setCellValueFactory(new PropertyValueFactory<>("typeAccount"));
 		balanceColumn.setCellValueFactory(new PropertyValueFactory<>("balance"));
 		openedInColumn.setCellValueFactory(new PropertyValueFactory<>("openingDate"));
-		
 	}
 	
 	@FXML
@@ -54,12 +55,11 @@ public class ListingCustomersController {
 	private TableColumn<Account, Date> openedInColumn;
 
 	@FXML
-	private TableColumn<Account, String> customerColumn;
+	private TableColumn<Person, String> customerColumn;
 	
 	@FXML
 	private void handlePrint(){
-		
+		List<Account> list = accountService.getAll("FROM Account");
+		customerReport.printReport(list);
 	}
-	
-
 }
