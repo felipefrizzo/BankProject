@@ -1,5 +1,6 @@
 package br.univel.view.banking.popoutaccount;
 
+import br.univel.model.account.TypeAccount;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
@@ -14,7 +15,7 @@ public class PopOutController {
 	private TextField agency;
 
 	@FXML
-	private ComboBox<?> typeAccount;
+	private ComboBox<TypeAccount> typeAccount;
 
 	@FXML
 	private TextField holder;
@@ -23,7 +24,7 @@ public class PopOutController {
 	private TextField account;
 	
 	@FXML
-	private void handle(){
+	private void handleConfirm(){
 		
 	}
 
