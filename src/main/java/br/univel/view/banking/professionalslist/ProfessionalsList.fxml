@@ -13,7 +13,7 @@
           <TableColumn fx:id="usernameColumn" minWidth="0.0" prefWidth="299.0" text="Usuário" />
         </columns>
       </TableView>
-      <Button fx:id="addBanking" layoutX="524.0" layoutY="361.0" mnemonicParsing="false" text="Novo" />
-      <Button fx:id="editBanking" layoutX="453.0" layoutY="361.0" mnemonicParsing="false" text="Editar" />
+      <Button layoutX="524.0" layoutY="361.0" mnemonicParsing="false" text="Novo" />
+      <Button layoutX="453.0" layoutY="361.0" mnemonicParsing="false" text="Editar" />
    </children>
 </AnchorPane>
