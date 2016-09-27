@@ -6,10 +6,11 @@
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="410.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/8.0.76-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.univel.view.main.MainBankingController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.76-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.univel.view.main.MainBankingController">
    <children>
-      <GridPane layoutX="134.0" layoutY="99.0" prefHeight="263.0" prefWidth="441.0">
+      <GridPane layoutX="80.0" layoutY="69.0" prefHeight="263.0" prefWidth="441.0">
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -20,37 +21,60 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Button mnemonicParsing="false" onAction="#handleInformation" prefHeight="40.0" prefWidth="190.0" text="1 - INFORMAÇOES">
+            <Button mnemonicParsing="false" onAction="#handleInformation" prefHeight="40.0" prefWidth="190.0" text="1 - INFORMAÇOES" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
                <padding>
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                </padding>
+               <GridPane.margin>
+                  <Insets bottom="5.0" right="5.0" top="5.0" />
+               </GridPane.margin>
             </Button>
-            <Button mnemonicParsing="false" onAction="#handleNewAccount" prefHeight="40.0" prefWidth="190.0" text="2 - NOVA CONTA" GridPane.rowIndex="1">
+            <Button mnemonicParsing="false" onAction="#handleNewAccount" prefHeight="40.0" prefWidth="190.0" text="2 - NOVA CONTA" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
                <padding>
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                </padding>
+               <GridPane.margin>
+                  <Insets bottom="5.0" right="5.0" top="5.0" />
+               </GridPane.margin>
             </Button>
-            <Button mnemonicParsing="false" onAction="#handleCustomers" prefHeight="40.0" prefWidth="190.0" text="3 - CLIENTES" GridPane.rowIndex="2">
+            <Button mnemonicParsing="false" onAction="#handleCustomers" prefHeight="40.0" prefWidth="190.0" text="3 - CLIENTES" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
                <padding>
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                </padding>
+               <GridPane.margin>
+                  <Insets bottom="5.0" right="5.0" top="5.0" />
+               </GridPane.margin>
             </Button>
-            <Button mnemonicParsing="false" onAction="#handleProfessionals" prefHeight="40.0" prefWidth="190.0" text="4 - PROFISSIONAIS" GridPane.columnIndex="1">
+            <Button mnemonicParsing="false" onAction="#handleProfessionals" prefHeight="40.0" prefWidth="190.0" text="4 - PROFISSIONAIS" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
                <padding>
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                </padding>
+               <GridPane.margin>
+                  <Insets bottom="5.0" right="5.0" top="5.0" />
+               </GridPane.margin>
             </Button>
-            <Button mnemonicParsing="false" onAction="#handleBalance" prefHeight="40.0" prefWidth="190.0" text="5 - BALANÇO" GridPane.columnIndex="1" GridPane.rowIndex="1">
+            <Button mnemonicParsing="false" onAction="#handleBalance" prefHeight="40.0" prefWidth="190.0" text="5 - BALANÇO" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
                <padding>
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                </padding>
+               <GridPane.margin>
+                  <Insets bottom="5.0" right="5.0" top="5.0" />
+               </GridPane.margin>
             </Button>
-            <Button mnemonicParsing="false" onAction="#handleAgencies" prefHeight="40.0" prefWidth="190.0" text="6 - AGÊNCIAS" GridPane.columnIndex="1" GridPane.rowIndex="2">
+            <Button mnemonicParsing="false" onAction="#handleAgencies" prefHeight="40.0" prefWidth="190.0" text="6 - AGÊNCIAS" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
                <padding>
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                </padding>
+               <GridPane.margin>
+                  <Insets bottom="5.0" right="5.0" top="5.0" />
+               </GridPane.margin>
             </Button>
          </children>
       </GridPane>
+      <Button layoutX="546.0" layoutY="376.0" mnemonicParsing="false" onAction="#handleLogout" text="Logout">
+         <font>
+            <Font name="System Bold" size="11.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>

@@ -24,19 +24,10 @@ public class MainCustomerController implements MainObserver {
     private Button cashWithdrawal;
 
     @FXML
-    private Button transfer;
-
-    @FXML
-    private Button balance;
-
-    @FXML
     private Button payment;
 
     @FXML
     private Button deposit;
-
-    @FXML
-    private Button finish;
 
     @FXML
     private Hyperlink backToBanking;
@@ -131,6 +122,14 @@ public class MainCustomerController implements MainObserver {
     @FXML
     void handleBackToBanking(ActionEvent event) {
         main.showMainBankingLayout();
+        main.notifyObserversCleanFields();
+    }
+
+    @FXML
+    void handleLogout() {
+        main.setBanking(null);
+        main.setBanking(false);
+        main.showLoginLayout();
         main.notifyObserversCleanFields();
     }
 }

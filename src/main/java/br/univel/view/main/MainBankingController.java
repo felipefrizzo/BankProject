@@ -40,4 +40,11 @@ public class MainBankingController {
         main.showListCustomer();
     }
 
+    @FXML
+    void handleLogout() {
+        main.setBanking(null);
+        main.setBanking(false);
+        main.showLoginLayout();
+        main.notifyObserversCleanFields();
+    }
 }

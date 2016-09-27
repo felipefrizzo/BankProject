@@ -7,8 +7,9 @@
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.univel.view.main.MainCustomerController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.76-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.univel.view.main.MainCustomerController">
    <children>
       <GridPane layoutX="95.0" layoutY="94.0" prefHeight="212.0" prefWidth="410.0">
         <columnConstraints>
@@ -53,5 +54,9 @@
          </children>
       </GridPane>
       <Hyperlink fx:id="backToBanking" layoutY="2.0" onAction="#handleBackToBanking" text="Voltar para a tela de bancario" visible="false" />
+      <Button layoutX="536.0" layoutY="371.0" mnemonicParsing="false" onAction="#handleLogout" text="Logout">
+         <font>
+            <Font name="System Bold" size="10.0" />
+         </font></Button>
    </children>
 </AnchorPane>

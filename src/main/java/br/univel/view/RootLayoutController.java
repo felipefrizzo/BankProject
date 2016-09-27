@@ -6,12 +6,20 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 
 import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 /**
  * Created by felipefrizzo on 8/30/16.
  */
 public class RootLayoutController implements MainObserver{
     private Main main;
+
+    @FXML
+    private void initialize() {
+        this.date.setText(new SimpleDateFormat("dd/MM/yyyy hh:mm").format(new Date()));
+    }
+
     @FXML
     private Label date;
 
@@ -45,6 +53,7 @@ public class RootLayoutController implements MainObserver{
 
     @Override
     public void showAccountInformation(Main main) {
+        this.date.setText(new SimpleDateFormat("dd/MM/yyyy hh:mm").format(new Date()));
         this.agencyLabel.setVisible(true);
         this.accountLabel.setVisible(true);
         this.typeAccountLabel.setVisible(true);
