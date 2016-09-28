@@ -99,7 +99,7 @@ public class Main extends Application implements AccountObserver {
     public static void main(String[] args) {
         PersonService personService = new PersonService();
         if (personService.getByCPF("051") == null) {
-            Person person = new TypePersonFactory().create(TypePerson.BANKING, "Felipe Frizzo", "admin", 19, "051", "admin", "123456");
+            Person person = new TypePersonFactory().create(TypePerson.BANKING, "Administrator", "admin", 19, "051", "admin", "123456");
             personService.save(person);
         }
 
