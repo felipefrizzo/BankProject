@@ -6,6 +6,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -18,6 +19,14 @@ public class GetOperationBanking {
 
     public GetOperationBanking(Long idAccount) {
         operationBanking = operationBankingService.getAllByAccount(idAccount);
+
+        for (OperationBanking operation: operationBanking) {
+            observableList.add(operation);
+        }
+    }
+
+    public GetOperationBanking(Long idAccount, Date dateFrom, Date dateTo) {
+        operationBanking = operationBankingService.getAllByAccountByDate(idAccount, dateFrom, dateTo);
 
         for (OperationBanking operation: operationBanking) {
             observableList.add(operation);

@@ -4,6 +4,7 @@ import br.univel.database.DaoService;
 import br.univel.database.SessionFactory;
 import br.univel.model.operationbanking.OperationBanking;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -58,6 +59,13 @@ public class OperationBankingService implements DaoService<OperationBanking, Lon
     public List<OperationBanking> getAllByAccount(Long account) {
         sessionFactory.openSessionWithTransaction();
         List<OperationBanking> operationBanking = operationBankingDao.getAllByAccount(account);
+        sessionFactory.closeSessionWithTransaction();
+        return operationBanking;
+    }
+
+    public List<OperationBanking> getAllByAccountByDate(Long account, Date dateFrom, Date dateTo) {
+        sessionFactory.openSessionWithTransaction();
+        List<OperationBanking> operationBanking = operationBankingDao.getAllByAccountByDate(account, dateFrom, dateTo);
         sessionFactory.closeSessionWithTransaction();
         return operationBanking;
     }

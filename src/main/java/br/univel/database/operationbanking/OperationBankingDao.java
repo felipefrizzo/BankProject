@@ -4,6 +4,7 @@ import br.univel.database.DaoInterface;
 import br.univel.database.SessionFactory;
 import br.univel.model.operationbanking.OperationBanking;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -44,6 +45,17 @@ public class OperationBankingDao implements DaoInterface<OperationBanking, Long>
         List<OperationBanking> operationBanking = sessionFactory.getSession()
                 .createQuery("from OperationBanking where id_account = :id_account")
                 .setParameter("id_account", account)
+                .list();
+
+        return operationBanking;
+    }
+
+    public List<OperationBanking> getAllByAccountByDate(Long account, Date dateFrom, Date dateTo) {
+        List<OperationBanking> operationBanking = sessionFactory.getSession()
+                .createQuery("from OperationBanking where date between :date_from and :date_to and id_account = :id_account")
+                .setParameter("id_account", account)
+                .setParameter("date_from", dateFrom)
+                .setParameter("date_to", dateTo)
                 .list();
 
         return operationBanking;

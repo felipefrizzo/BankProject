@@ -6,13 +6,14 @@ import br.univel.model.operationbanking.OperationBanking;
 import br.univel.reports.balance.BalanceReport;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.Label;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
 
 import java.math.BigDecimal;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 
@@ -59,36 +60,6 @@ public class BalanceController {
     private DatePicker dateTo;
 
     @FXML
-    void handleAdvanceDay(ActionEvent event) {
-
-    }
-
-    @FXML
-    void handleAdvanceMonth(ActionEvent event) {
-
-    }
-
-    @FXML
-    void handleAdvanceYear(ActionEvent event) {
-
-    }
-
-    @FXML
-    void handleBackDay(ActionEvent event) {
-
-    }
-
-    @FXML
-    void handleBackMonth(ActionEvent event) {
-
-    }
-
-    @FXML
-    void handleBackYear(ActionEvent event) {
-
-    }
-
-    @FXML
     void handlePrint(ActionEvent event) {
         List<OperationBanking> list = operationBankingService.getAllByAccount(main.getAccount().getId());
         balanceReport.printReport(list);
@@ -98,5 +69,57 @@ public class BalanceController {
     void handleBackToHome(ActionEvent event) {
         main.showMainCustomerLayout();
         main.notifyObservers();
+    }
+
+    @FXML
+    void onClickGetDateFrom(MouseEvent mouseEvent) {
+        dateFrom.setOnAction(event -> {
+            if (dateFrom.getValue() != null && dateTo.getValue() != null) {
+                if (dateTo.getValue().compareTo(dateFrom.getValue()) >= 0) {
+                    getOperationsByDate(String.valueOf(dateFrom.getValue()), String.valueOf(dateTo.getValue()));
+                } else {
+                    showError("Data invalida", "Por favor, corrija os erros abaixo", "A data selecionada não é valida");
+                }
+            }
+        });
+        dateTo.setOnAction(event -> {
+            if (dateFrom.getValue() != null && dateTo.getValue() != null) {
+                if (dateTo.getValue().compareTo(dateFrom.getValue()) >= 0) {
+                    getOperationsByDate(String.valueOf(dateFrom.getValue()), String.valueOf(dateTo.getValue()));
+                } else {
+                    showError("Data invalida", "Por favor, corrija os erros abaixo", "A data selecionada não é valida");
+                }
+            }
+        });
+    }
+
+    protected void getOperationsByDate(String from, String to) {
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+
+        try {
+            Date dateFrom = dateFormat.parse(from);
+            Date dateTo = dateFormat.parse(to);
+
+            operationTable.setItems(new GetOperationBanking(
+                this.main.getAccount().getId(),
+                dateFrom,
+                dateTo)
+                .getObservableList()
+            );
+
+            initialize();
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+    }
+
+    protected void showError(String title, String headerTitle, String contentText) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.initOwner(main.getPrimaryStage());
+        alert.setTitle(title);
+        alert.setHeaderText(headerTitle);
+        alert.setContentText(contentText);
+
+        alert.showAndWait();
     }
 }
