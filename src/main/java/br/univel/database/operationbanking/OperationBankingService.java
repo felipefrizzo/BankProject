@@ -56,6 +56,13 @@ public class OperationBankingService implements DaoService<OperationBanking, Lon
         return operationBanking;
     }
 
+    public List<OperationBanking> getAllByDate(Date dateFrom, Date dateTo) {
+        sessionFactory.openSessionWithTransaction();
+        List<OperationBanking> operationBanking = operationBankingDao.getAllByDate(dateFrom, dateTo);
+        sessionFactory.closeSessionWithTransaction();
+        return operationBanking;
+    }
+
     public List<OperationBanking> getAllByAccount(Long account) {
         sessionFactory.openSessionWithTransaction();
         List<OperationBanking> operationBanking = operationBankingDao.getAllByAccount(account);

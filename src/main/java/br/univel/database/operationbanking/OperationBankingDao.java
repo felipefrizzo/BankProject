@@ -41,6 +41,16 @@ public class OperationBankingDao implements DaoInterface<OperationBanking, Long>
         return operationBankings;
     }
 
+    public List<OperationBanking> getAllByDate(Date dateFrom, Date dateTo) {
+        List<OperationBanking> operationBanking = sessionFactory.getSession()
+                .createQuery("from OperationBanking where date between :date_from and :date_to")
+                .setParameter("date_from", dateFrom)
+                .setParameter("date_to", dateTo)
+                .list();
+
+        return operationBanking;
+    }
+
     public List<OperationBanking> getAllByAccount(Long account) {
         List<OperationBanking> operationBanking = sessionFactory.getSession()
                 .createQuery("from OperationBanking where id_account = :id_account")
