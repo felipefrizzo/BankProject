@@ -1,20 +1,19 @@
 package br.univel;
 
-import java.io.IOException;
-import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.List;
-
+import br.univel.database.person.PersonService;
 import br.univel.model.account.Account;
 import br.univel.model.account.AccountInterface;
 import br.univel.model.account.AccountObserver;
 import br.univel.model.agency.Agency;
 import br.univel.model.operationbanking.OperationBanking;
 import br.univel.model.person.Person;
+import br.univel.model.person.TypePerson;
+import br.univel.model.person.TypePersonFactory;
 import br.univel.view.RootLayoutController;
 import br.univel.view.balance.BalanceController;
 import br.univel.view.banking.agency.AgencyController;
 import br.univel.view.banking.agency.AgencyFormController;
+import br.univel.view.banking.balanceagency.BalanceAgencyController;
 import br.univel.view.banking.listingcustomers.ListingCustomersController;
 import br.univel.view.banking.newaccount.NewAccountController;
 import br.univel.view.banking.popoutaccount.PopOutController;
@@ -37,6 +36,11 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+
+import java.io.IOException;
+import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by felipefrizzo on 8/30/16.
@@ -93,6 +97,12 @@ public class Main extends Application implements AccountObserver {
     }
 
     public static void main(String[] args) {
+        PersonService personService = new PersonService();
+        if (personService.getPersonByName("Felipe Frizzo") == null) {
+            Person person = new TypePersonFactory().create(TypePerson.BANKING, "Felipe Frizzo", "admin", 19, "051", "admin", "123456");
+            personService.save(person);
+        }
+
         launch(args);
     }
 
@@ -396,6 +406,21 @@ public class Main extends Application implements AccountObserver {
 
             rootLayout.setCenter(mainOverview);
             PopOutController controller = loader.getController();
+            controller.setMain(this);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void showAgencyBalance() {
+        this.primaryStage.setTitle("Bank Project Applications - Banking Balance");
+        try {
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(Main.class.getResource("view/banking/balanceagency/BalanceAgencyLayout.fxml"));
+            AnchorPane mainOverview = (AnchorPane) loader.load();
+
+            rootLayout.setCenter(mainOverview);
+            BalanceAgencyController controller = loader.getController();
             controller.setMain(this);
         } catch (IOException e) {
             e.printStackTrace();

@@ -12,7 +12,7 @@ public class MainBankingController {
     
     @FXML
     public void handleBalance() {
-
+        main.showAgencyBalance();
     }
 
     @FXML
