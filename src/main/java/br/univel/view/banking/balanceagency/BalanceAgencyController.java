@@ -1,6 +1,8 @@
 package br.univel.view.banking.balanceagency;
 
 import br.univel.Main;
+import br.univel.database.account.AccountService;
+import br.univel.database.agency.AgencyService;
 import br.univel.model.account.Account;
 import br.univel.model.agency.Agency;
 import br.univel.model.operationbanking.OperationBanking;
@@ -13,6 +15,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 
 import java.math.BigDecimal;
+import java.util.List;
 
 /**
  * Created by felipefrizzo on 27/09/16.
@@ -66,7 +69,6 @@ public class BalanceAgencyController {
         list = new GetAgencyBalance().getObservableList(numberAgency.getText());
 
         for (OperationBanking operationBanking: list) {
-            valueBalance = valueBalance.add(operationBanking.getAccount().getBalance());
             if (operationBanking.getOperation().equalsIgnoreCase("deposito")) {
                 valueDeposit = valueDeposit.add(operationBanking.getValue());
             } else if (operationBanking.getOperation().equalsIgnoreCase("saque")) {
@@ -74,11 +76,17 @@ public class BalanceAgencyController {
             }
         }
 
+        Agency agency = new AgencyService().getByNumberAgency(numberAgency.getText());
+        List<Account> accounts = new AccountService().getByAgency(agency.getId());
+        for (Account account: accounts) {
+            valueBalance = valueBalance.add(account.getBalance());
+        }
+
         showTable(String.valueOf(valueDeposit), String.valueOf(valueWithdral), String.valueOf(valueBalance));
     }
 
     private void showTable(String valueDeposit, String valueWithdral, String valueBalance) {
-        agency.setCellValueFactory(new PropertyValueFactory<>("account.account_number"));
+        agency.setCellValueFactory(new PropertyValueFactory<>("account.agency.id"));
         account.setCellValueFactory(new PropertyValueFactory<>("account"));
         operacao.setCellValueFactory(new PropertyValueFactory<>("operation"));
         value.setCellValueFactory(new PropertyValueFactory<>("value"));

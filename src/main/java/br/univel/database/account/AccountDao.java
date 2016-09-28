@@ -80,4 +80,14 @@ public class AccountDao implements DaoInterface<Account, Long>{
         }
         return null;
     }
+
+    public List<Account> getAccountByAgency(Long agency) {
+        List<Account> accounts = sessionFactory.getSession()
+                .createQuery(
+                        "from Account where id_agency = :id_agency"
+                )
+                .setParameter("id_agency", agency)
+                .list();
+        return accounts;
+    }
 }

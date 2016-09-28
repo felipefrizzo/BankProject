@@ -81,4 +81,11 @@ public class AccountService implements DaoService<Account, Long> {
         sessionFactory.closeSessionWithTransaction();
         return account;
     }
+
+    public List<Account> getByAgency(Long agency) {
+        sessionFactory.openSessionWithTransaction();
+        List<Account> account = accountDao.getAccountByAgency(agency);
+        sessionFactory.closeSessionWithTransaction();
+        return account;
+    }
 }
